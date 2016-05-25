@@ -15,10 +15,22 @@
     <fieldset>
         <legend><?= __('Add Usuario') ?></legend>
         <?php
-            echo $this->Form->input('email');
-            echo $this->Form->input('senha');
-            echo $this->Form->input('perfil');
-            echo $this->Form->input('ativo');
+            echo $this->Form->input('nome', ['label' => 'Nome']);
+            echo $this->Form->input('email', ['label' => 'E-mail']);
+            echo $this->Form->input('senha', [
+                'label' => 'Senha',
+                'type' => 'password']);
+            $optPerfis = [1 => 'Administrador', 2 => 'Padrão'];
+            echo $this->Form->input('perfil', [
+                'label' => 'Perfil',
+                'options' => $optPerfis,
+                'default' => 2]);
+            $optAtivos = [1 => 'Sim', 0 => 'Não'];
+            echo $this->Form->input('ativo', [
+                'label' => 'Ativo',
+                'options' => $optAtivos,
+                'default' => 1
+                ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

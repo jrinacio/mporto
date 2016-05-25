@@ -55,6 +55,10 @@ class UsuariosTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
+        
+        $validator
+            ->requirePresence('nome')
+            ->notEmpty('nome');
 
         $validator
             ->email('email')
@@ -66,7 +70,7 @@ class UsuariosTable extends Table
             ->notEmpty('senha');
 
         $validator
-            ->boolean('perfil')
+            ->integer('perfil')
             ->requirePresence('perfil', 'create')
             ->notEmpty('perfil');
 

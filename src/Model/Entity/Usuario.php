@@ -9,7 +9,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $email
  * @property string $senha
- * @property bool $perfil
+ * @property int $perfil
  * @property int $ativo
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified

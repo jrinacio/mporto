@@ -16,6 +16,24 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Database\Type;
+
+//Habilita o parseamento de datas localizadas
+Type::build('date')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy');
+Type::build('datetime')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
+Type::build('timestamp')
+        ->useLocaleParser()
+        ->setLocaleFormat('dd/MM/yyyy HH:mm:ss');
+
+// Habilita o parseamento de decimal localizados
+Type::build('decimal')
+        ->useLocaleParser();
+Type::build('float')
+        ->useLocaleParser();
 
 /**
  * Application Controller
@@ -27,6 +45,25 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    /**
+     * public $helper
+     * 
+     * Alterando os $helpers do Cakephp para Bootstrap 
+     */
+    public $helpers = [
+        'Html' => [
+            'className' => 'Bootstrap.BootstrapHtml'
+        ],
+        'Form' => [
+            'className' => 'Bootstrap.BootstrapForm'
+        ],
+        'Paginator' => [
+            'className' => 'Bootstrap.BootstrapPaginator'
+        ],
+        'Modal' => [
+            'className' => 'Bootstrap.BootstrapModal'
+        ]
+    ];
 
     /**
      * Initialization hook method.
@@ -43,8 +80,70 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'userModel' => 'Usuarios',
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'senha'
+                    ],
+                    'finder' => 'auth'
+                ]
+            ],
+            'authorize' => ['Controller'],
+            'loginAction' => [
+                'controller' => 'Usuarios',
+                'action' => 'login'
+            ],
+            'loginRedirect' => [
+                'controller' => 'Usuarios',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display'
+            ]
+        ]);
     }
-
+    
+    /**
+     * Função de verificação de autorização de acesso
+     * 
+     * @param object $usuario
+     * return bool
+     */
+    public function isAuthorized($usuario)
+    {
+        if($usuario['perfil'] === 1)
+        {
+            return true;
+        }
+        else if($usuario['perfil'] === 2)
+        {
+            if(in_array($this->request->action, ['index']));
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    /**
+     * Before filter
+     * 
+     * @param Event $event
+     * @return void 
+     */
+    public function beforeFilter(Event $event) 
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add', 'login', 'logout']);
+        $this->Auth->config('authError', 'Usuário não autorizado.');
+        $usuario = $this->Auth->user();
+        $this->set(compact($usuario));
+    }
+  
     /**
      * Before render callback.
      *

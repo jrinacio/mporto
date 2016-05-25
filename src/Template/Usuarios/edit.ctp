@@ -21,10 +21,17 @@
     <fieldset>
         <legend><?= __('Edit Usuario') ?></legend>
         <?php
-            echo $this->Form->input('email');
-            echo $this->Form->input('senha');
-            echo $this->Form->input('perfil');
-            echo $this->Form->input('ativo');
+            echo $this->Form->input('nome', ['label' => 'Nome']);
+            echo $this->Form->input('email', ['label' => 'E-mail']);
+            echo $this->Form->input('senha', ['label' => 'Senha']);
+            $optPerfis = [1 => 'Administrador', 2 => 'Padrão'];
+            echo $this->Form->input('perfil', [
+                'label' => 'perfil',
+                'options' => $optPerfis]);
+            $optAtivos = [1 => 'Sim', 0 => 'Não'];
+            echo $this->Form->input('ativo', [
+                'label' => 'perfil',
+                'options' => $optAtivos]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

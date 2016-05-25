@@ -10,6 +10,26 @@ use App\Controller\AppController;
  */
 class UsuariosController extends AppController
 {
+    public $paginate = [
+        'fields' => [
+            'Usuarios.id',
+            'Usuarios.nome',
+            'Usuarios.email',
+            'Usuarios.perfil',
+            'Usuarios.ativo'
+        ],
+        'limit' => '25'
+    ];
+    
+    /**
+     * Método de inicialização de componentes
+     * 
+     * @return void
+     */
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Paginator');
+    }
 
     /**
      * Index method
@@ -85,6 +105,27 @@ class UsuariosController extends AppController
         }
         $this->set(compact('usuario'));
         $this->set('_serialize', ['usuario']);
+    }
+    
+    /**
+     * Método de Login
+     * 
+     * @return url
+     */
+    public function login()
+    {
+        $this->set('title', 'Acesso a área administrativa.');
+        $this->viewBuilder()->layout('login');
+        if($this->request->is('post'))
+        {
+            $usuario = $this->Auth->identify();
+            if($usuario)
+            {
+                $this->Auth->setUser($usuario);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error(__('E-mail ou senha incorretos.'));
+        }
     }
 
     /**
