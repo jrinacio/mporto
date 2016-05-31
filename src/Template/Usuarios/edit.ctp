@@ -23,7 +23,7 @@
         <?php
             echo $this->Form->input('nome', ['label' => 'Nome']);
             echo $this->Form->input('email', ['label' => 'E-mail']);
-            echo $this->Form->input('senha', ['label' => 'Senha']);
+//            echo $this->Form->input('senha', ['label' => 'Senha']);
             $optPerfis = [1 => 'Administrador', 2 => 'Padrão'];
             echo $this->Form->input('perfil', [
                 'label' => 'perfil',

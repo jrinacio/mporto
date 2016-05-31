@@ -16,7 +16,8 @@ class UsuariosController extends AppController
             'Usuarios.nome',
             'Usuarios.email',
             'Usuarios.perfil',
-            'Usuarios.ativo'
+            'Usuarios.ativo',
+            'Usuarios.created'
         ],
         'limit' => '25'
     ];
@@ -70,7 +71,11 @@ class UsuariosController extends AppController
     {
         $usuario = $this->Usuarios->newEntity();
         if ($this->request->is('post')) {
+//        debug($this->request->data);
+//        die('lol');
             $usuario = $this->Usuarios->patchEntity($usuario, $this->request->data);
+//            debug($usuario);
+//            die('lol');
             if ($this->Usuarios->save($usuario)) {
                 $this->Flash->success(__('The usuario has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -126,6 +131,12 @@ class UsuariosController extends AppController
             }
             $this->Flash->error(__('E-mail ou senha incorretos.'));
         }
+    }
+    
+    public function logout()
+    {
+        $this->Flash->success('Você saiu do sistema.');
+        return $this->redirect($this->Auth->logout());
     }
 
     /**

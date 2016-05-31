@@ -17,32 +17,36 @@
     <h3><?= h($usuario->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th><?= __('Email') ?></th>
-            <td><?= h($usuario->email) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Senha') ?></th>
-            <td><?= h($usuario->senha) ?></td>
-        </tr>
-        <tr>
             <th><?= __('Id') ?></th>
             <td><?= $this->Number->format($usuario->id) ?></td>
         </tr>
         <tr>
+            <th><?= __('Nome') ?></th>
+            <td><?= h($usuario->nome) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('E-mail') ?></th>
+            <td><?= h($usuario->email) ?></td>
+        </tr>
+<!--        <tr>
+            <th>< ? = __('Senha') ?></th>
+            <td>< ? = h($usuario->senha) ?></td>
+        </tr>-->
+        <tr>
             <th><?= __('Ativo') ?></th>
-            <td><?= $this->Number->format($usuario->ativo) ?></td>
+            <td><?= $usuario->ativo === 1 ? 'Sim' : 'Não' ?></td>
         </tr>
         <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($usuario->created) ?></td>
+            <th><?= __('Data cadastro') ?></th>
+            <td><?= h($usuario->created->I18nFormat('dd/MM/yyyy HH:mm')) ?></td>
         </tr>
         <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($usuario->modified) ?></td>
+            <th><?= __('Data alteração') ?></th>
+            <td><?= h($usuario->modified->I18nFormat('dd/MM/yyyy HH:mm')) ?></td>
         </tr>
         <tr>
             <th><?= __('Perfil') ?></th>
-            <td><?= $usuario->perfil ? __('Yes') : __('No'); ?></td>
+            <td><?= $usuario->perfil === 1 ? __('Administrador') : __('Padrão'); ?></td>
         </tr>
     </table>
     <div class="related">

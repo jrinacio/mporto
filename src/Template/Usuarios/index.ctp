@@ -16,12 +16,11 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('nome') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
-                <th><?= $this->Paginator->sort('senha') ?></th>
                 <th><?= $this->Paginator->sort('perfil') ?></th>
                 <th><?= $this->Paginator->sort('ativo') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -29,12 +28,11 @@
             <?php foreach ($usuarios as $usuario): ?>
             <tr>
                 <td><?= $this->Number->format($usuario->id) ?></td>
+                <td><?= h($usuario->nome) ?></td>
                 <td><?= h($usuario->email) ?></td>
-                <td><?= h($usuario->senha) ?></td>
-                <td><?= h($usuario->perfil) ?></td>
-                <td><?= $this->Number->format($usuario->ativo) ?></td>
-                <td><?= h($usuario->created) ?></td>
-                <td><?= h($usuario->modified) ?></td>
+                <td><?= $this->Number->format($usuario->perfil) ?></td>
+                <td><?= $usuario->ativo === 1 ? 'Sim' : 'Não'; ?></td>
+                <td><?= h($usuario->created->I18nFormat('dd/MM/yyyy HH:mm')) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $usuario->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $usuario->id]) ?>

@@ -1,20 +1,20 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Usuario;
+use App\Model\Entity\Categoria;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Usuarios Model
+ * Categorias Model
  *
- * @property \Cake\ORM\Association\HasMany $Arquivos
- * @property \Cake\ORM\Association\HasMany $Categorias
+ * @property \Cake\ORM\Association\BelongsTo $Usuarios
  * @property \Cake\ORM\Association\HasMany $Eventos
+ * @property \Cake\ORM\Association\HasMany $Servicos
  */
-class UsuariosTable extends Table
+class CategoriasTable extends Table
 {
 
     /**
@@ -27,20 +27,21 @@ class UsuariosTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('usuarios');
-        $this->displayField('email');
+        $this->table('categorias');
+        $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('Arquivos', [
-            'foreignKey' => 'usuario_id'
-        ]);
-        $this->hasMany('Categorias', [
-            'foreignKey' => 'usuario_id'
+        $this->belongsTo('Usuarios', [
+            'foreignKey' => 'usuario_id',
+            'joinType' => 'INNER'
         ]);
         $this->hasMany('Eventos', [
-            'foreignKey' => 'usuario_id'
+            'foreignKey' => 'categoria_id'
+        ]);
+        $this->hasMany('Servicos', [
+            'foreignKey' => 'categoria_id'
         ]);
     }
 
@@ -55,24 +56,13 @@ class UsuariosTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-        
+
         $validator
-            ->requirePresence('nome')
+            ->requirePresence('nome', 'create')
             ->notEmpty('nome');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        $validator
-            ->requirePresence('senha', 'create')
-            ->notEmpty('senha');
-
-        $validator
-            ->integer('perfil')
-            ->requirePresence('perfil', 'create')
-            ->notEmpty('perfil');
+            ->allowEmpty('descricao');
 
         $validator
             ->integer('ativo')
@@ -91,18 +81,7 @@ class UsuariosTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
         return $rules;
-    }
-    
-    public function findAuth(\Cake\ORM\Query $query, array $options)
-    {
-        $query
-            ->select(['id', 'email', 'senha'])
-            ->contain(['Arquivos', 'Categorias', 'Eventos'])
-            ->autoFields(true)
-            ->where(['Usuarios.ativo' => 1]);
-        
-        return $query;
     }
 }
