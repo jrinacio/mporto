@@ -1,20 +1,20 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Categoria;
+use App\Model\Entity\Servico;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Categorias Model
+ * Servicos Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Usuarios
- * @property \Cake\ORM\Association\HasMany $Eventos
- * @property \Cake\ORM\Association\HasMany $Servicos
+ * @property \Cake\ORM\Association\BelongsTo $Categorias
+ * @property \Cake\ORM\Association\HasMany $Arquivos
  */
-class CategoriasTable extends Table
+class ServicosTable extends Table
 {
 
     /**
@@ -27,21 +27,20 @@ class CategoriasTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('categorias');
-        $this->displayField('nome');
+        $this->table('servicos');
+        $this->displayField('id');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Usuarios', [
-            'foreignKey' => 'usuario_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'usuario_id'
         ]);
-        $this->hasMany('Eventos', [
+        $this->belongsTo('Categorias', [
             'foreignKey' => 'categoria_id'
         ]);
-        $this->hasMany('Servicos', [
-            'foreignKey' => 'categoria_id'
+        $this->hasMany('Arquivos', [
+            'foreignKey' => 'servico_id'
         ]);
     }
 
@@ -63,10 +62,13 @@ class CategoriasTable extends Table
 
         $validator
             ->allowEmpty('descricao');
+        
+        $validator
+            ->requirePresence('categoria_id', true)
+            ->notEmpty('categoria_id');
 
         $validator
             ->integer('ativo')
-            ->requirePresence('ativo', 'create')
             ->notEmpty('ativo');
 
         return $validator;
@@ -82,6 +84,7 @@ class CategoriasTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
+        $rules->add($rules->existsIn(['categoria_id'], 'Categorias'));
         return $rules;
     }
 }
