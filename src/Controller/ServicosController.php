@@ -53,6 +53,8 @@ class ServicosController extends AppController
     {
         $servico = $this->Servicos->newEntity();
         if ($this->request->is('post')) {
+            debug($this->request->data);
+            die('lol');
             $servico = $this->Servicos->patchEntity($servico, $this->request->data);
             $servico->usuario_id = $this->Auth->user('id');
             if ($this->Servicos->save($servico)) {

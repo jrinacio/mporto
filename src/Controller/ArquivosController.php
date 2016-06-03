@@ -58,7 +58,7 @@ class ArquivosController extends AppController
             // TODO buscar o parâmetro evento_id ou servico_id
             $arquivo->evento_id = 1;
             $arquivo ->name = $_FILES['file']['name'];
-            $arquivo->size = $_FILES['files']['size'];
+            $arquivo->size = $_FILES['file']['size'];
             $arquivo->type = $_FILES['file']['type'];
             if ($this->Arquivos->save($arquivo)) {
                 $this->Flash->success(__('Arquivo salvo.'));
@@ -72,6 +72,28 @@ class ArquivosController extends AppController
         $servicos = $this->Arquivos->Servicos->find('list', ['limit' => 200]);
         $this->set(compact('arquivo', 'usuarios', 'eventos', 'servicos'));
         $this->set('_serialize', ['arquivo']);
+    }
+    
+    public function adicionar()
+    {
+        if($this->request->is('post'))
+        {
+            debug($this->request->data);
+            die('lol');
+            $arquivo = $this->Arquivos->patchEntities($arquivo, $this->request->data);
+            $arquivo->usuario_id = $this->Auth->user('id');
+            $arquivo->name = $_FILES['file']['name'];
+            $arquivo->size = $_FILES['file']['size'];
+            $arquivo->type = $_FILES['file']['type'];
+            if($this->Arquivos->save($arquivo))
+            {
+                $this->Flash->success(__('Arquivo salvo.'));
+            }
+            else
+            {
+                $this->Flash->error(__('O arquivo não foi salvo. Favor tentar novamente.'));
+            }
+        }
     }
 
     /**

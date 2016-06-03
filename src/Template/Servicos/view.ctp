@@ -1,21 +1,26 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Servico'), ['action' => 'edit', $servico->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Servico'), ['action' => 'delete', $servico->id], ['confirm' => __('Are you sure you want to delete # {0}?', $servico->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Servicos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Servico'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="servicos view large-9 medium-8 columns content">
-    <h3><?= h($servico->id) ?></h3>
-    <table class="vertical-table">
+
+<div class="row">
+    <div class="col-md-3">
+        <nav>
+            <ul class="side-nav">
+                <li class="heading"><?= __('Actions') ?></li>
+                <li><?= $this->Html->link(__('Edit Servico'), ['action' => 'edit', $servico->id]) ?> </li>
+                <li><?= $this->Form->postLink(__('Delete Servico'), ['action' => 'delete', $servico->id], ['confirm' => __('Are you sure you want to delete # {0}?', $servico->id)]) ?> </li>
+                <li><?= $this->Html->link(__('List Servicos'), ['action' => 'index']) ?> </li>
+                <li><?= $this->Html->link(__('New Servico'), ['action' => 'add']) ?> </li>
+                <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
+                <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
+                <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?> </li>
+                <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?> </li>
+                <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?> </li>
+                <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?> </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <h3><?= h($servico->id) ?></h3>
+            <table class="vertical-table">
         <tr>
             <th><?= __('Nome') ?></th>
             <td><?= h($servico->nome) ?></td>
@@ -49,6 +54,31 @@
             <td><?= h($servico->modified) ?></td>
         </tr>
     </table>
+    </div>
+        <hr>
+        <div class="row">
+    <?= $this->Form->create(null, [
+            'id' => 'upload', 
+            'type' => 'file',
+            'url' => ['controller' => 'Arquivos', 'action' => 'adicionar']
+    ]) ?>
+
+        <h3><?= __('Add Arquivo') ?></h3>
+        <?php
+            echo $this->Form->hidden('servico_id', ['value' => $servico->id]);
+            echo $this->Form->input('file', [
+                'type' => 'file',
+                'id' => 'file',
+                'label' => 'Adicionar arquivo'
+            ]);
+            echo $this->Form->input('titulo', ['label' => 'Título']);
+            echo $this->Form->input('ativo');
+        ?>
+
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+</div>
+    <hr>
     <div class="related">
         <h4><?= __('Related Arquivos') ?></h4>
         <?php if (!empty($servico->arquivos)): ?>
@@ -92,4 +122,8 @@
         </table>
         <?php endif; ?>
     </div>
+    </div>
+    
 </div>
+
+
