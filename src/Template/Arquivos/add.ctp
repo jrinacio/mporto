@@ -16,14 +16,15 @@
         <legend><?= __('Add Arquivo') ?></legend>
         <?php
 //            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
-//            echo $this->Form->input('evento_id', ['options' => $eventos]);
-//            echo $this->Form->input('servico_id', ['options' => $servicos]);
+            echo $this->Form->input('evento_id', ['options' => $eventos]);
+            echo $this->Form->input('servico_id', ['options' => $servicos]);
             echo $this->Form->input('file', [
                 'type' => 'file',
                 'id' => 'file',
                 'label' => 'Adicionar arquivo'
             ]);
             echo $this->Form->input('titulo', ['label' => 'Título']);
+            echo $this->Form->input('descricao', ['label' => 'Descrição']);
 //            echo $this->Form->input('size');
 //            echo $this->Form->input('type');
 //            echo $this->Form->input('dir');

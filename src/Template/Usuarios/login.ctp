@@ -3,7 +3,9 @@
 <?= $this->Form->create() ?>
 <?php
     echo $this->Form->input('email', ['label' => 'E-mail']);
-    echo $this->Form->input('senha', ['label' => 'Senha']);
+    echo $this->Form->input('senha', [
+        'label' => 'Senha',
+        'type' => 'password']);
 ?>
 <div>
     <?php

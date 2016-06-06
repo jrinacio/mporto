@@ -55,29 +55,7 @@
         </tr>
     </table>
     </div>
-        <hr>
-        <div class="row">
-    <?= $this->Form->create(null, [
-            'id' => 'upload', 
-            'type' => 'file',
-            'url' => ['controller' => 'Arquivos', 'action' => 'adicionar']
-    ]) ?>
 
-        <h3><?= __('Add Arquivo') ?></h3>
-        <?php
-            echo $this->Form->hidden('servico_id', ['value' => $servico->id]);
-            echo $this->Form->input('file', [
-                'type' => 'file',
-                'id' => 'file',
-                'label' => 'Adicionar arquivo'
-            ]);
-            echo $this->Form->input('titulo', ['label' => 'Título']);
-            echo $this->Form->input('ativo');
-        ?>
-
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
     <hr>
     <div class="related">
         <h4><?= __('Related Arquivos') ?></h4>

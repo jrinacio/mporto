@@ -31,6 +31,7 @@ class ArquivosTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
         
+        $this->addBehavior('Timestamp');
         $this->addBehavior('Proffer.Proffer', [
             'file' => [
                 'root' => WWW_ROOT . 'imgs',
@@ -52,19 +53,15 @@ class ArquivosTable extends Table
             ]
         ]);
 
-        $this->addBehavior('Timestamp');
-
         $this->belongsTo('Usuarios', [
             'foreignKey' => 'usuario_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Eventos', [
-            'foreignKey' => 'evento_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'evento_id'
         ]);
         $this->belongsTo('Servicos', [
-            'foreignKey' => 'servico_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'servico_id'
         ]);
     }
 
@@ -76,6 +73,8 @@ class ArquivosTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        $validator->provider('proffer', 'Proffer\Model\Validation\ProfferRules');
+        
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
@@ -108,9 +107,9 @@ class ArquivosTable extends Table
             ->requirePresence('type', 'create')
             ->notEmpty('type');
 
-        $validator
-            ->requirePresence('dir', 'create')
-            ->notEmpty('dir');
+//        $validator
+//            ->requirePresence('dir', 'create')
+//            ->notEmpty('dir');
 
         $validator
             ->integer('ativo')

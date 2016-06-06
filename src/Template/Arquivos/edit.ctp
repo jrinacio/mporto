@@ -21,15 +21,19 @@
     <fieldset>
         <legend><?= __('Edit Arquivo') ?></legend>
         <?php
-            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
+            echo $this->Form->input('usuario_id', [
+                'options' => $usuarios,
+                'disabled' => 'disabled']);
             echo $this->Form->input('evento_id', ['options' => $eventos]);
             echo $this->Form->input('servico_id', ['options' => $servicos]);
-            echo $this->Form->input('name');
+            echo $this->Form->input('name', ['disabled' => 'disabled']);
             echo $this->Form->input('titulo');
-            echo $this->Form->input('size');
-            echo $this->Form->input('type');
-            echo $this->Form->input('dir');
-            echo $this->Form->input('ativo');
+            echo $this->Form->input('descricao', ['label' => 'Descrição']);
+//            echo $this->Form->input('size', ['disabled' => 'disabled']);
+//            echo $this->Form->input('type', ['disabled' => 'disabled']);
+//            echo $this->Form->input('dir', ['disabled' => 'disabled']);
+            $atv = [0 => 'Não', 1 => 'Sim'];
+            echo $this->Form->input('ativo', ['options' => $atv]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

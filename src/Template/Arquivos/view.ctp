@@ -37,6 +37,10 @@
             <td><?= h($arquivo->titulo) ?></td>
         </tr>
         <tr>
+            <th><?= __('Descrição') ?></th>
+            <td><?= h($arquivo->descricao) ?></td>
+        </tr>
+        <tr>
             <th><?= __('Type') ?></th>
             <td><?= h($arquivo->type) ?></td>
         </tr>

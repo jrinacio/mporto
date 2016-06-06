@@ -55,22 +55,19 @@ class ArquivosController extends AppController
         if ($this->request->is('post')) {
             $arquivo = $this->Arquivos->patchEntity($arquivo, $this->request->data);
             $arquivo->usuario_id = $this->Auth->user('id');
-            // TODO buscar o parâmetro evento_id ou servico_id
-            $arquivo->evento_id = 1;
             $arquivo ->name = $_FILES['file']['name'];
             $arquivo->size = $_FILES['file']['size'];
             $arquivo->type = $_FILES['file']['type'];
             if ($this->Arquivos->save($arquivo)) {
                 $this->Flash->success(__('Arquivo salvo.'));
-            //    return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('O arquivo não foi salvo. Favor tentar novamente.'));
             }
         }
-        $usuarios = $this->Arquivos->Usuarios->find('list', ['limit' => 200]);
         $eventos = $this->Arquivos->Eventos->find('list', ['limit' => 200]);
         $servicos = $this->Arquivos->Servicos->find('list', ['limit' => 200]);
-        $this->set(compact('arquivo', 'usuarios', 'eventos', 'servicos'));
+        $this->set(compact('arquivo', 'eventos', 'servicos'));
         $this->set('_serialize', ['arquivo']);
     }
     
@@ -141,5 +138,22 @@ class ArquivosController extends AppController
             $this->Flash->error(__('The arquivo could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+    
+    /**
+     * Método Galeria
+     * 
+     */
+    public function galeria()
+    {
+        $this->set('title', '');
+        $config = [
+            'fileds' => ['Arquivos.id', 'Arquivos.titulo', 'Arquivos.descricao'],
+            'limit' => 3
+        ];
+        
+        $query = $this->Arquivos->find()->where(['ativo' => 1]);
+        $this->set('arquivos', $this->Paginator->paginate($query, $config));
+        $this->set('_serialize', ['arquivos']);
     }
 }
