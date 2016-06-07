@@ -32,6 +32,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('modern-business.css') ?>
     <?= $this->Html->css('font-awesome/css/font-awesome.css') ?>
+    <?= $this->Html->css('mporto.css') ?>
     
     <!-- javascript -->
     <?= $this->Html->script('jquery-2.1.3.min') ?>
@@ -49,11 +50,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <div class="container">
         <div class="row">
-            <?= $this->fetch('title') ?>
+             <!--$this->fetch('title')--> 
             <?= $this->Flash->render() ?>
         </div>
         <?= $this->fetch('content') ?>
+        <footer>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    <p>Copyright &copy; Cia. Docas do Estado de São Paulo </p>
+                </div>
+            </div>
+        </footer>
     </div>
-    
+
 </body>
 </html>

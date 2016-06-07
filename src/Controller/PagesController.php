@@ -63,7 +63,7 @@ class PagesController extends AppController
         }
     }
     
-    public function index()
+    public function home()
     {
         
     }

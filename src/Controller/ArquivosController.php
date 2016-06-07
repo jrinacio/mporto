@@ -18,12 +18,26 @@ class ArquivosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
+//        $this->paginate = [
+//            'contain' => ['Usuarios', 'Eventos', 'Servicos']
+//        ];
+//        $arquivos = $this->paginate($this->Arquivos);
+        
+        $config = [
+            'fileds' => [
+                'Arquivos.id', 
+                'Arquivos.evento_id',
+                'Arquivos.servico_id',
+                'Arquivo.nome',
+                'Arquivo.size',
+                'Arquivo.ativo'],
+            'limit' => 6,
             'contain' => ['Usuarios', 'Eventos', 'Servicos']
         ];
-        $arquivos = $this->paginate($this->Arquivos);
+        $query = $this->Arquivos->find();
+        $this->set('arquivos', $this->Paginator->paginate($query, $config));
 
-        $this->set(compact('arquivos'));
+//        $this->set(compact('arquivos'));
         $this->set('_serialize', ['arquivos']);
     }
 
@@ -149,7 +163,7 @@ class ArquivosController extends AppController
         $this->set('title', '');
         $config = [
             'fileds' => ['Arquivos.id', 'Arquivos.titulo', 'Arquivos.descricao'],
-            'limit' => 3
+            'limit' => 6
         ];
         
         $query = $this->Arquivos->find()->where(['ativo' => 1]);

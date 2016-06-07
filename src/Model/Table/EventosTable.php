@@ -28,7 +28,7 @@ class EventosTable extends Table
         parent::initialize($config);
 
         $this->table('eventos');
-        $this->displayField('id');
+        $this->displayField('titulo');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
