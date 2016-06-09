@@ -1,41 +1,60 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $arquivo->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $arquivo->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Servicos'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Servico'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="arquivos form large-9 medium-8 columns content">
-    <?= $this->Form->create($arquivo) ?>
-    <fieldset>
-        <legend><?= __('Edit Arquivo') ?></legend>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <?= __('Arquivos') ?>
+            <small>Editar</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+            <li class="active">Editar dados da imagem<li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <ul>
+                <li class="list-group-item"><?= $this->Form->postLink(
+                        __('Delete'),
+                        ['action' => 'delete', $arquivo->id],
+                        ['confirm' => __('Você tem certeza que deseja excluir o arquivo # {0}?', $arquivo->id)]
+                    )
+                ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Arquivos'), ['action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('List Servicos'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('New Servico'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div>
+            <h3><?= __('Editar arquivo') ?></h3>
+        </div>
+        <?= $this->Form->create($arquivo) ?>
+        
+        <?= $this->Form->input('evento_id', [
+                'options' => $eventos,
+                'empty' => 'Selecione um serviço...']) ?>
+        <?= $this->Form->input('servico_id', [
+            'options' => $servicos,
+            'empty' => 'Selecione um serviço...']) ?>
+        
         <?php
-            echo $this->Form->input('usuario_id', [
-                'options' => $usuarios,
+            echo $this->Form->input('name', [
+                'label' => 'Nome do arquivo',
                 'disabled' => 'disabled']);
-            echo $this->Form->input('evento_id', ['options' => $eventos]);
-            echo $this->Form->input('servico_id', ['options' => $servicos]);
-            echo $this->Form->input('name', ['disabled' => 'disabled']);
-            echo $this->Form->input('titulo');
+            echo $this->Form->input('titulo', ['label' => 'Título']);
             echo $this->Form->input('descricao', ['label' => 'Descrição']);
-//            echo $this->Form->input('size', ['disabled' => 'disabled']);
-//            echo $this->Form->input('type', ['disabled' => 'disabled']);
-//            echo $this->Form->input('dir', ['disabled' => 'disabled']);
             $atv = [0 => 'Não', 1 => 'Sim'];
             echo $this->Form->input('ativo', ['options' => $atv]);
         ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+        <?= $this->Form->button(__('Submit')) ?>
+        <?= $this->Form->end() ?>
+    </div>
 </div>
+
+

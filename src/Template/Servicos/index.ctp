@@ -1,57 +1,76 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Servico'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="servicos index large-9 medium-8 columns content">
-    <h3><?= __('Servicos') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('nome') ?></th>
-                <th><?= $this->Paginator->sort('descricao') ?></th>
-                <th><?= $this->Paginator->sort('usuario_id') ?></th>
-                <th><?= $this->Paginator->sort('categoria_id') ?></th>
-                <th><?= $this->Paginator->sort('ativo') ?></th>
-                <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($servicos as $servico): ?>
-            <tr>
-                <td><?= $this->Number->format($servico->id) ?></td>
-                <td><?= h($servico->nome) ?></td>
-                <td><?= h($servico->descricao) ?></td>
-                <td><?= $servico->has('usuario') ? $this->Html->link($servico->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $servico->usuario->id]) : '' ?></td>
-                <td><?= $servico->has('categoria') ? $this->Html->link($servico->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $servico->categoria->id]) : '' ?></td>
-                <td><?= $this->Number->format($servico->ativo) ?></td>
-                <td><?= h($servico->created) ?></td>
-                <td><?= h($servico->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $servico->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $servico->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $servico->id], ['confirm' => __('Are you sure you want to delete # {0}?', $servico->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <?= __('Serviços') ?>
+            <small>Listagem</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+            <li class="active">Lista de serviços</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <ul class="side-nav">
+            <li class="list-group-item"><?= $this->Html->link(__('Novo Serviço'), ['action' => 'add']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Listar Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Nova Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Listar Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('Novo Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
         </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+    </div>
+    <div class="col-md-9">
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                        <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                        <th><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
+                        <th><?= $this->Paginator->sort('usuario_id', 'Usuário') ?></th>
+                        <th><?= $this->Paginator->sort('categoria_id', 'Categoria') ?></th>
+                        <th><?= $this->Paginator->sort('ativo', 'Ativo') ?></th>
+                        <th><?= $this->Paginator->sort('created') ?></th>
+                        <th><?= $this->Paginator->sort('modified') ?></th>
+                        <th class="actions"><?= __('Ações') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($servicos as $servico): ?>
+                    <tr>
+                        <td><?= $this->Number->format($servico->id) ?></td>
+                        <td><?= h($servico->nome) ?></td>
+                        <td><?= h($servico->descricao) ?></td>
+                        <td><?= $servico->has('usuario') ? $this->Html->link($servico->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $servico->usuario->id]) : '' ?></td>
+                        <td><?= $servico->has('categoria') ? $this->Html->link($servico->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $servico->categoria->id]) : '' ?></td>
+                        <td><?= $this->Number->format($servico->ativo) ?></td>
+                        <td><?= h($servico->created) ?></td>
+                        <td><?= h($servico->modified) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $servico->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $servico->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $servico->id], ['confirm' => __('Are you sure you want to delete # {0}?', $servico->id)]) ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="row text-center">
+            
+        </div>
+        <div class="row text-center">
+            <div class="paginator">
+                <ul class="pagination">
+                    <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                    <?= $this->Paginator->numbers() ?>
+                    <?= $this->Paginator->next(__('next') . ' >') ?>
+                </ul>
+                <p><?= $this->Paginator->counter() ?></p>
+            </div>
+        </div>
     </div>
 </div>

@@ -128,7 +128,7 @@ class ArquivosController extends AppController
                 $this->Flash->error(__('The arquivo could not be saved. Please, try again.'));
             }
         }
-        $usuarios = $this->Arquivos->Usuarios->find('list', ['limit' => 200]);
+        //$usuarios = $this->Arquivos->Usuarios->find('list', ['limit' => 200]);
         $eventos = $this->Arquivos->Eventos->find('list', ['limit' => 200]);
         $servicos = $this->Arquivos->Servicos->find('list', ['limit' => 200]);
         $this->set(compact('arquivo', 'usuarios', 'eventos', 'servicos'));

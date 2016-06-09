@@ -7,7 +7,48 @@ and open the template in the editor.
     Created on : 07/06/2016, 15:16:03
     Author     : luizcarlos.fonseca
 */
+footer {
+    margin: 15px;
+}
 
 .imputpequeno {
     width: 150px;
+}
+
+.table-responsive {
+    margin-top: 10px;
+}
+
+.tablenoborder th,
+.tablenoborder td {
+    border: 0px !important;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    line-height: 1 !important;
+}
+
+.login-form {
+    width: 25rem;
+    height: 18.75rem;
+    position: fixed;
+    top: 50%;
+    margin-top: -9.375rem;
+    left: 50%;
+    margin-left: -12.5rem;
+    background-color: #fff;
+}
+
+.list-group-item {
+    background-color: #222;
+}
+
+.list-group-item a {
+    color: #fff;
+    
 }

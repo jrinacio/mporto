@@ -17,11 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-<!--                <a class="navbar-brand" href="index.html">Lupi</a>-->
-                <?= $this->Html->link($this->Html->image('titulo2.jpg'),
-                        'pages/display',[
-                            'escape' => false,
-                            'class' => 'navbar-brand']) ?> 
+                <a class="navbar-brand" href="#">Complexo Cultural</a>
+<!--                 $this->Html->link('Complexo Cultural',[
+                        'Controller' => 'Pages', 
+                        'action' => 'home',
+                        'escape' => false,
+                        'class' => 'navbar-brand'])-->
                 <span class="subtitulo">Doces e Congelados</span>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->

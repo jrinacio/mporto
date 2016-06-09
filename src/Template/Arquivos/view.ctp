@@ -33,20 +33,11 @@
             'width' => '450',
             'scape' => false
         ]) ?>
-        <hr>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table tablenoborder">
                 <tr>
-                    <th class="col-md-2"><?= __('Usuario') ?></th>
-                    <td class="col-md-7"><?= $arquivo->has('usuario') ? $this->Html->link($arquivo->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $arquivo->usuario->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Evento') ?></th>
-                    <td class="col-md-7"><?= $arquivo->has('evento') ? $this->Html->link($arquivo->evento->id, ['controller' => 'Eventos', 'action' => 'view', $arquivo->evento->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Servico') ?></th>
-                    <td class="col-md-7"><?= $arquivo->has('servico') ? $this->Html->link($arquivo->servico->id, ['controller' => 'Servicos', 'action' => 'view', $arquivo->servico->id]) : '' ?></td>
+                    <th class="col-md-2"><?= __('Id') ?></th>
+                    <td class="col-md-7"><?= $this->Number->format($arquivo->id) ?></td>
                 </tr>
                 <tr>
                     <th class="col-md-2"><?= __('Name') ?></th>
@@ -69,16 +60,24 @@
                     <td class="col-md-7"><?= h($arquivo->dir) ?></td>
                 </tr>
                 <tr>
-                    <th class="col-md-2"><?= __('Id') ?></th>
-                    <td class="col-md-7"><?= $this->Number->format($arquivo->id) ?></td>
-                </tr>
-                <tr>
                     <th class="col-md-2"><?= __('Size') ?></th>
                     <td class="col-md-7"><?= $this->Number->format($arquivo->size) ?></td>
                 </tr>
                 <tr>
                     <th class="col-md-2"><?= __('Ativo') ?></th>
                     <td class="col-md-7"><?= $this->Number->format($arquivo->ativo) ?></td>
+                </tr>
+                <tr>
+                    <th class="col-md-1"><?= __('Usuario') ?></th>
+                    <td class="col-md-8"><?= $arquivo->has('usuario') ? $this->Html->link($arquivo->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $arquivo->usuario->id]) : '' ?></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2"><?= __('Evento') ?></th>
+                    <td class="col-md-7"><?= $arquivo->has('evento') ? $this->Html->link($arquivo->evento->id, ['controller' => 'Eventos', 'action' => 'view', $arquivo->evento->id]) : '' ?></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2"><?= __('Servico') ?></th>
+                    <td class="col-md-7"><?= $arquivo->has('servico') ? $this->Html->link($arquivo->servico->id, ['controller' => 'Servicos', 'action' => 'view', $arquivo->servico->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th class="col-md-2"><?= __('Created') ?></th>
