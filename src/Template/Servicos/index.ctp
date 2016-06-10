@@ -12,7 +12,7 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-        <ul class="side-nav">
+        <ul>
             <li class="list-group-item"><?= $this->Html->link(__('Novo Serviço'), ['action' => 'add']) ?></li>
             <li class="list-group-item"><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
             <li class="list-group-item"><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
