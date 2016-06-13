@@ -19,6 +19,8 @@ use Cake\ORM\Entity;
  * @property string $type
  * @property string $dir
  * @property int $ativo
+ * @property tinyint carousel
+ * @property tinyint acervo
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */

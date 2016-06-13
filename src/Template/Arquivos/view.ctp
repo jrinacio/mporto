@@ -1,3 +1,4 @@
+<?php // debug($arquivo) ?>
 <div class="row">
     <div class="col-md-12">
         <h1 class="page-header">
@@ -78,6 +79,14 @@
                 <tr>
                     <th class="col-md-2"><?= __('Servico') ?></th>
                     <td class="col-md-7"><?= $arquivo->has('servico') ? $this->Html->link($arquivo->servico->id, ['controller' => 'Servicos', 'action' => 'view', $arquivo->servico->id]) : '' ?></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2"><?= __('Topo rotativo') ?></th>
+                    <td class="col-md-7"><?= $arquivo->carousel === true ? 'Sim' : 'Não' ?></td>
+                </tr>
+                <tr>
+                    <th class="col-md-2"><?= __('Acerno na home') ?></th>
+                    <td class="col-md-7"><?= $arquivo->acervo === true ? 'Sim' : 'Não' ?></td>
                 </tr>
                 <tr>
                     <th class="col-md-2"><?= __('Created') ?></th>

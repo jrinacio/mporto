@@ -24,5 +24,12 @@ class CarouselCell extends Cell
      */
     public function display()
     {
+        $this->loadModel('Arquivos');
+        $imagens = $this->Arquivos->find()
+                    ->select(['dir', 'name', 'titulo', 'type'])
+                    ->where (['ativo' => 1, 'carousel' => 1]);
+        $this->set('imagens', $imagens);
+//        debug($imagens);
+//        die('lol');
     }
 }
