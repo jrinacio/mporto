@@ -28,6 +28,7 @@ class CarouselCell extends Cell
         $imagens = $this->Arquivos->find()
                     ->select(['dir', 'name', 'titulo', 'type'])
                     ->where (['ativo' => 1, 'carousel' => 1]);
+                    
         $this->set('imagens', $imagens);
 //        debug($imagens);
 //        die('lol');

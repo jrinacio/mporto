@@ -21,9 +21,11 @@
 <div class="carousel-inner">
     <?php $k = 1; ?>
     <?php foreach ($imagens as $imagem): ?>
-        <div class="item <?= $k === 1 ? 'active' : null; ?>">
-            <div class="fill" style="background-image: url('<?= '/mporto/imgs/arquivos/file/' . $imagem->dir . '/' . $imagem->name ?>')"></div>
-            <div class="carousel-caption"><h2>Imagem <?= $k ?></h2></div>
+        <div class="item<?= $k === 1 ? ' active' : null; ?>">
+            <div class="fill" style="background-image: url('<?= '/mporto/imgs/arquivos/file/' . $imagem->dir . '/' . $imagem->name ?>')">
+                <div class="titulo"><?= $imagem->titulo ?></div>
+            </div>
+            <div class="carousel-caption"></div>
         </div>
     <?php
         $k++;

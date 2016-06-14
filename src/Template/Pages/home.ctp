@@ -13,12 +13,14 @@
         <?= $this->Html->meta('icon') ?>
         <?= $this->Html->css('bootstrap.css') ?>
         <?= $this->Html->css('modern-business.css') ?>
+        <?= $this->Html->css('mporto.css') ?>
         <!-- Custom Fonts -->
         <?= $this->Html->css('font-awesome/css/font-awesome.css') ?>
-        <?= $this->Html->script('mporto.css') ?>
+        
         <!-- Javascript -->
         <?= $this->Html->script('jquery-2.1.3.min') ?>
-        <?= $this->Html->script('bootstrap.min') ?>
+        <?= $this->Html->script('bootstrap') ?>
+        <?= $this->Html->script('mporto') ?>
     </head>
     <body>
         <?php // TODO substituir o menu por element ?>
@@ -30,13 +32,9 @@
             <?= $this->cell('Carousel') ?>
         </header>
         <div class="container">
-            
+            <!-- Cell Serviços -->
+            <?= $this->cell('Servicos') ?>
         </div>
-        <script>
-            $('.carousel').carousel({
-                interval: 5000
-            })
-        </script>
     </body>
 </html>
 

@@ -53,8 +53,6 @@ class ServicosController extends AppController
     {
         $servico = $this->Servicos->newEntity();
         if ($this->request->is('post')) {
-            debug($this->request->data);
-            die('lol');
             $servico = $this->Servicos->patchEntity($servico, $this->request->data);
             $servico->usuario_id = $this->Auth->user('id');
             if ($this->Servicos->save($servico)) {
@@ -114,5 +112,14 @@ class ServicosController extends AppController
             $this->Flash->error(__('The servico could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function display()
+    {
+        $this->loadModel('Servicos');
+        $servicos = $this->Servicos->find()
+                ->select(['id', 'nome', 'descricao'])
+                ->where(['ativo' => 1]);
+        $this->set('servicos', $servicos);
     }
 }

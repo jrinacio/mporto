@@ -64,3 +64,24 @@ footer {
 .list-group-item a:hover {
     color: #fff;
 }
+
+.titulo {
+    padding-top: 140px;
+    text-align: center;
+    color: #BEBEBE;
+    font-family: Times, serif; 
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.panel-body {
+    height: 150px;
+}
+
+span.icon { 
+  font-family: 'Glyphicons Halflings'; 
+}
+
+.fa-select {
+    font-family: sans-serif, 'FontAwesome';
+}

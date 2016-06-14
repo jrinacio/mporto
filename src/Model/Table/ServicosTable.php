@@ -34,13 +34,15 @@ class ServicosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Usuarios', [
-            'foreignKey' => 'usuario_id'
+            'foreignKey' => 'usuario_id',
+            'joinType' => 'INNER'
         ]);
         $this->belongsTo('Categorias', [
             'foreignKey' => 'categoria_id'
         ]);
         $this->hasMany('Arquivos', [
-            'foreignKey' => 'servico_id'
+            'foreignKey' => 'servico_id',
+            'joinType' => 'INNER'
         ]);
     }
 

@@ -7,6 +7,9 @@ jQuery(document).ready(function($){
     $('#file').submit(function(){
         $(this).ajaxSubmit();
     });
+    $('.carousel').carousel({
+        interval: 5000
+    });
 });
 
 
