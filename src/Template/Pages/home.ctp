@@ -26,15 +26,20 @@
         <?php // TODO substituir o menu por element ?>
         <!-- navigation -->
         <?= $this->element('navbar') ?>
-        
+        <div class="container">
         <!-- Header Carousel -->
         <header id="myCarousel" class="carousel slide">
             <?= $this->cell('Carousel') ?>
         </header>
-        <div class="container">
+        
             <!-- Cell Serviços -->
             <?= $this->cell('Servicos') ?>
+            <!-- Cell Acervo/Portfólio -->
+            <?= $this->cell('Portfolio') ?>
         </div>
+        <footer>
+            
+        </footer>
     </body>
 </html>
 

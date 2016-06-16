@@ -7,6 +7,15 @@ and open the template in the editor.
     Created on : 07/06/2016, 15:16:03
     Author     : luizcarlos.fonseca
 */
+/*body {
+    background-color: #fff;
+    background-image: url("../img/canal.jpg");
+}
+
+.container {
+    background-color: #fff;
+}*/
+
 footer {
     margin: 15px;
 }
@@ -65,17 +74,33 @@ footer {
     color: #fff;
 }
 
+.navbar-brand {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
 .titulo {
-    padding-top: 140px;
+    padding-top: 80px;
+    padding-bottom: 100px;
     text-align: center;
     color: #BEBEBE;
-    font-family: Times, serif; 
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; 
     font-weight: bold;
-    font-size: 100px;
+    font-size: 60px;
+}
+
+.page-header {
+   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; 
 }
 
 .panel-body {
     height: 150px;
+    font-family: Georgia, serif;
 }
 
 span.icon { 
@@ -84,4 +109,8 @@ span.icon {
 
 .fa-select {
     font-family: sans-serif, 'FontAwesome';
+}
+
+.col-md-3 {
+    padding-bottom: 20px;
 }

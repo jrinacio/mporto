@@ -45,8 +45,11 @@ class ArquivosTable extends Table
                         'png_compression_level' => 9
                     ],
                     'portrait' => [
-                        'w' => 300,
-                        'h' => 100
+                        'w' => 360,
+                        'h' => 280,
+                        'crop' => true,
+                        'jpeg_quality' => 100,
+                        'png_compression_level' => 9 
                     ],
                 ],
                 'thumbnailMethod' => 'Imagick'
