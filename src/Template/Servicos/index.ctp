@@ -13,13 +13,20 @@
 <div class="row">
     <div class="col-md-3">
         <ul>
-            <li class="list-group-item"><?= $this->Html->link(__('Novo Serviço'), ['action' => 'add']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Listar Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Nova Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Listar Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('Novo Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i>  Serviço'), 
+                ['action' => 'add'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), [
+                'controller' => 'Usuarios', 'action' => 'index'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), [
+                'controller' => 'Usuarios', 'action' => 'add'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Categorias'), [
+                'controller' => 'Categorias', 'action' => 'index'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Categoria'), [
+                'controller' => 'Categorias', 'action' => 'add'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Arquivos'), [
+                'controller' => 'Arquivos', 'action' => 'index'], ['escape' => false]) ?></li>
+            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Arquivo'), [
+                'controller' => 'Arquivos', 'action' => 'add'], ['escape' => false]) ?></li>
         </ul>
     </div>
     <div class="col-md-9">

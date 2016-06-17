@@ -180,6 +180,71 @@ Request::addDetector('tablet', function ($request) {
  * Inflector::rules('transliteration', ['/å/' => 'aa']);
  */
 
+Inflector::rules('singular', [
+    '/^(.*)(oes|aes|aos)$/i' => '\1ao',
+    '/^(.*)(a|e|o|u)is$/i' => '\1\2l',
+    '/^(.*)e?is$/i' => '\1il',
+    '/^(.*)(r|s|z)es$/i' => '\1\2',
+    '/^(.*)ns$/i' => '\1m',
+    '/^(.*)s$/i' => '\1',
+]);
+
+Inflector::rules('plural', [
+    '/^(.*)ao$/i' => '\1oes',
+    '/^(.*)(r|s|z)$/i' => '\1\2es',
+    '/^(.*)(a|e|o|u)l$/i' => '\1\2is',
+    '/^(.*)il$/i' => '\1is',
+    '/^(.*)(m|n)$/i' => '\1ns',
+    '/^(.*)$/i' => '\1s'
+]);
+Inflector::rules('uninflected', [
+    'atlas',
+    'lapis',
+    'onibus',
+    'pires',
+    'virus',
+    '.*x',
+    'status'
+]);
+Inflector::rules('irregular', [
+    'abdomen' => 'abdomens',
+    'alemao' => 'alemaes',
+    'artesa' => 'artesaos',
+    'as' => 'ases',
+    'bencao' => 'bencaos',
+    'cao' => 'caes',
+    'campus' => 'campi',
+    'capelao' => 'capelaes',
+    'capitao' => 'capitaes',
+    'chao' => 'chaos',
+    'charlatao' => 'charlataes',
+    'cidadao' => 'cidadaos',
+    'consul' => 'consules',
+    'cristao' => 'cristaos',
+    'dificil' => 'dificeis',
+    'email' => 'emails',
+    'escrivao' => 'escrivaes',
+    'fossel' => 'fosseis',
+    'germens' => 'germen',
+    'grao' => 'graos',
+    'hifens' => 'hifen',
+    'irmao' => 'irmaos',
+    'liquens' => 'liquen',
+    'mal' => 'males',
+    'mao' => 'maos',
+    'orfao' => 'orfaos',
+    'pais' => 'paises',
+    'pai' => 'pais',
+    'pao' => 'paes',
+    'projetil' => 'projeteis',
+    'reptil' => 'repteis',
+    'sacristao' => 'sacristaes',
+    'sotao' => 'sotaos',
+    'tabeliao' => 'tabeliaes',
+    'gas' => 'gases',
+    'alcool' => 'alcoois'
+]);
+
 /**
  * Plugins need to be loaded manually, you can either load them one by one or all of them in a single call
  * Uncomment one of the lines below, as you need. make sure you read the documentation on Plugin to use more
