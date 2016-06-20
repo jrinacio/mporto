@@ -1,4 +1,5 @@
 <!-- carousel partners -->
+<?php if (!empty($parceiros )): ?>
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">
@@ -36,3 +37,4 @@
         </div>
     </div>
 </div>
+<?php endif; ?>

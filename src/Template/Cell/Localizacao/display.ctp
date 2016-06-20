@@ -1,4 +1,5 @@
 <?php // debug($localizacao) ?>
+<?php if (!empty($localizacao)): ?>
 <h4>Localização</h4>
 <table>
     <tr>
@@ -18,3 +19,4 @@
         </td>
     </tr>
 </table>
+<?php endif; ?>
