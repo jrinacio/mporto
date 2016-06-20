@@ -53,9 +53,10 @@ class ColaboradoresController extends AppController
     {
         $colaborador = $this->Colaboradores->newEntity();
         if ($this->request->is('post')) {
-            $colaboradore = $this->Colaboradores->patchEntity($colaboradore, $this->request->data);
-            if ($this->Colaboradores->save($colaboradore)) {
-                $this->Flash->success(__('The colaboradore has been saved.'));
+            $colaborador = $this->Colaboradores->patchEntity($colaborador, $this->request->data);
+            $colaborador->usuario_id = $this->Auth->user('id');
+            if ($this->Colaboradores->save($colaborador)) {
+                $this->Flash->success(__('O colaborador foi salvo.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The colaboradore could not be saved. Please, try again.'));

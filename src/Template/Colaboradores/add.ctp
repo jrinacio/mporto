@@ -6,7 +6,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
-            <li class="active">Adicionar colaborar</li>
+            <li class="active">Adicionar colaborador</li>
         </ol>
     </div>
 </div>
@@ -16,7 +16,7 @@
             <ul class="side-nav">
                 <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Colaboradores'), [
                     'action' => 'index'], ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class=""fa fa-list"></i> List Usuarios'), [
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuários'), [
                     'controller' => 'Usuarios', 'action' => 'index'], ['escape' => false]) ?></li>
                 <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuario'), [
                     'controller' => 'Usuarios', 'action' => 'add'], ['escape' => false]) ?></li>
@@ -28,9 +28,9 @@
             <?= $this->Form->create($colaborador, ['id' => 'upload', 'type' => 'file']) ?>
             <?php
                 echo $this->Form->input('nome', [
-                    'label' => 'Nome', 'empty' => 'Nome do colaborador...']);
+                    'label' => 'Nome', 'empty' => 'Nome da empresa colaboradora...']);
                 echo $this->Form->input('link', [
-                    'label' => 'Endereço web do colaborador']);
+                    'label' => 'Endereço web do empresa...']);
                 echo $this->Form->input('contato', [
                     'label' => 'Nome do contato']);
                 echo $this->Form->input('email', [
@@ -40,8 +40,10 @@
                 ]);
 //                    echo $this->Form->input('dir', [
 //                        'label' => 'Diretório']);
-//                    echo $this->Form->input('filename', [
-//                        'label' => 'Nome do arquivo']);
+                    echo $this->Form->input('filename', [
+                        'type' => 'file',   
+                        'id' => 'file',
+                        'label' => 'Nome do arquivo']);
                 $atv = [0 => 'Não', 1 => 'Sim'];
                 echo $this->Form->input('ativo', [
                     'options' => $atv,

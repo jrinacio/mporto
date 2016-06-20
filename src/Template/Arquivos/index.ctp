@@ -14,13 +14,13 @@
     <div class="col-md-3">
         <div class="list-group">
             <ul>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo arquivo'), ['action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Serviços'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Serviço'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo arquivo'), ['action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Serviços'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Serviço'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
             </ul>
         </div>
     </div>

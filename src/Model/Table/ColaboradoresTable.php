@@ -1,7 +1,7 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Colaboradore;
+use App\Model\Entity\Colaborador;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -26,14 +26,36 @@ class ColaboradoresTable extends Table
         parent::initialize($config);
 
         $this->table('colaboradores');
-        $this->displayField('id');
+        $this->displayField('nome');
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Proffer.Proffer', [
+            'filename' => [
+                'root' => WWW_ROOT . 'img',
+                'dir' => 'dir',
+                'thumbnailSizes' => [
+                    'square' => [
+                        'w' => 150,
+                        'h' => 150,
+                        'crop' => true,
+                        'jpeg_quality' => 100,
+                        'png_compression_level' => 9
+                    ],
+                    'portrait' => [
+                        'w' => 280,
+                        'h' => 215,
+                        'crop' => true,
+                        'jpeg_quality' => 100,
+                        'png_compression_level' => 9
+                    ]
+                ],
+                'thumbnailMethod' => 'Imagick'
+            ]
+        ]);
 
         $this->belongsTo('Usuarios', [
-            'foreignKey' => 'usuario_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'usuario_id'
         ]);
     }
 
@@ -45,6 +67,8 @@ class ColaboradoresTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
+        $validator->provider('proffer', 'Proffer\Model\Validation\ProfferRules');
+        
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
@@ -67,13 +91,25 @@ class ColaboradoresTable extends Table
         $validator
             ->allowEmpty('fone');
 
-        $validator
-            ->requirePresence('dir', 'create')
-            ->notEmpty('dir');
+//        $validator
+//            ->requirePresence('dir', 'create')
+//            ->notEmpty('dir');
 
         $validator
-            ->requirePresence('file', 'create')
-            ->notEmpty('file');
+            ->requirePresence('filename', 'create')
+            ->notEmpty('filename')
+            ->add('filename', 'proffer', [
+                'rule' => ['dimensions', [
+                    'min' => ['w' => 150, 'h' => 150],
+                    'max' => ['w' => 1920, 'h' => 1080]
+                ]],
+                'message' => 'Imagem não possui as dimensões corretas.',
+                'provider' => 'proffer'
+            ])
+            ->add('filename', 'file', [
+                'rule' => ['mimeType', ['image/jpeg', 'image/png', 'image/gif']],
+                'message' => 'Extensão não permitida.'
+            ]);
 
         $validator
             ->integer('ativo')
@@ -92,7 +128,7 @@ class ColaboradoresTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+//        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
         return $rules;
     }
