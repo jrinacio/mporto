@@ -38,7 +38,7 @@
             <?php foreach ($colaboradores as $colaborador): ?>
             <tr>
                 <td><?= $this->Number->format($colaborador->id) ?></td>
-                <!--<th><?= $this->Html->image('/img/colaboradores/filename/' . $colaborador->dir . '/square_' . $colaborador->filename) ?></th>-->
+                <td><?= $this->Html->image('/img/colaboradores/filename/' . $colaborador->dir . '/square_' . $colaborador->filename) ?></td>
                 <td><?= h($colaborador->nome) ?></td>
                 <td><?= h($colaborador->link) ?></td>
                 <td><?= h($colaborador->filename) ?></td>

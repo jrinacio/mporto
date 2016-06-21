@@ -94,13 +94,13 @@ footer {
     font-size: 60px;
 }
 
-.page-header {
+/*.page-header {
    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; 
 }
-
+*/
 .panel-body {
     height: 150px;
-    font-family: Georgia, serif;
+/*    font-family: Georgia, serif;*/
 }
 
 span.icon { 
@@ -114,3 +114,15 @@ span.icon {
 .col-md-3 {
     padding-bottom: 20px;
 }
+
+#partners {
+    vertical-align: middle;
+}
+
+.carousel-inner .active.left { left: -16.7%; }
+.carousel-inner .next        { left:  16.7%; }
+.carousel-inner .prev        { left: -16.7%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+.item:not(.prev) {visibility: visible;}
+.item.right:not(.prev) {visibility: hidden;}
+.rightest{ visibility: visible;}

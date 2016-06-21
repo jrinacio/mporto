@@ -31,15 +31,24 @@
             <?= $this->cell('Carousel') ?>
         </header>
         <div class="container">
-
-        
             <!-- Cell Serviços -->
             <?= $this->cell('Servicos') ?>
             <!-- Cell Acervo/Portfólio -->
             <?= $this->cell('Portfolio') ?>
+            <!-- Cell Colaboradores -->
+            <?= $this->cell('Colaboradores') ?>
         </div>
         <footer>
-            
+            <div class="footer-wrapper" sectin-pagging>
+                <div class="container">
+                    <div class="row">
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
+                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </body>
 </html>

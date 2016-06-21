@@ -111,4 +111,13 @@ class ColaboradoresController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function teste()
+    {
+        $this->loadModel('Colaboradores');
+        $colaboradores = $this->Colaboradores->find()
+                ->select(['dir', 'filename', 'nome', 'link'])
+                ->where(['ativo' => 1]);
+        $this->set('colaboradores', $colaboradores);
+    }
 }

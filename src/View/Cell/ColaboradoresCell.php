@@ -4,9 +4,9 @@ namespace App\View\Cell;
 use Cake\View\Cell;
 
 /**
- * Parceiros cell
+ * Colaboradores cell
  */
-class ParceirosCell extends Cell
+class ColaboradoresCell extends Cell
 {
 
     /**

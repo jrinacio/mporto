@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <th><?= __('File') ?></th>
-            <td><?= h($colaboradore->file) ?></td>
+            <td><?= h($colaboradore->filename) ?></td>
         </tr>
         <tr>
             <th><?= __('Usuario') ?></th>
