@@ -12,14 +12,14 @@
                 <?php foreach ($colaboradores as $colaborador): ?>
                 <div class="item<?= $m === 1 ? ' active' : null; ?>">
                     <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2">
-                        <a href="<?= $colaborador->link ?>">
-                            <?= $this->Html->image('/img/colaboradores/filename/' . 
-                                    $colaborador->dir . '/square_' .
-                                    $colaborador->filename, [
-                                        'class' => 'img-responsive'
-                                    ]) ?>
-                            
-                        </a>
+                        <?= $this->Html->image('/img/colaboradores/filename/' .
+                                $colaborador->dir . '/square_' .
+                                $colaborador->filename, [
+                                    'class' => 'img-responsive',
+                                    'alt' => $colaborador->nome,
+                                    'url' => 'http://' . $colaborador->link,
+                                    'target' => '_blank'
+                                ]) ?>
                     </div>
                 </div>
                 <?php 
