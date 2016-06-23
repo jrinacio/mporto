@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-9">
         <div>
-            <?= $this->Form->create($empresa) ?>
+            <?= $this->Form->create($empresa, ['id' => 'upload', 'type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Add Empresa') ?></legend>
         <?php
@@ -79,12 +79,24 @@
             ]);
             echo $this->Form->input('categoria_id', [
                 'label' => 'Categorias', 'options' => $categorias, 'empty' => true]);
-            echo $this->Form->input('link');
-            echo $this->Form->input('dir');
-            echo $this->Form->input('filename');
-            echo $this->Form->input('ativo');
-            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
-            echo $this->Form->input('empresa_id');
+            echo $this->Form->input('link', ['label' => 'Website do parceiro...']);
+//            echo $this->Form->input('dir');
+            echo $this->Form->input('filename', [
+                'type' => 'file',
+                'id' => 'file',
+                'label' => 'Nome do arquivo'
+            ]);
+            $atv = [0 => 'Não', 1 => 'Sim'];
+            echo $this->Form->input('ativo', [
+                'options' => $atv,
+                'default' => 1
+            ]);
+//            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
+            echo $this->Form->input('parent_id', [
+                'options' => $empresas,
+                'empty' => true,
+                'label' => 'Empresa'
+            ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

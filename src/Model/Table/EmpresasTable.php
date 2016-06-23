@@ -67,14 +67,17 @@ class EmpresasTable extends Table
             'foreignKey' => 'usuario_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Empresas', [
+        $this->belongsTo('ParentEmpresa', [
+            'className' => 'Empresas',
             'foreignKey' => 'empresa_id'
         ]);
         $this->hasMany('Detalhes', [
             'foreignKey' => 'empresa_id'
         ]);
-        $this->hasMany('Empresas', [
-            'foreignKey' => 'empresa_id'
+        $this->hasMany('Setores', [
+            'className' => 'Empresas',
+            'foreignKey' => 'empresa_id',
+            'joinType' => 'RIGHT'
         ]);
         $this->hasMany('Enderecos', [
             'foreignKey' => 'empresa_id'
