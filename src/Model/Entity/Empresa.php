@@ -4,23 +4,27 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Colaboradore Entity.
+ * Empresa Entity.
  *
  * @property int $id
  * @property string $nome
+ * @property int $categoria_id
+ * @property \App\Model\Entity\Categoria $categoria
  * @property string $link
- * @property string $contato
- * @property string $email
- * @property string $fone
  * @property string $dir
- * @property string $file
+ * @property string $filename
  * @property int $ativo
  * @property int $usuario_id
  * @property \App\Model\Entity\Usuario $usuario
+ * @property int $empresa_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
+ * @property \App\Model\Entity\Empresa[] $empresas
+ * @property \App\Model\Entity\Detalhe[] $detalhes
+ * @property \App\Model\Entity\Endereco[] $enderecos
+ * @property \App\Model\Entity\Funcionario[] $funcionarios
  */
-class Colaboradore extends Entity
+class Empresa extends Entity
 {
 
     /**

@@ -8,19 +8,20 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nome
+ * @property int $categoria_id
  * @property string $link
- * @property string $contato
- * @property string $email
- * @property string $fone
  * @property string $dir
  * @property string $filename
  * @property int $ativo
  * @property int $usuario_id
+ * @property int $empresa_id
+ * @property \App\Model\Entity\Categoria $categoria
  * @property \App\Model\Entity\Usuario $usuario
+ * @property \App\Model\Entity\Empresa $empresa
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  */
-class Colaborador extends Entity
+class Empresa extends Entity
 {
 
     /**
