@@ -24,10 +24,10 @@ class ParceirosCell extends Cell
      */
     public function display()
     {
-        $this->loadModel('Colaboradores');
-        $colaboradores = $this->Colaboradores->find()
+        $this->loadModel('Empresas');
+        $parceiros = $this->Empresas->find()
                 ->select(['dir', 'filename', 'nome', 'link'])
                 ->where(['ativo' => 1]);
-        $this->set('colaboradores', $colaboradores);
+        $this->set('parceiros', $parceiros);
     }
 }

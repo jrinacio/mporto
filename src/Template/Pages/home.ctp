@@ -35,8 +35,8 @@
             <?= $this->cell('Servicos') ?>
             <!-- Cell Acervo/Portfólio -->
             <?= $this->cell('Portfolio') ?>
-            <!-- Cell Colaboradores -->
-            <?= $this->cell('Colaboradores') ?>
+            <!-- Cell Empresas/Setores -->
+            <?= $this->cell('Parceiros') ?>
         </div>
         <footer>
             <div class="footer-wrapper" sectin-pagging>

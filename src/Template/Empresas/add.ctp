@@ -93,9 +93,9 @@
             ]);
 //            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
             echo $this->Form->input('parent_id', [
-                'options' => $empresas,
+                'options' => $setores,
                 'empty' => true,
-                'label' => 'Empresa'
+                'label' => 'Empresa/Setor'
             ]);
         ?>
     </fieldset>

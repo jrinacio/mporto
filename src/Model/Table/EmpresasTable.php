@@ -77,7 +77,8 @@ class EmpresasTable extends Table
         $this->hasMany('Setores', [
             'className' => 'Empresas',
             'foreignKey' => 'empresa_id',
-            'joinType' => 'RIGHT'
+            'joinType' => 'RIGHT',
+            'sort' => ['Setores.nome']
         ]);
         $this->hasMany('Enderecos', [
             'foreignKey' => 'empresa_id'
@@ -144,7 +145,7 @@ class EmpresasTable extends Table
     {
         $rules->add($rules->existsIn(['categoria_id'], 'Categorias'));
         $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
-        $rules->add($rules->existsIn(['empresa_id'], 'Empresas'));
+//        $rules->add($rules->existsIn(['empresa_id'], 'Empresas'));
         return $rules;
     }
 }

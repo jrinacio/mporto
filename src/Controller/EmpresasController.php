@@ -53,8 +53,11 @@ class EmpresasController extends AppController
     {
         $empresa = $this->Empresas->newEntity();
         if ($this->request->is('post')) {
+//            debug($this->request->data);
             $empresa = $this->Empresas->patchEntity($empresa, $this->request->data);
             $empresa->usuario_id = $this->Auth->user('id');
+//            debug($empresa);
+//            die('lol');
             if ($this->Empresas->save($empresa)) {
                 $this->Flash->success(__('The empresa has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -62,9 +65,15 @@ class EmpresasController extends AppController
                 $this->Flash->error(__('The empresa could not be saved. Please, try again.'));
             }
         }
+        $setores = $this->Empresas->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'nome',
+            'order' => 'nome'
+        ]);
+        
         $categorias = $this->Empresas->Categorias->find('list', ['limit' => 200]);
         $usuarios = $this->Empresas->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('empresa', 'categorias', 'usuarios'));
+        $this->set(compact('empresa', 'setores', 'categorias', 'usuarios'));
         $this->set('_serialize', ['empresa']);
     }
 
