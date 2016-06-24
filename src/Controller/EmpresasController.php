@@ -53,11 +53,11 @@ class EmpresasController extends AppController
     {
         $empresa = $this->Empresas->newEntity();
         if ($this->request->is('post')) {
-//            debug($this->request->data);
+            debug($this->request->data);
             $empresa = $this->Empresas->patchEntity($empresa, $this->request->data);
             $empresa->usuario_id = $this->Auth->user('id');
-//            debug($empresa);
-//            die('lol');
+            debug($empresa);
+            die('lol');
             if ($this->Empresas->save($empresa)) {
                 $this->Flash->success(__('The empresa has been saved.'));
                 return $this->redirect(['action' => 'index']);

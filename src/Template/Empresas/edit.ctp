@@ -1,3 +1,18 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <?= __('Empresas e Setores') ?>
+            <small>Editar</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+            <li class="active">Editar dados da empresa / setor</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    
+</div>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>

@@ -69,17 +69,17 @@ class EmpresasTable extends Table
         ]);
         $this->belongsTo('ParentEmpresa', [
             'className' => 'Empresas',
-            'foreignKey' => 'empresa_id'
+            'foreignKey' => 'parent_id'
         ]);
         $this->hasMany('Detalhes', [
             'foreignKey' => 'empresa_id'
         ]);
-        $this->hasMany('Setores', [
-            'className' => 'Empresas',
-            'foreignKey' => 'empresa_id',
-            'joinType' => 'RIGHT',
-            'sort' => ['Setores.nome']
-        ]);
+//        $this->hasMany('Setores', [
+//            'className' => 'Empresas',
+//            'foreignKey' => 'empresa_id',
+//            'joinType' => 'RIGHT',
+//            'sort' => ['Setores.nome']
+//        ]);
         $this->hasMany('Enderecos', [
             'foreignKey' => 'empresa_id'
         ]);
