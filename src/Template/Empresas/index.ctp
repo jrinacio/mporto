@@ -1,67 +1,108 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Empresa'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Detalhes'), ['controller' => 'Detalhes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Detalhe'), ['controller' => 'Detalhes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Enderecos'), ['controller' => 'Enderecos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Endereco'), ['controller' => 'Enderecos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Funcionarios'), ['controller' => 'Funcionarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Funcionario'), ['controller' => 'Funcionarios', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="empresas index large-9 medium-8 columns content">
-    <h3><?= __('Empresas') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
-                <th><?= $this->Paginator->sort('nome') ?></th>
-                <th><?= $this->Paginator->sort('categoria_id') ?></th>
-                <th><?= $this->Paginator->sort('link') ?></th>
-                <th><?= $this->Paginator->sort('dir') ?></th>
-                <th><?= $this->Paginator->sort('filename') ?></th>
-                <th><?= $this->Paginator->sort('ativo') ?></th>
-                <th><?= $this->Paginator->sort('usuario_id') ?></th>
-                <th><?= $this->Paginator->sort('empresa_id') ?></th>
-                <th><?= $this->Paginator->sort('created') ?></th>
-                <th><?= $this->Paginator->sort('modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($empresas as $empresa): ?>
-            <tr>
-                <td><?= $this->Number->format($empresa->id) ?></td>
-                <td><?= h($empresa->nome) ?></td>
-                <td><?= $empresa->has('categoria') ? $this->Html->link($empresa->categoria->nome, ['controller' => 'Categorias', 'action' => 'view', $empresa->categoria->id]) : '' ?></td>
-                <td><?= h($empresa->link) ?></td>
-                <td><?= h($empresa->dir) ?></td>
-                <td><?= h($empresa->filename) ?></td>
-                <td><?= $this->Number->format($empresa->ativo) ?></td>
-                <td><?= $empresa->has('usuario') ? $this->Html->link($empresa->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $empresa->usuario->id]) : '' ?></td>
-                <td><?= $this->Number->format($empresa->empresa_id) ?></td>
-                <td><?= h($empresa->created) ?></td>
-                <td><?= h($empresa->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $empresa->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $empresa->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $empresa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <?= __('Empresas/Setores') ?>
+            <small>Listagem</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+            <li class="active">Lista de empresas/setores</li>
+        </ol>
     </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <ul>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> New Empresa'), 
+                        ['action' => 'add'], ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> List Categorias'), 
+                        ['controller' => 'Categorias', 'action' => 'index'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Categoria'), 
+                        ['controller' => 'Categorias', 'action' => 'add'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuarios'), 
+                        ['controller' => 'Usuarios', 'action' => 'index'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Usuario'), 
+                        ['controller' => 'Usuarios', 'action' => 'add'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Detalhes'), 
+                        ['controller' => 'Detalhes', 'action' => 'index'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Detalhe'), 
+                        ['controller' => 'Detalhes', 'action' => 'add'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Enderecos'), 
+                        ['controller' => 'Enderecos', 'action' => 'index'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Endereco'), 
+                        ['controller' => 'Enderecos', 'action' => 'add'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Funcionarios'), 
+                        ['controller' => 'Funcionarios', 'action' => 'index'],
+                        ['escape' => false]) ?></li>
+                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Funcionario'), 
+                        ['controller' => 'Funcionarios', 'action' => 'add'],
+                        ['escape' => false]) ?></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div>
+            <h3><?= __('Listar Empresas') ?></h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                        <th><?= __('Logotipo') ?></th>
+                        <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                        <th><?= $this->Paginator->sort('categoria_id', ['Categoria']) ?></th>
+                        <th><?= $this->Paginator->sort('link', 'Website') ?></th>
+                        <th><?= $this->Paginator->sort('ativo') ?></th>
+                        <th class="actions"><?= __('Actions') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($empresas as $empresa): ?>
+                    <tr>
+                        <td><?= $this->Number->format($empresa->id) ?></td>
+                        <td><?= $this->Html->image('/img/empresas/filename/' . 
+                                $empresa->dir . '/square_' . $empresa->filename) ?></td>
+                        <td><?= h($empresa->nome) ?></td>
+                        <td><?= $empresa->has('categoria') ? $this->Html->link($empresa->categoria->nome, [
+                            'controller' => 'Categorias', 'action' => 'view', $empresa->categoria->id]) : '' ?></td>
+                        <td><?= h($empresa->link) ?></td>
+<!--                        <td> h($empresa->dir) </td>
+                        <td> h($empresa->filename) </td>-->
+                        <td><?= $empresa->ativo === 1 ? 'Sim' : 'Não' ?></td>
+                        <!--<td> $empresa->has('usuario') ? $this->Html->link($empresa->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $empresa->usuario->id]) : '' </td>-->
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $empresa->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $empresa->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $empresa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id)]) ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('next') . ' >') ?>
+            </ul>
+            <p><?= $this->Paginator->counter() ?></p>
+        </div>
+    </div>
+</div>
+
+    
+   
 </div>

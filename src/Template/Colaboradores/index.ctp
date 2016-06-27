@@ -33,24 +33,24 @@
                         <th><?= $this->Paginator->sort('ativo') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
-        </thead>
+                </thead>
                 <tbody>
-            <?php foreach ($colaboradores as $colaborador): ?>
-            <tr>
-                <td><?= $this->Number->format($colaborador->id) ?></td>
-                <td><?= $this->Html->image('/img/colaboradores/filename/' . $colaborador->dir . '/square_' . $colaborador->filename) ?></td>
-                <td><?= h($colaborador->nome) ?></td>
-                <td><?= h($colaborador->link) ?></td>
-                <td><?= h($colaborador->filename) ?></td>
-                <td><?= $this->Number->format($colaborador->ativo) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $colaborador->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $colaborador->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $colaborador->id], ['confirm' => __('Are you sure you want to delete # {0}?', $colaborador->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
+                    <?php foreach ($colaboradores as $colaborador): ?>
+                    <tr>
+                        <td><?= $this->Number->format($colaborador->id) ?></td>
+                        <td><?= $this->Html->image('/img/colaboradores/filename/' . $colaborador->dir . '/square_' . $colaborador->filename) ?></td>
+                        <td><?= h($colaborador->nome) ?></td>
+                        <td><?= h($colaborador->link) ?></td>
+                        <td><?= h($colaborador->filename) ?></td>
+                        <td><?= $this->Number->format($colaborador->ativo) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $colaborador->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $colaborador->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $colaborador->id], ['confirm' => __('Are you sure you want to delete # {0}?', $colaborador->id)]) ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
         </div>
     </div>

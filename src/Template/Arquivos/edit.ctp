@@ -18,7 +18,7 @@
                         __('Delete'),
                         ['action' => 'delete', $arquivo->id],
                         ['confirm' => __('Você tem certeza que deseja excluir o arquivo # {0}?', $arquivo->id)]
-                    )
+                    );
                 ?></li>
                 <li class="list-group-item"><?= $this->Html->link(__('List Arquivos'), ['action' => 'index']) ?></li>
                 <li class="list-group-item"><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>

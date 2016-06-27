@@ -11,11 +11,11 @@
                 <?php $m = 1; ?>
                 <?php foreach ($parceiros as $parceiro): ?>
                 <div class="item<?= $m === 1 ? ' active' : null; ?>">
-                    <div class="col-lg-2 col-xs-2 col-md-2 col-sm-2">
+                    <div class="col-md-2">
                         <?= $this->Html->image('/img/empresas/filename/' .
                                 $parceiro->dir . '/' .
                                 $parceiro->filename, [
-                                    'class' => 'img-responsive',
+                                    'class' => 'img-responsive img-thumbnail',
                                     'alt' => $parceiro->nome,
                                     'url' => 'http://' . $parceiro->link,
                                     'target' => '_blank'

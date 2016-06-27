@@ -79,7 +79,7 @@
             ]);
             echo $this->Form->input('categoria_id', [
                 'label' => 'Categorias', 'options' => $categorias, 'empty' => true]);
-            echo $this->Form->input('link', ['label' => 'Website do parceiro...']);
+            echo $this->Form->input('link', ['label' => 'Website']);
 //            echo $this->Form->input('dir');
             echo $this->Form->input('filename', [
                 'type' => 'file',
