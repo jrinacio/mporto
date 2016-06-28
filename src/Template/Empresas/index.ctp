@@ -13,8 +13,9 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <ul>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> New Empresa'), 
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><i class="fa fa-list"></i>&nbsp;Empresas</a></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Empresa'), 
                         ['action' => 'add'], ['escape' => false]) ?></li>
                 <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> List Categorias'), 
                         ['controller' => 'Categorias', 'action' => 'index'],

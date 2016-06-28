@@ -13,52 +13,17 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <nav class="large-3 medium-4 columns" id="actions-sidebar">
-            <ul class="side-nav">
-                <li class="list-group-item"><?= $this->Form->postLink(
-                        __('Delete'),
+            
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><i class="fa fa-edit"></i>&nbsp;Editar Empresa</a></li>
+                <li><?= $this->Form->postLink(
+                        __('<i class="fa fa-trash-o"></i> Excluir Empresa'),
                         ['action' => 'delete', $empresa->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id)]
+                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id), 'escape' => false]
                     )
                 ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), 
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), 
                         ['action' => 'index'], ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Categorias'), 
-                        ['controller' => 'Categorias', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Categoria'), 
-                        ['controller' => 'Categorias', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuários'), 
-                        ['controller' => 'Usuarios', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Usuário'), 
-                        ['controller' => 'Usuarios', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), 
-                        ['controller' => 'Empresas', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Empresa'), 
-                        ['controller' => 'Empresas', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Detalhes'), 
-                        ['controller' => 'Detalhes', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Detalhe'), 
-                        ['controller' => 'Detalhes', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Enderecos'), 
-                        ['controller' => 'Enderecos', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Endereco'), 
-                        ['controller' => 'Enderecos', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Funcionarios'), 
-                        ['controller' => 'Funcionarios', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Funcionario'), 
-                        ['controller' => 'Funcionarios', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
             </ul>
         </div>
     </div>

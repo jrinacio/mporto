@@ -17,16 +17,17 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <ul>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-pencil"></i> Editar Empresa'), 
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><i class="fa fa-search"></i>&nbsp;Detalhes Empresa</a></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-pencil"></i> Editar Empresa'), 
                         ['action' => 'edit', $empresa->id], ['escape' => false]) ?> </li>
-                <li class="list-group-item"><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Empresa'), 
+                <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Empresa'), 
                         ['action' => 'delete', $empresa->id], 
                         ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id),
                         'escape' => false]) ?> </li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Empresas'), 
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Empresas'), 
                         ['action' => 'index'], ['escape' => false]) ?> </li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Empresa'), 
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Empresa'), 
                         ['action' => 'add'], ['escape' => false]) ?> </li>
             </ul>
         </div>
@@ -68,8 +69,8 @@
                     <td class="col-md-7"><?= $this->Number->format($empresa->ativo) ?></td>
                 </tr>
                 <tr>
-                    <th class="col-md-2"><?= __('Empresa Id') ?></th>
-                    <td class="col-md-7"><?= $this->Number->format($empresa->empresa_id) ?></td>
+                    <th class="col-md-2"><?= __('Parent Id') ?></th>
+                    <td class="col-md-7"><?= $this->Number->format($empresa->parent_id) ?></td>
                 </tr>
                 <tr>
                     <th class="col-md-2"><?= __('Created') ?></th>

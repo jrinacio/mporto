@@ -39,14 +39,15 @@
             <?= $this->cell('Parceiros') ?>
         </div>
         <footer>
-            <div class="footer-wrapper" sectin-pagging>
-                <div class="container">
-                    <div class="row">
-                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
-                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
-                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
-                        <div class="wow zoomIn col-xs-12 col-sm-6 col-md-3 animated"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <?= $this->cell('Localizacao') ?>
                     </div>
+                </div>
+                <div class="row">
+                    <hr>
+                    <p>Copyright &copy; Cia. Docas do Estado de São Paulo </p>
                 </div>
             </div>
         </footer>

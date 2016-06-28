@@ -18,6 +18,7 @@ and open the template in the editor.
 
 footer {
     margin: 15px;
+    background-color: #0088cc;
 }
 
 .imputpequeno {
@@ -52,26 +53,16 @@ footer {
     margin-left: -12.5rem;
     background-color: #fff;
 }
+.nav li {
+    border: 1 px solid #ccc;
+}
 
-.list-group-item {
+.nav-pills li a {
     background-color: #F5F5F5;
-    margin: 3px;
-    font: bold;
-
 }
 
-.list-group-item a {
-    color: #000;
-/*    padding: 10px 50px 10px 25px;*/
-    text-decoration: none;
-}
-
-.list-group-item:hover {
-    background-color: #777777;
-}
-
-.list-group-item a:hover {
-    color: #fff;
+li a:hover {
+    font-size: 18px;
 }
 
 .navbar-brand {
