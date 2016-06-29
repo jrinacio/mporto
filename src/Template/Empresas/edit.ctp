@@ -36,6 +36,8 @@
             echo $this->Form->input('nome', ['label' => 'Nome', 'empty' => 'Nome da empresa parceira']);
             echo $this->Form->input('categoria_id', ['label' => 'Categoria', 'options' => $categorias, 'empty' => true]);
             echo $this->Form->input('link', ['label' => 'Website', ]);
+            echo $this->Form->input('email', ['label' => 'E-mail']);
+            echo $this->Form->input('telefone', ['label' => 'Telefone']);
 //            echo $this->Form->input('dir');
 //            echo $this->Form->input('filename', [
 //                'type' => 'file',

@@ -39,14 +39,18 @@
             <?= $this->cell('Parceiros') ?>
         </div>
         <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <?= $this->cell('Localizacao') ?>
+            <div class="row divAddr">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <?= $this->cell('Localizacao') ?>
+                        </div>
                     </div>
                 </div>
+            </div>
+            </div>
+            <div class="container-fluid copyright">
                 <div class="row">
-                    <hr>
                     <p>Copyright &copy; Cia. Docas do Estado de São Paulo </p>
                 </div>
             </div>
