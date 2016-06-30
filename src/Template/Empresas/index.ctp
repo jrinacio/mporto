@@ -17,36 +17,7 @@
                 <li class="active"><a href="#"><i class="fa fa-list"></i>&nbsp;Empresas</a></li>
                 <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Empresa'), 
                         ['action' => 'add'], ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> List Categorias'), 
-                        ['controller' => 'Categorias', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Categoria'), 
-                        ['controller' => 'Categorias', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuarios'), 
-                        ['controller' => 'Usuarios', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Usuario'), 
-                        ['controller' => 'Usuarios', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Detalhes'), 
-                        ['controller' => 'Detalhes', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Detalhe'), 
-                        ['controller' => 'Detalhes', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Enderecos'), 
-                        ['controller' => 'Enderecos', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Endereco'), 
-                        ['controller' => 'Enderecos', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Funcionarios'), 
-                        ['controller' => 'Funcionarios', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Funcionario'), 
-                        ['controller' => 'Funcionarios', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
+                
             </ul>
         </div>
     </div>

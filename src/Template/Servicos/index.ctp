@@ -12,20 +12,21 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-        <ul>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i>  Serviço'), 
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#"><i class="fa fa-list"></i>&nbsp;Serviços</a></li>
+            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i>  Serviço'), 
                 ['action' => 'add'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), [
                 'controller' => 'Usuarios', 'action' => 'index'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), [
                 'controller' => 'Usuarios', 'action' => 'add'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Categorias'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Categorias'), [
                 'controller' => 'Categorias', 'action' => 'index'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Categoria'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Categoria'), [
                 'controller' => 'Categorias', 'action' => 'add'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Arquivos'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Arquivos'), [
                 'controller' => 'Arquivos', 'action' => 'index'], ['escape' => false]) ?></li>
-            <li class="list-group-item"><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Arquivo'), [
+            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Arquivo'), [
                 'controller' => 'Arquivos', 'action' => 'add'], ['escape' => false]) ?></li>
         </ul>
     </div>

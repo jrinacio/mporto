@@ -23,8 +23,17 @@
         foreach ($imgs as $imgb): ?>
         <div id="myModal<?= $n ?>" class="modal">
             <span class="close" onclick="document.getElementById('myModal<?= $n ?>').style.display='none'"></span>
-            
+            <?= $this->Html->image('/imgs/arquivos/file/' . $imgb->dir . '/' . $imgb->name, [
+                'class' => 'modal-content',
+                'id' => 'img' . $n,
+                'width' => 300,
+                'alt' => $imgb->titulo,
+                'escape' => false
+            ]); ?>
+            <div class="caption">
+                <?= $imgb->titulo ?>
+            </div>
         </div>
+        <?php $n++ ?>
     <?php endforeach; ?>
 <?php endif; ?>
-
