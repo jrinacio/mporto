@@ -13,14 +13,15 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group">
-            <ul>
-                <li class="list-group-item"><?= $this->Html->link(__('Nova Categoria'), ['action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Listar Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Listar Serviços'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
-                <li class="list-group-item"><?= $this->Html->link(__('Novo Serviço'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="#"><i class="fa fa-list"></i>&nbsp;Categorias</a></li>
+                <li><?= $this->Html->link(__('Nova Categoria'), ['action' => 'add']) ?></li>
+                <li><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
+                <li><?= $this->Html->link(__('Listar Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Novo Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
+                <li><?= $this->Html->link(__('Listar Serviços'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('Novo Serviço'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
             </ul>
         </div>
     </div>

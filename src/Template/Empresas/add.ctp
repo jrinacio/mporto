@@ -71,38 +71,38 @@
     <div class="col-md-9">
         <div>
             <?= $this->Form->create($empresa, ['id' => 'upload', 'type' => 'file']) ?>
-    <fieldset>
-        <legend><?= __('Add Empresa') ?></legend>
-        <?php
-            echo $this->Form->input('nome', [
-                'label' => 'Nome do Parceiro', 'empty' => 'Nome do parceiro...'
-            ]);
-            echo $this->Form->input('categoria_id', [
-                'label' => 'Categorias', 'options' => $categorias, 'empty' => true]);
-            echo $this->Form->input('link', ['label' => 'Website']);
-            echo $this->Form->input('email', ['label' => 'E-mail']);
-            echo $this->Form->input('telefone', ['label' => 'Telefone']);
-//            echo $this->Form->input('dir');
-            echo $this->Form->input('filename', [
-                'type' => 'file',
-                'id' => 'file',
-                'label' => 'Nome do arquivo'
-            ]);
-            $atv = [0 => 'Não', 1 => 'Sim'];
-            echo $this->Form->input('ativo', [
-                'options' => $atv,
-                'default' => 1
-            ]);
-//            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
-            echo $this->Form->input('parent_id', [
-                'options' => $setores,
-                'empty' => true,
-                'label' => 'Empresa/Setor'
-            ]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+            <fieldset>
+            <legend><?= __('Add Empresa') ?></legend>
+            <?php
+                echo $this->Form->input('nome', [
+                    'label' => 'Nome do Parceiro', 'empty' => 'Nome do parceiro...'
+                ]);
+                echo $this->Form->input('categoria_id', [
+                    'label' => 'Categorias', 'options' => $categorias, 'empty' => true]);
+                echo $this->Form->input('link', ['label' => 'Website']);
+                echo $this->Form->input('email', ['label' => 'E-mail']);
+                echo $this->Form->input('telefone', ['label' => 'Telefone']);
+    //            echo $this->Form->input('dir');
+                echo $this->Form->input('filename', [
+                    'type' => 'file',
+                    'id' => 'file',
+                    'label' => 'Nome do arquivo'
+                ]);
+                $atv = [0 => 'Não', 1 => 'Sim'];
+                echo $this->Form->input('ativo', [
+                    'options' => $atv,
+                    'default' => 1
+                ]);
+    //            echo $this->Form->input('usuario_id', ['options' => $usuarios]);
+                echo $this->Form->input('parent_id', [
+                    'options' => $setores,
+                    'empty' => true,
+                    'label' => 'Empresa/Setor'
+                ]);
+            ?>
+            </fieldset>
+            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->end() ?>
         </div>
     
 </div>
