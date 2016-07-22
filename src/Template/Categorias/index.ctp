@@ -11,21 +11,34 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="list-group">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><i class="fa fa-list"></i>&nbsp;Categorias</a></li>
-                <li><?= $this->Html->link(__('Nova Categoria'), ['action' => 'add']) ?></li>
-                <li><?= $this->Html->link(__('Listar Usuários'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('Novo Usuário'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-                <li><?= $this->Html->link(__('Listar Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('Novo Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-                <li><?= $this->Html->link(__('Listar Serviços'), ['controller' => 'Servicos', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('Novo Serviço'), ['controller' => 'Servicos', 'action' => 'add']) ?></li>
+            <ul class="nav nav-stacked">
+                <li><a href="#" class="btn btn-primary active"><i class="fa fa-list"></i>&nbsp;Listar Categorias</a></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Eventos'), 
+                        ['controller' => 'Eventos', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Serviços'), 
+                        ['controller' => 'Servicos', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), 
+                        ['controller' => 'Usuarios', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Categoria'), 
+                        ['action' => 'add'], ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Evento'), 
+                        ['controller' => 'Eventos', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Serviço'), 
+                        ['controller' => 'Servicos', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), 
+                        ['controller' => 'Usuarios', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             </ul>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div class="table-responsive">
             <table class="table table-hover table-condensed">
                 <thead>
@@ -45,9 +58,17 @@
                             <td><?= h($categoria->descricao) ?></td>
                             <td><?= $this->Number->format($categoria->ativo) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('Ver'), ['action' => 'view', $categoria->id]) ?>
-                                <?= $this->Html->link(__('Editar'), ['action' => 'edit', $categoria->id]) ?>
-                                <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $categoria->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categoria->id)]) ?>
+                                <?= $this->Html->link(__('<i class="fa fa-search fa-lg"></i>'), 
+                                        ['action' => 'view', $categoria->id], 
+                                        ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                                <?= $this->Html->link(__('<i class="fa fa-pencil fa-lg"></i>'), 
+                                        ['action' => 'edit', $categoria->id],
+                                        ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                                <?= $this->Form->postLink(__('<i class="fa fa-trash-o fa-lg"></i>'), 
+                                        ['action' => 'delete', $categoria->id], 
+                                        ['confirm' => __('Are you sure you want to delete # {0}?', $categoria->id),
+                                         'escape' => false,
+                                         'class' => 'btn btn-danger']) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

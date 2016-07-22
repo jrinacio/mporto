@@ -57,7 +57,16 @@ footer {
     margin-left: -12.5rem;
     background-color: #fff;
 }
-.nav li {
+
+.nav li a {
+    text-align: left;
+}
+
+.nav li a:hover {
+    color: #000000;
+}
+
+/*.nav li {
     border: 1 px solid #ccc;
 }
 
@@ -67,7 +76,11 @@ footer {
 
 li a:hover {
     font-size: 18px;
-}
+}*/
+
+/*.btn .botao {
+    text-align: left;
+}*/
 
 .navbar-brand {
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -75,9 +88,9 @@ li a:hover {
     font-size: 24px;
 }
 
-.navbar-inverse .navbar-brand {
+/*.navbar-inverse .navbar-brand {
     color: #fff;
-}
+}*/
 
 .titulo {
     padding-top: 150px;
