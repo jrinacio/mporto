@@ -11,40 +11,39 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="list-group">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><i class="fa fa-edit"></i><?= __(' Editar') ?></a></li>
-                <li><?= $this->Form->postLink(
-                        __('<i class="fa fa-trash-o"></i> Excluir categoria'),
+            <ul class="nav nav-stacked">
+                <li><a href="#" class="btn btn-primary active"><i class="fa fa-edit"></i><?= __(' Editar categoria') ?></a></li>
+                <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir categoria'),
                         ['action' => 'delete', $categoria->id],
                         ['confirm' => __('Certeza que deseja excluir a categoria # {0}?', $categoria->id),
-                            'escape' => false]
-                    )?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Categorias'), 
-                        ['action' => 'index'], ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Usuarios'), 
-                        ['controller' => 'Usuarios', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), 
-                        ['controller' => 'Usuarios', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Eventos'), 
+                            'escape' => false, 'class' => 'btn btn-danger'])?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar categorias'), 
+                        ['action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar eventos'), 
                         ['controller' => 'Eventos', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Evento'), 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo evento'), 
                         ['controller' => 'Eventos', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Serviços'), 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar serviços'), 
                         ['controller' => 'Servicos', 'action' => 'index'],
-                        ['escape' => false]) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Serviço'), 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo serviço'), 
                         ['controller' => 'Servicos', 'action' => 'add'],
-                        ['escape' => false]) ?></li>
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar usuarios'), 
+                        ['controller' => 'Usuarios', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo usuário'), 
+                        ['controller' => 'Usuarios', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             </ul>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div>
             <h3><?= __('Editar categoria') ?></h3>
         </div>

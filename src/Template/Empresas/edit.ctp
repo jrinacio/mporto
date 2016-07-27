@@ -11,23 +11,21 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="list-group">
-            
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><i class="fa fa-edit"></i>&nbsp;Editar Empresa</a></li>
+            <ul class="nav nav-stacked">
+                <li><a href="#" class="btn btn-primary active"><i class="fa fa-edit"></i>&nbsp;Editar empresa</a></li>
                 <li><?= $this->Form->postLink(
                         __('<i class="fa fa-trash-o"></i> Excluir Empresa'),
                         ['action' => 'delete', $empresa->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id), 'escape' => false]
-                    )
-                ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), 
-                        ['action' => 'index'], ['escape' => false]) ?></li>
+                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id), 
+                         'escape' => false, 'class' => 'btn btn-danger'])?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
+                        ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             </ul>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
         <div>
             <h3><?= __('Editar empresa/setor') ?></h3>
         </div>
