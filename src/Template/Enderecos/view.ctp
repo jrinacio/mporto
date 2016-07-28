@@ -1,19 +1,48 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Endereco'), ['action' => 'edit', $endereco->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Endereco'), ['action' => 'delete', $endereco->id], ['confirm' => __('Are you sure you want to delete # {0}?', $endereco->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Enderecos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Endereco'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Empresas'), ['controller' => 'Empresas', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Empresa'), ['controller' => 'Empresas', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="enderecos view large-9 medium-8 columns content">
-    <h3><?= h($endereco->id) ?></h3>
-    <table class="vertical-table">
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            <?= __('Endereço') ?>
+            <small>Detalhe</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+            <li class="active">Detalhe do endereço</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <div class="list-group">
+            <ul class="nav nav-stacked">
+                <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe endereço</a></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-edit"></i> Editar endereço'), 
+                        ['action' => 'edit', $endereco->id],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+                <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir endereco'), 
+                        ['action' => 'delete', $endereco->id], 
+                        ['confirm' => __('Certeza que deseja escluir o endereço código # {0}?', $endereco->id),
+                         'escape' => false, 'class' => 'btn btn-danger']) ?> </li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar endereços'), 
+                        ['action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo endereço'), 
+                        ['action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
+                        ['controller' => 'Empresas', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova empresa'), 
+                        ['controller' => 'Empresas', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <h3><?= h($endereco->id) ?></h3>
+        <div class="table-responsive">
+            <table class="table table-hover tablenoborder">
         <tr>
-            <th><?= __('Empresa') ?></th>
+            <th class="col-md-2"><?= __('Empresa') ?></th>
             <td><?= $endereco->has('empresa') ? $this->Html->link($endereco->empresa->nome, ['controller' => 'Empresas', 'action' => 'view', $endereco->empresa->id]) : '' ?></td>
         </tr>
         <tr>
@@ -45,4 +74,6 @@
             <td><?= $this->Number->format($endereco->id) ?></td>
         </tr>
     </table>
+        </div>
+</div>
 </div>
