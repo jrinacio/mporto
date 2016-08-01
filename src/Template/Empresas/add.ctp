@@ -6,65 +6,48 @@
         </h1>
         <ol class="breadcrumb">
             <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+            <li class="active">Adicionar empresa</li>
         </ol>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="list-group">
-            <ul class="nav nav-pills nav-stacked">
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), [
-                        'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Categorias'), [
-                        'controller' => 'Categorias', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova Categoria'), [
-                        'controller' => 'Categorias', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Usuários'), [
-                        'controller' => 'Usuarios', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), [
-                        'controller' => 'Usuarios', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Empresas'), [
-                        'controller' => 'Empresas', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Nova Empresa'), [
-                        'controller' => 'Empresas', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Detalhes'), [
-                        'controller' => 'Detalhes', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Detalhe'), [
-                        'controller' => 'Detalhes', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></I> Endereços'), [
-                        'controller' => 'Enderecos', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-plus"></I> Novo Endereço'), [
-                        'controller' => 'Enderecos', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Colaboradores'), [
-                        'controller' => 'Funcionarios', 'action' => 'index'], ['escape' => false]) ?>
-                </li>
-                <li>
-                    <?= $this->Html->link(__('<i class="fa fa-list"></i> Novo Colaborador'), [
-                        'controller' => 'Funcionarios', 'action' => 'add'], ['escape' => false]) ?>
-                </li>
+            <ul class="nav nav-stacked">
+                <li><a href="#" class="btn btn-primary active"><i class="fa fa-plus"></i>&nbsp;Adicionar empresa</a></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
+                        ['action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar categorias'), 
+                        ['controller' => 'Categorias', 'action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova categoria'), 
+                        ['controller' => 'Categorias', 'action' => 'add'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar usuários'), 
+                        ['controller' => 'Usuarios', 'action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo usuário'), 
+                        ['controller' => 'Usuarios', 'action' => 'add'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Detalhes empresa'), [
+                        'controller' => 'Detalhes', 'action' => 'index'], 
+                        ['escape' => false, 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo detalhe'), 
+                        ['controller' => 'Detalhes', 'action' => 'add'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></I> Listar endereços'), 
+                        ['controller' => 'Enderecos', 'action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></I> Novo endereço'), 
+                        ['controller' => 'Enderecos', 'action' => 'add'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Colaboradores'), 
+                        ['controller' => 'Funcionarios', 'action' => 'index'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Novo colaborador'), 
+                        ['controller' => 'Funcionarios', 'action' => 'add'], 
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             </ul>
         </div>
     </div>

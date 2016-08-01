@@ -24,6 +24,10 @@ footer {
     background-color: #003257;
 }
 
+.rodape {
+    margin: 0 40px 0 10px;
+}
+
 
 .imputpequeno {
     width: 150px;

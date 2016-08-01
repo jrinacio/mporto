@@ -56,9 +56,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('content') ?>
         <footer>
             <div class="container">
-                <div class="col-md-12">
-                    <hr>
-                    <p>Copyright &copy; Cia. Docas do Estado de São Paulo </p>
+                <div class="row">
+                    <div class="rodape">
+                        <hr>
+                        <p>Copyright &copy; Cia. Docas do Estado de São Paulo </p>
+                    </div>
                 </div>
             </div>
         </footer>
