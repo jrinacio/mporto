@@ -33,12 +33,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('modern-business.css') ?>
     <?= $this->Html->css('font-awesome/css/font-awesome.css') ?>
     <?= $this->Html->css('mporto.css') ?>
-    <?= $this->Html->css('summernote.css') ?>
     
     <!-- javascript -->
     <?= $this->Html->script('jquery-2.1.3.min') ?>
     <?= $this->Html->script('bootstrap') ?>
-    <?= $this->Html->script('summernote') ?>
+    <?= $this->Html->script('dist/wysihtml-toolbar') ?>
+    <?= $this->Html->script('parser_rules/advanced_and_extended') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

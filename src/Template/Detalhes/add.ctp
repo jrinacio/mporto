@@ -41,7 +41,22 @@
             echo $this->Form->input('empresa_id', [
                 'options' => $empresas, 'empty' => true, 'label' => 'Empresa']);
             echo $this->Form->input('titulo', ['label' => 'Título']);
-            echo $this->Form->input('descricao', ['label' => 'Contexto']);
+        ?>
+        <!-- toolbar with suitable buttons and dialogues -->
+        <div id="toolbar">
+          <a data-wysihtml5-command="bold">bold</a>
+          <a data-wysihtml5-command="italic">italic</a>
+          <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a>
+          <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p">P</a>
+         </div>
+        <?php
+            echo $this->Form->input('descricao', [
+                'label' => 'Contexto',
+                'type' => 'textarea',
+                'id' => 'editor'
+                ]);
+        ?>
+        <?php
 //            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
             $atv = [0 => 'Não', 1 => 'Sim'];
             echo $this->Form->input('ativo', [
@@ -55,3 +70,9 @@
         <?= $this->Form->end() ?>
     </div>
 </div>
+<script>
+    var editor = new wysihtml5.Editor('editor', {
+        toolbar: 'toolbar',
+        parserRules: wysihtml5ParserRules 
+    });
+</script>
