@@ -37,8 +37,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <!-- javascript -->
     <?= $this->Html->script('jquery-2.1.3.min') ?>
     <?= $this->Html->script('bootstrap') ?>
-    <?= $this->Html->script('dist/wysihtml-toolbar') ?>
-    <?= $this->Html->script('parser_rules/advanced_and_extended') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

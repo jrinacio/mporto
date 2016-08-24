@@ -10,6 +10,7 @@ use App\Controller\AppController;
  */
 class DetalhesController extends AppController
 {
+    public $helpers = ['TinyMCE.TinyMCE'];    
 
     /**
      * Index method
@@ -50,7 +51,7 @@ class DetalhesController extends AppController
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
-    {
+    {   
         $detalhe = $this->Detalhes->newEntity();
         if ($this->request->is('post')) {
             $detalhe = $this->Detalhes->patchEntity($detalhe, $this->request->data);

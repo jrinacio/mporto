@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16d64a8e61e4bed4eee3d03ecec35858",
-    "content-hash": "df1b55eedb65beee6d61ffb819b1f9a2",
+    "hash": "db41f667a2aba283e1a814821e75d9bb",
+    "content-hash": "b007405913710ed1f085ac5f7d3e31d7",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -125,6 +125,58 @@
                 "localization"
             ],
             "time": "2014-08-24 00:00:00"
+        },
+        {
+            "name": "cakedc/tiny-mce",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CakeDC/TinyMCE.git",
+                "reference": "9965a58f0e7cf8099685712562dbc50acf6e098a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CakeDC/TinyMCE/zipball/9965a58f0e7cf8099685712562dbc50acf6e098a",
+                "reference": "9965a58f0e7cf8099685712562dbc50acf6e098a",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/plugin-installer": "*",
+                "php": ">=5.2.8"
+            },
+            "require-dev": {
+                "cakephp/cakephp": "~3.0",
+                "phpunit/phpunit": "*"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "installer-name": "TinyMCE"
+            },
+            "autoload": {
+                "psr-4": {
+                    "TinyMCE\\": "src",
+                    "TinyMCE\\Test\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cake Development Corporation",
+                    "email": "team@cakedc.com",
+                    "homepage": "http://cakedc.com"
+                }
+            ],
+            "description": "TinyMCE Plugin for CakePHP",
+            "homepage": "https://github.com/CakeDC/TinyMCE",
+            "keywords": [
+                "editor",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2016-04-29 08:30:38"
         },
         {
             "name": "cakephp/cakephp",
