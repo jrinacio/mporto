@@ -42,13 +42,13 @@
                 'options' => $empresas, 'empty' => true, 'label' => 'Empresa']);
             echo $this->Form->input('titulo', ['label' => 'Título']);
         ?>
-        <?= $this->TinyMCE->editor(['theme' => 'simple', 'mode' => 'textareas']) ?>
+        
+        <?= $this->TinyMCE->editor(['selector' => 'textarea']) ?>
         <?php
             echo $this->Form->input('descricao', [
                 'label' => 'Contexto',
                 'type' => 'textarea',
-                'id' => 'editor'
-                ]);
+            ]);
         ?>
         <?php
 //            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);

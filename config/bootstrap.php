@@ -260,11 +260,17 @@ Plugin::load('Bootstrap');
 Plugin::load('Proffer');
 Plugin::load('TinyMCE');
 
+Configure::write('TinyMCE.editorOptions', [
+    'language' => 'pt_BR'
+]);
+
 // Only try to load DebugKit in development mode
 // Debug Kit should not be installed on a production system
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+
 
 /**
  * Connect middleware/dispatcher filters.
