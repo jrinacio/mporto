@@ -51,7 +51,6 @@
             ]);
         ?>
         <?php
-//            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
             $atv = [0 => 'Não', 1 => 'Sim'];
             echo $this->Form->input('ativo', [
                 'label' => 'Ativo',
