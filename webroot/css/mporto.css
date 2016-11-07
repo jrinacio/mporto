@@ -17,6 +17,17 @@ and open the template in the editor.
     background-image: url("../img/canal.jpg");
 }
 */
+.leftbar {
+    margin-top: 40px;
+}
+
+.divisoria {
+    border-left: 1px solid #BEBEBE;
+}
+
+.container-top {
+    margin-top: 10px;
+}
 
 footer {
     margin: 15px 0 0;

@@ -1,13 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h1 class="page-header">
-            <?= __('Arquivos') ?>
-            <small>Adicionar</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
-            <li class="active">Adicionar arquivo</li>
-        </ol>
+
     </div>
 </div>
 <div class="row">
@@ -24,7 +17,15 @@
             </ul>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10 divisoria">
+        <h1 class="page-header">
+            <?= __('Arquivos') ?>
+            <small>Adicionar</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+            <li class="active">Adicionar arquivo</li>
+        </ol>
         <div>
     <?= $this->Form->create($arquivo, ['id' => 'upload', 'type' => 'file']) ?>
     <fieldset>

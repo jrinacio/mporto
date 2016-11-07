@@ -22,7 +22,9 @@ class ArquivosController extends AppController
 //            'contain' => ['Usuarios', 'Eventos', 'Servicos']
 //        ];
 //        $arquivos = $this->paginate($this->Arquivos);
-        
+   
+//        $this->set('arqs','<li class="active"><a href="#"><i class="fa fa-list"></i> Arquivos</a></li>');
+//        $this->fetch('vwArqs');
         $config = [
             'fileds' => [
                 'Arquivos.id', 

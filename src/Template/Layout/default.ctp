@@ -48,12 +48,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         echo $this->element('navbar');
     ?>
 
-    <div class="container">
+    <div class="container container-top">
         <div class="row">
              <!--$this->fetch('title')--> 
             <?= $this->Flash->render() ?>
         </div>
-        <?= $this->fetch('content') ?>
+        <div class="row">
+           <?= $this->element('leftbar') ?>
+           <?= $this->fetch('content') ?>
+        </div>
         <footer>
             <div class="container">
                 <div class="row">
