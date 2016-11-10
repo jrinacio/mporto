@@ -259,7 +259,6 @@ Plugin::load('Migrations');
 Plugin::load('Bootstrap');
 Plugin::load('Proffer');
 Plugin::load('TinyMCE');
-Plugin::load('Gourmet/KnpMenu');
 
 Configure::write('TinyMCE.editorOptions', [
     'language' => 'pt_BR'

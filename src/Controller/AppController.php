@@ -45,8 +45,6 @@ Type::build('float')
  */
 class AppController extends Controller
 {
-    public $components = ['Gourmet/KnpMenu.Menu'];
-    
     /**
      * public $helper
      * 
