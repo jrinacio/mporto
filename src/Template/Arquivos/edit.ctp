@@ -9,6 +9,10 @@
             ['controller' => 'arquivos', 'action' => 'index'],
             ['escape' => false, 'class' => 'btn btn-primary']) ?>
     </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo arquivo'), 
+            ['controller' => 'arquivos', 'action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
 <?= $this->end() ?>
 <div class="col-md-10 divisoria">
     <h1 class="page-header">

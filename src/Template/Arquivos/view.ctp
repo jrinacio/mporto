@@ -3,14 +3,21 @@
     <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
     <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Arquivo'), 
        ['controller' => 'arquivos', 'action' => 'edit', $arquivo->id],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
     <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Arquivo'), 
        ['controller' => 'arquivos', 'action' => 'delete', $arquivo->id], 
        ['confirm' => __('Are you sure you want to delete # {0}?', $arquivo->id),
-        'escape' => false, 'class' => 'btn btn-danger']) ?> </li>
+        'escape' => false, 'class' => 'btn btn-danger']) ?> 
+    </li>
     <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Arquivos'), 
        ['controller' => 'arquivos', 'action' => 'index'],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo arquivo'), 
+        ['controller' => 'arquivos', 'action' => 'add'], 
+        ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
 <?= $this->end('vws'); ?>
 
 <div class="col-md-10 divisoria">

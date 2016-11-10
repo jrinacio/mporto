@@ -1,5 +1,9 @@
 <?= $this->start('vws') ?>
     <li><a href="#" class="btn btn-primary active"><i class="fa fa-list"></i>&nbsp;Arquivos</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo arquivo'), 
+            ['controller' => 'arquivos', 'action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
 <?= $this->end() ?>
 <div class="col-md-10 divisoria">
     <h1 class="page-header">
@@ -35,9 +39,16 @@
                         <td><?= $this->Number->format($arquivo->size) ?></td>
                         <td><?= $this->Number->format($arquivo->ativo) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('Ver'), ['action' => 'view', $arquivo->id]) ?>
-                            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $arquivo->id]) ?>
-                            <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $arquivo->id], ['confirm' => __('Are you sure you want to delete # {0}?', $arquivo->id)]) ?>
+                            <?= $this->Html->link(__('<i class="fa fa-search fa-lg"></i>'), 
+                                    ['action' => 'view', $arquivo->id],
+                                    ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                            <?= $this->Html->link(__('<i class="fa fa-pencil fa-lg"></i>'), 
+                                    ['action' => 'edit', $arquivo->id],
+                                    ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                            <?= $this->Form->postLink(__('<i class="fa fa-trash-o fa-lg"></i>'), 
+                                    ['action' => 'delete', $arquivo->id], 
+                                    ['confirm' => __('Deseja excluir o arquivo # {0}?', $arquivo->id),
+                                     'escape' => false, 'class' => 'btn btn-danger']) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

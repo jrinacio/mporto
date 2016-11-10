@@ -1,62 +1,80 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Evento'), ['action' => 'edit', $evento->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Evento'), ['action' => 'delete', $evento->id], ['confirm' => __('Are you sure you want to delete # {0}?', $evento->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Eventos'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Evento'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="eventos view large-9 medium-8 columns content">
+<?= $this->start('vws'); ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Evento'), 
+       ['controller' => 'eventos', 'action' => 'edit', $evento->id],
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
+    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Evento'), 
+       ['controller' => 'eventos', 'action' => 'delete', $evento->id], 
+       ['confirm' => __('Deseja excluir o evento # {0}?', $evento->id),
+        'escape' => false, 'class' => 'btn btn-danger']) ?> 
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Eventos'), 
+       ['controller' => 'eventos', 'action' => 'index'],
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Evento'), 
+        ['controller' => 'eventos', 'action' => 'add'], 
+        ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end('vws'); ?>
+
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+    <?= __('Arquivo') ?>
+    <small>Detalhe</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?>
+        <li class="active">Detalhe do arquivo</li>    
+    </ol>
+    
     <h3><?= h($evento->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('Titulo') ?></th>
-            <td><?= h($evento->titulo) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Categoria') ?></th>
-            <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Usuario') ?></th>
-            <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($evento->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Ativo') ?></th>
-            <td><?= $this->Number->format($evento->ativo) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('DataEvento') ?></th>
-            <td><?= h($evento->dataEvento) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Created') ?></th>
-            <td><?= h($evento->created) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Modified') ?></th>
-            <td><?= h($evento->modified) ?></td>
-        </tr>
-    </table>
-    <div class="row">
-        <h4><?= __('Descricao') ?></h4>
-        <?= $this->Text->autoParagraph(h($evento->descricao)); ?>
-    </div>
-    <div class="related">
-        <h4><?= __('Related Arquivos') ?></h4>
+    <div class="table-responsive">
+        <table class="table tablenoborder">
+            <tr>
+                <th class="col-md-2"><?= __('Titulo') ?></th>
+                <td><?= h($evento->titulo) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Categoria') ?></th>
+                <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Usuario') ?></th>
+                <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Id') ?></th>
+                <td><?= $this->Number->format($evento->id) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Ativo') ?></th>
+                <td><?= $this->Number->format($evento->ativo) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('DataEvento') ?></th>
+                <td><?= h($evento->dataEvento) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Created') ?></th>
+                <td><?= h($evento->created) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Modified') ?></th>
+                <td><?= h($evento->modified) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Descricao') ?></th>
+                <td><?= $this->Text->autoParagraph(h($evento->descricao)); ?></td>
+            </tr>
+        </table>
+        
+        <div class="related">
+        
         <?php if (!empty($evento->arquivos)): ?>
-        <table cellpadding="0" cellspacing="0">
+            <h4><?= __('Related Arquivos') ?></h4>
+            <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
                 <th><?= __('Usuario Id') ?></th>
@@ -96,4 +114,6 @@
         </table>
         <?php endif; ?>
     </div>
+    </div>
+
 </div>

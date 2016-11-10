@@ -1,5 +1,17 @@
-<div class="row">
-    <div class="col-md-12">
+<?= $this->start('vws') ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-edit"></i>&nbsp;Editar empresa</a></li>
+    <li><?= $this->Form->postLink(
+            __('<i class="fa fa-trash-o"></i> Excluir Empresa'),
+            ['action' => 'delete', $empresa->id],
+            ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id), 
+             'escape' => false, 'class' => 'btn btn-danger'])?></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
+            ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova empresa'), 
+            ['action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+<?= $this->end() ?>
+    <div class="col-md-10">
         <h1 class="page-header">
             <?= __('Empresas e Setores') ?>
             <small>Editar</small>
@@ -8,27 +20,7 @@
             <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
             <li class="active">Editar dados da empresa / setor</li>
         </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2">
-        <div class="list-group">
-            <ul class="nav nav-stacked">
-                <li><a href="#" class="btn btn-primary active"><i class="fa fa-edit"></i>&nbsp;Editar empresa</a></li>
-                <li><?= $this->Form->postLink(
-                        __('<i class="fa fa-trash-o"></i> Excluir Empresa'),
-                        ['action' => 'delete', $empresa->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id), 
-                         'escape' => false, 'class' => 'btn btn-danger'])?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
-                        ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-10">
-        <div>
-            <h3><?= __('Editar empresa/setor') ?></h3>
-        </div>
+       
         <?= $this->Form->create($empresa, ['id' => 'upload', 'type' => 'file']) ?>
         <?php 
             echo $this->Form->input('nome', ['label' => 'Nome', 'empty' => 'Nome da empresa parceira']);

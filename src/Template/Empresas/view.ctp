@@ -1,91 +1,79 @@
-<?php
-//    debug($empresa);
-//    die('lol');
-?>
-<div class="row">
-    <div class="col-md-12">
-        <h1 class="page-header">
-            <?= __('Empresa/Setor') ?>
-            <small>Detalhe</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
-            <li class="active">Detalhe da Empresa/Setor</li>
-        </ol>
+<?= $this->start('vws') ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhes empresa</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-pencil"></i> Editar empresa'), 
+            ['action' => 'edit', $empresa->id], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir empresa'), 
+            ['action' => 'delete', $empresa->id], 
+            ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id),
+            'escape' => false, 'class' => 'btn btn-danger']) ?> </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
+            ['action' => 'index'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova empresa'), 
+            ['action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+<?= $this->end() ?>
+
+<div class="col-md-10">
+    <h1 class="page-header">
+        <?= __('Empresa/Setor') ?>
+        <small>Detalhe</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+        <li class="active">Detalhe da Empresa/Setor</li>
+    </ol>
+        
+    <div class="table-responsive">
+        <table class="table tablenoborder">
+            <tr>
+                <th class="col-md-2"><?= __('Nome') ?></th>
+                <td class="col-md-7"><?= h($empresa->nome) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Categoria') ?></th>
+                <td class="col-md-7"><?= $empresa->has('categoria') ? $this->Html->link($empresa->categoria->nome, ['controller' => 'Categorias', 'action' => 'view', $empresa->categoria->id]) : '' ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Link') ?></th>
+                <td class="col-md-7"><?= h($empresa->link) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Dir') ?></th>
+                <td class="col-md-7"><?= h($empresa->dir) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Filename') ?></th>
+                <td class="col-md-7"><?= h($empresa->filename) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Usuario') ?></th>
+                <td class="col-md-7"><?= $empresa->has('usuario') ? $this->Html->link($empresa->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $empresa->usuario->id]) : '' ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Id') ?></th>
+                <td class="col-md-7"><?= $this->Number->format($empresa->id) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Ativo') ?></th>
+                <td class="col-md-7"><?= $this->Number->format($empresa->ativo) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Parent Id') ?></th>
+                <td class="col-md-7"><?= $this->Number->format($empresa->parent_id) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Created') ?></th>
+                <td class="col-md-7"><?= h($empresa->created) ?></td>
+            </tr>
+            <tr>
+                <th class="col-md-2"><?= __('Modified') ?></th>
+                <td class="col-md-7"><?= h($empresa->modified) ?></td>
+            </tr>
+        </table>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-2">
-        <div class="list-group">
-            <ul class="nav nav-stacked">
-                <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhes empresa</a></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-pencil"></i> Editar empresa'), 
-                        ['action' => 'edit', $empresa->id], 
-                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
-                <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir empresa'), 
-                        ['action' => 'delete', $empresa->id], 
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $empresa->id),
-                        'escape' => false, 'class' => 'btn btn-danger']) ?> </li>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar empresas'), 
-                        ['action' => 'index'], 
-                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
-                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Nova empresa'), 
-                        ['action' => 'add'], 
-                        ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-10">
-        <h3><?= $empresa->id ?></h3>
-        <div class="table-responsive">
-            <table class="table tablenoborder">
-                <tr>
-                    <th class="col-md-2"><?= __('Nome') ?></th>
-                    <td class="col-md-7"><?= h($empresa->nome) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Categoria') ?></th>
-                    <td class="col-md-7"><?= $empresa->has('categoria') ? $this->Html->link($empresa->categoria->nome, ['controller' => 'Categorias', 'action' => 'view', $empresa->categoria->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Link') ?></th>
-                    <td class="col-md-7"><?= h($empresa->link) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Dir') ?></th>
-                    <td class="col-md-7"><?= h($empresa->dir) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Filename') ?></th>
-                    <td class="col-md-7"><?= h($empresa->filename) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Usuario') ?></th>
-                    <td class="col-md-7"><?= $empresa->has('usuario') ? $this->Html->link($empresa->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $empresa->usuario->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Id') ?></th>
-                    <td class="col-md-7"><?= $this->Number->format($empresa->id) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Ativo') ?></th>
-                    <td class="col-md-7"><?= $this->Number->format($empresa->ativo) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Parent Id') ?></th>
-                    <td class="col-md-7"><?= $this->Number->format($empresa->parent_id) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Created') ?></th>
-                    <td class="col-md-7"><?= h($empresa->created) ?></td>
-                </tr>
-                <tr>
-                    <th class="col-md-2"><?= __('Modified') ?></th>
-                    <td class="col-md-7"><?= h($empresa->modified) ?></td>
-                </tr>
-            </table>
-        </div>
-        <?php if (!empty($empresa->setores)): ?>
+    <?php if (!empty($empresa->setores)): ?>
         <hr>
         <h4><?= __('Relação de Setores') ?></h4>
         <div class="table-responsive">
@@ -116,7 +104,7 @@
         </div>
         <?php endif; ?>
         
-        <?php if (!empty($empresa->detalhes)): ?>
+    <?php if (!empty($empresa->detalhes)): ?>
         <hr>
         <h4><?= __('Related Detalhes') ?></h4>
         <div class="table-responsive">
@@ -147,7 +135,7 @@
         </div>
         <?php endif; ?>
         
-        <?php if (!empty($empresa->enderecos)): ?>
+    <?php if (!empty($empresa->enderecos)): ?>
         <hr>
         <h4><?= __('Related Enderecos') ?></h4>
             <div class="table-responsive">
@@ -183,7 +171,8 @@
                 </table>
             </div>
         <?php endif; ?>
-        <?php if (!empty($empresa->funcionarios)): ?>
+        
+    <?php if (!empty($empresa->funcionarios)): ?>
         <hr>
         <h4><?= __('Related Funcionarios') ?></h4>
         <div class="table-responsive">
@@ -211,5 +200,4 @@
             </table>
         </div>
         <?php endif; ?>
-    </div>
 </div>

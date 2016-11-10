@@ -1,25 +1,33 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Eventos'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="eventos form large-9 medium-8 columns content">
+<?= $this->start('vws') ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-plus"></i>&nbsp;Novo Evento</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Eventos'), 
+            ['controller' => 'eventos', 'action' => 'index'],
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end() ?>
+
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+    <?= __('Eventos') ?>
+    <small>Adicionar</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+        <li class="active">Adicionar arquivo</li>
+    </ol>
     <?= $this->Form->create($evento) ?>
-    <fieldset>
-        <legend><?= __('Add Evento') ?></legend>
-        <?php
-            echo $this->Form->input('titulo');
-            echo $this->Form->input('descricao');
-            echo $this->Form->input('categoria_id', ['options' => $categorias]);
-            echo $this->Form->input('dataEvento', ['empty' => true]);
-            echo $this->Form->input('ativo');
+    <?php
+            echo $this->Form->input('titulo', ['label' => 'Título']);
+            echo $this->Form->input('descricao', ['label' => 'Descrição']);
+            echo $this->Form->input('categoria_id', [
+                'options' => $categorias, 
+                'label' => 'Categorias', 
+                'empty' => 'Selecione uma categoria...']);
+            echo $this->Form->input('dataEvento', [
+                'type' => 'text',
+                'label' => 'Data do Evento',
+                'empty' => 'Informe a data...']);
+            echo $this->Form->input('ativo', ['label' => 'Ativo']);
             echo $this->Form->input('usuario_id', ['options' => $usuarios]);
         ?>
     </fieldset>
