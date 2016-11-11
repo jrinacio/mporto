@@ -45,18 +45,22 @@
                         ['controller' => 'Eventos', 'action' => 'add'],
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             <?php endif; ?>
-            <li><?= $this->html->link(__('<i class="fa fa-list"></i> Listar Serviços'),
-                    ['controller' => 'servicos', 'action' => 'index'],
-                    ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Serviço'), 
-                    ['controller' => 'Servicos', 'action' => 'add'],
-                    ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-            <li><?= $this->html->link(__('<i class="fa fa-list"></i> Listar Usuários'),
-                    ['controller' => 'usuarios', 'action' => 'index'],
-                    ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-            <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), 
-                    ['controller' => 'Usuarios', 'action' => 'add'],
-                    ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+            <?php if ($this->request['controller'] != 'Servicos'): ?>
+                <li><?= $this->html->link(__('<i class="fa fa-list"></i> Listar Serviços'),
+                        ['controller' => 'servicos', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Serviço'), 
+                        ['controller' => 'Servicos', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+            <?php endif; ?>
+            <?php if ($this->request['controller'] != 'Usuarios'): ?>
+                <li><?= $this->html->link(__('<i class="fa fa-list"></i> Listar Usuários'),
+                        ['controller' => 'usuarios', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), 
+                        ['controller' => 'Usuarios', 'action' => 'add'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+            <?php endif; ?>
         </ul>
     </div>
 </div>

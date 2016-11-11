@@ -1,39 +1,36 @@
-<div class="row">
-    <div class="col-md-3">
-        <nav>
-            <ul class="side-nav">
-                <li class="heading"><?= __('Actions') ?></li>
-                <li><?= $this->Html->link(__('List Servicos'), ['action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-                <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-                <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-                <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
-            </ul>
-        </nav>
-    </div>
-    <div class="col-md-9">
-        <?= $this->Form->create($servico) ?>
-        <fieldset>
-            <legend><?= __('Add Servico') ?></legend>
-            <?php
-                echo $this->Form->input('nome', ['label' => 'Nome']);
-                echo $this->Form->input('descricao', ['Descrição']);
-    //            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
-                echo $this->Form->input('categoria_id', [
-                    'options' => $categorias,
-                    'empty' => 'Selecione...']);
-                $optAtivos = [0 => 'Não', 1 => 'Sim'];
-                echo $this->Form->input('ativo', [
-                    'label' => 'Ativo',
-                    'options' => $optAtivos,
-                    'default' => 1
-                ]);
-            ?>
-        </fieldset>
-        <?= $this->Form->button(__('Submit')) ?>
-        <?= $this->Form->end() ?>
-    </div>        
-</div>
+<?= $this->start('vws') ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-plus"></i>&nbsp;Novo Serviço</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Serviços'), 
+            ['controller' => 'servicos', 'action' => 'index'],
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end() ?>
+
+<div class="col-md-10">
+    <h1 class="page-header">
+        <?= __('Serviços') ?>
+        <small>Adicionar</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+        <li class="active">Adicionar arquivo</li>
+    </ol>
+    <?= $this->Form->create($servico) ?>
+    <?php
+        echo $this->Form->input('nome', ['label' => 'Nome']);
+        echo $this->Form->input('descricao', ['Descrição']);
+//            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
+        echo $this->Form->input('categoria_id', [
+            'options' => $categorias,
+            'empty' => 'Selecione...']);
+        $optAtivos = [0 => 'Não', 1 => 'Sim'];
+        echo $this->Form->input('ativo', [
+            'label' => 'Ativo',
+            'options' => $optAtivos,
+            'default' => 1
+        ]);
+    ?>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+</div>        
 

@@ -162,6 +162,7 @@ class ArquivosController extends AppController
      */
     public function galeria()
     {
+        $this->viewBuilder()->layout('ajax');
         $this->set('title', '');
         $config = [
             'fileds' => ['Arquivos.id', 'Arquivos.titulo', 'Arquivos.descricao'],

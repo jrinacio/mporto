@@ -63,8 +63,7 @@ class AppController extends Controller
         ],
         'Modal' => [
             'className' => 'Bootstrap.BootstrapModal'
-        ],
-        'Gourmet/KnpMenu.Menu'
+        ]
     ];
      
 
