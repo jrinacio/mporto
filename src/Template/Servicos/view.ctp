@@ -1,26 +1,37 @@
+<?= $this->start('vws'); ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Serviço'), 
+       ['controller' => 'servicos', 'action' => 'edit', $servico->id],
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
+    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Servico'), 
+       ['controller' => 'servicos', 'action' => 'delete', $servico->id], 
+       ['confirm' => __('Deseja excluir o servico # {0}?', $servico->id),
+        'escape' => false, 'class' => 'btn btn-danger']) ?> 
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Servicos'), 
+       ['controller' => 'servicos', 'action' => 'index'],
+       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Servico'), 
+        ['controller' => 'eventos', 'action' => 'add'], 
+        ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end('vws'); ?>
 
-<div class="row">
-    <div class="col-md-3">
-        <nav>
-            <ul class="side-nav">
-                <li class="heading"><?= __('Actions') ?></li>
-                <li><?= $this->Html->link(__('Edit Servico'), ['action' => 'edit', $servico->id]) ?> </li>
-                <li><?= $this->Form->postLink(__('Delete Servico'), ['action' => 'delete', $servico->id], ['confirm' => __('Are you sure you want to delete # {0}?', $servico->id)]) ?> </li>
-                <li><?= $this->Html->link(__('List Servicos'), ['action' => 'index']) ?> </li>
-                <li><?= $this->Html->link(__('New Servico'), ['action' => 'add']) ?> </li>
-                <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?> </li>
-                <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?> </li>
-                <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?> </li>
-                <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?> </li>
-                <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?> </li>
-                <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?> </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="col-md-9">
-        <div class="row">
-            <h3><?= h($servico->id) ?></h3>
-            <table class="vertical-table">
+
+<div class="col-md-10">
+    <h1 class="page-header">
+    <?= __('Arquivo') ?>
+    <small>Detalhe</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?>
+        <li class="active">Detalhe do arquivo</li>    
+    </ol>
+    <h3><?= h($servico->id) ?></h3>
+    <div class="table-responsive">
+        <table class="vertical-table">
         <tr>
             <th><?= __('Nome') ?></th>
             <td><?= h($servico->nome) ?></td>
@@ -54,46 +65,42 @@
             <td><?= h($servico->modified) ?></td>
         </tr>
     </table>
-    </div>
-
     <hr>
     <div class="related">
         <h4><?= __('Related Arquivos') ?></h4>
         <?php if (!empty($servico->arquivos)): ?>
-        <table cellpadding="0" cellspacing="0">
+        <table class="table-bordered">
             <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Usuario Id') ?></th>
-                <th><?= __('Evento Id') ?></th>
-                <th><?= __('Servico Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Titulo') ?></th>
-                <th><?= __('Size') ?></th>
-                <th><?= __('Type') ?></th>
-                <th><?= __('Dir') ?></th>
-                <th><?= __('Ativo') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                <th class="col-md-2"><?= __('Imagem') ?></th>
+                <th><?= $this->Paginator->sort('evento_id', 'Evento Id') ?></th>
+                <th><?= $this->Paginator->sort('servico_id', 'Servico Id') ?></th>
+                <th><?= $this->Paginator->sort('name', 'Nome') ?></th>
+                <th class="col-md-1"><?= $this->Paginator->sort('size', 'Tamanho') ?></th>
+                <th><?= $this->Paginator->sort('ativo', 'Ativo') ?></th>
+                <th class="actions col-md-2"><?= __('Ações') ?></th>
             </tr>
-            <?php foreach ($servico->arquivos as $arquivos): ?>
+            <?php foreach ($servico->arquivos as $arquivo): ?>
             <tr>
-                <td><?= h($arquivos->id) ?></td>
-                <td><?= h($arquivos->usuario_id) ?></td>
-                <td><?= h($arquivos->evento_id) ?></td>
-                <td><?= h($arquivos->servico_id) ?></td>
-                <td><?= h($arquivos->name) ?></td>
-                <td><?= h($arquivos->titulo) ?></td>
-                <td><?= h($arquivos->size) ?></td>
-                <td><?= h($arquivos->type) ?></td>
-                <td><?= h($arquivos->dir) ?></td>
-                <td><?= h($arquivos->ativo) ?></td>
-                <td><?= h($arquivos->created) ?></td>
-                <td><?= h($arquivos->modified) ?></td>
+                <td><?= $this->Number->format($arquivo->id) ?></td>
+                <td><?= $this->Html->image('/imgs/arquivos/file/' . $arquivo->dir . '/square_' . $arquivo->name) ?></td>
+                <td><?= $arquivo->has('evento_id') ? $this->Html->link($arquivo->evento_id, [
+                    'controller' => 'Eventos', 'action' => 'view', $arquivo->evento_id]) : '' ?></td>
+                <td><?= $arquivo->has('servico_id') ? $arquivo->servico_id : '' ?></td>
+                <td><?= h($arquivo->name) ?></td>
+                <td><?= $this->Number->format($arquivo->size) ?></td>
+                <td><?= $this->Number->format($arquivo->ativo) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Arquivos', 'action' => 'view', $arquivos->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Arquivos', 'action' => 'edit', $arquivos->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Arquivos', 'action' => 'delete', $arquivos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $arquivos->id)]) ?>
+                    <?= $this->Html->link(__('<i class="fa fa-search fa-lg"></i>'), 
+                            ['controller' => 'Arquivos', 'action' => 'view', $arquivo->id],
+                            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                    <?= $this->Html->link(__('<i class="fa fa-pencil fa-lg"></i>'), 
+                            ['controller' => 'Arquivos', 'action' => 'edit', $arquivo->id],
+                            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+                    <?= $this->Form->postLink(__('<i class="fa fa-trash-o fa-lg"></i>'), 
+                            ['controller' => 'Arquivos', 'action' => 'delete', $arquivo->id], 
+                            ['confirm' => __('Deseja excluir o arquivo # {0}?', $arquivo->id),
+                             'escape' => false, 'class' => 'btn btn-danger']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -101,7 +108,6 @@
         <?php endif; ?>
     </div>
     </div>
-    
 </div>
 
 
