@@ -21,6 +21,14 @@
                         ['controller' => 'categorias', 'action' => 'add'], 
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             <?php endif; ?>
+            <?php if ($this->request['controller'] != 'Detalhes'): ?>
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Detalhes'),
+                        ['controller' => 'detalhes', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Detalhe'),
+                        ['controller' => 'detalhes', 'action' => 'index'],
+                        ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
+            <?php endif;?>
             <?php if ($this->request['controller'] != 'Empresas'): ?>
                 <li><?= $this->html->link(__('<i class="fa fa-list"></i> Listar Empresas'),
                         ['controller' => 'empresas', 'action' => 'index'],
@@ -42,7 +50,7 @@
                         ['controller' => 'eventos', 'action' => 'index'],
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
                 <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Evento'), 
-                        ['controller' => 'Eventos', 'action' => 'add'],
+                        ['controller' => 'eventos', 'action' => 'add'],
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             <?php endif; ?>
             <?php if ($this->request['controller'] != 'Servicos'): ?>

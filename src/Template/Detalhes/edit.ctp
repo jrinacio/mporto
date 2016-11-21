@@ -1,31 +1,37 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $detalhe->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $detalhe->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Detalhes'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Empresas'), ['controller' => 'Empresas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Empresa'), ['controller' => 'Empresas', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="detalhes form large-9 medium-8 columns content">
+<?= $this->start('vws'); ?>    
+<li><a href="#" class="btn btn-primary active"><i class="fa fa-pencil"></i>&nbsp;Editar Contexto</a></li>
+    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Contexto'),
+            ['controller' => 'detalhes', 'action' => 'delete', $detalhe->id],
+            ['confirm' => __('Você tem certeza que deseja excluir o contexto # {0}?', $detalhe->id),
+             'escape' => false, 'class' => 'btn btn-danger']); ?>
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Contextos'), 
+            ['controller' => 'detalhes', 'action' => 'index'],
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Contexto'), 
+            ['controller' => 'detalhes', 'action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end() ?>
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+        <?= __('Arquivos') ?>
+        <small>Editar</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+        <li class="active">Editar dados da imagem<li>
+    </ol>
     <?= $this->Form->create($detalhe) ?>
-    <fieldset>
-        <legend><?= __('Edit Detalhe') ?></legend>
-        <?php
-            echo $this->Form->input('empresa_id', ['options' => $empresas, 'empty' => true]);
-            echo $this->Form->input('titulo');
-            echo $this->Form->input('descricao');
-            echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
-            echo $this->Form->input('ativo');
-        ?>
-    </fieldset>
+    <?php
+        echo $this->Form->input('empresa_id', ['options' => $empresas, 'empty' => true]);
+        echo $this->Form->input('titulo');
+        echo $this->TinyMCE->editor(['selector' => 'textarea']);
+        echo $this->Form->input('descricao');
+        echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
+        echo $this->Form->input('ativo');
+    ?>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
