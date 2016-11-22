@@ -35,10 +35,12 @@
                     <tr>
                         <td><?= $this->Number->format($evento->id) ?></td>
                         <td><?= h($evento->titulo) ?></td>
-                        <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
+                        <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, 
+                                ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
                         <td><?= h($evento->dataEvento) ?></td>
                         <td><?= $this->Number->format($evento->ativo) ?></td>
-                        <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
+                        <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, 
+                                ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
                         <td><?= h($evento->created) ?></td>
                         <td><?= h($evento->modified) ?></td>
                         <td class="actions col-md-2">

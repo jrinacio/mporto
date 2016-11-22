@@ -1,5 +1,5 @@
 <?= $this->start('vws'); ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe Serviço</a></li>
     <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Serviço'), 
        ['controller' => 'servicos', 'action' => 'edit', $servico->id],
        ['escape' => false, 'class' => 'btn btn-primary']) ?> 
@@ -14,7 +14,7 @@
        ['escape' => false, 'class' => 'btn btn-primary']) ?> 
     </li>
     <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Servico'), 
-        ['controller' => 'eventos', 'action' => 'add'], 
+        ['controller' => 'servicos', 'action' => 'add'], 
         ['escape' => false, 'class' => 'btn btn-primary']) ?>
     </li>
 <?= $this->end('vws'); ?>
@@ -22,16 +22,16 @@
 
 <div class="col-md-10">
     <h1 class="page-header">
-    <?= __('Arquivo') ?>
+    <?= __('Serviço') ?>
     <small>Detalhe</small>
     </h1>
     <ol class="breadcrumb">
         <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?>
-        <li class="active">Detalhe do arquivo</li>    
+        <li class="active">Detalhe do Serviço</li>    
     </ol>
     <h3><?= h($servico->id) ?></h3>
     <div class="table-responsive">
-        <table class="vertical-table">
+        <table class="table tablenoborder">
         <tr>
             <th><?= __('Nome') ?></th>
             <td><?= h($servico->nome) ?></td>
@@ -67,9 +67,9 @@
     </table>
     <hr>
     <div class="related">
-        <h4><?= __('Related Arquivos') ?></h4>
+        <h4><?= __('Relação de Arquivos') ?></h4>
         <?php if (!empty($servico->arquivos)): ?>
-        <table class="table-bordered">
+        <table class="table tablenoborder">
             <tr>
                 <th><?= $this->Paginator->sort('id', 'ID') ?></th>
                 <th class="col-md-2"><?= __('Imagem') ?></th>
@@ -92,13 +92,13 @@
                 <td><?= $this->Number->format($arquivo->ativo) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('<i class="fa fa-search fa-lg"></i>'), 
-                            ['controller' => 'Arquivos', 'action' => 'view', $arquivo->id],
+                            ['controller' => 'arquivos', 'action' => 'view', $arquivo->id],
                             ['escape' => false, 'class' => 'btn btn-primary']) ?>
                     <?= $this->Html->link(__('<i class="fa fa-pencil fa-lg"></i>'), 
-                            ['controller' => 'Arquivos', 'action' => 'edit', $arquivo->id],
+                            ['controller' => 'arquivos', 'action' => 'edit', $arquivo->id],
                             ['escape' => false, 'class' => 'btn btn-primary']) ?>
                     <?= $this->Form->postLink(__('<i class="fa fa-trash-o fa-lg"></i>'), 
-                            ['controller' => 'Arquivos', 'action' => 'delete', $arquivo->id], 
+                            ['controller' => 'arquivos', 'action' => 'delete', $arquivo->id], 
                             ['confirm' => __('Deseja excluir o arquivo # {0}?', $arquivo->id),
                              'escape' => false, 'class' => 'btn btn-danger']) ?>
                 </td>

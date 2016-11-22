@@ -1,38 +1,43 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $usuario->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $usuario->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="usuarios form large-9 medium-8 columns content">
+<?= $this->start('vws'); ?>    
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-pencil"></i>&nbsp;Editar Usuário</a></li>
+    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Usuário'),
+            ['controller' => 'usuários', 'action' => 'delete', $usuario->id],
+            ['confirm' => __('Você tem certeza que deseja excluir o usuário # {0}?', $usuario->id),
+             'escape' => false, 'class' => 'btn btn-danger']); ?>
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), 
+            ['controller' => 'usuários', 'action' => 'index'],
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Usuário'), 
+            ['controller' => 'usuarios', 'action' => 'add'], 
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end() ?>
+
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+        <?= __('Usuário') ?>
+        <small>Editar</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+        <li class="active">Editar dados do Usuário<li>
+    </ol>
     <?= $this->Form->create($usuario) ?>
-    <fieldset>
-        <legend><?= __('Edit Usuario') ?></legend>
-        <?php
-            echo $this->Form->input('nome', ['label' => 'Nome']);
-            echo $this->Form->input('email', ['label' => 'E-mail']);
+    <?php
+        echo $this->Form->input('nome', ['label' => 'Nome']);
+        echo $this->Form->input('email', ['label' => 'E-mail']);
 //            echo $this->Form->input('senha', ['label' => 'Senha']);
-            $optPerfis = [1 => 'Administrador', 2 => 'Padrão'];
-            echo $this->Form->input('perfil', [
-                'label' => 'perfil',
-                'options' => $optPerfis]);
-            $optAtivos = [1 => 'Sim', 0 => 'Não'];
-            echo $this->Form->input('ativo', [
-                'label' => 'perfil',
-                'options' => $optAtivos]);
-        ?>
+        $optPerfis = [1 => 'Administrador', 2 => 'Padrão'];
+        echo $this->Form->input('perfil', [
+            'label' => 'perfil',
+            'options' => $optPerfis]);
+        $optAtivos = [1 => 'Sim', 0 => 'Não'];
+        echo $this->Form->input('ativo', [
+            'label' => 'perfil',
+            'options' => $optAtivos]);
+    ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

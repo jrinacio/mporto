@@ -22,10 +22,10 @@
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             <?php endif; ?>
             <?php if ($this->request['controller'] != 'Detalhes'): ?>
-                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Detalhes'),
+                <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Contextos'),
                         ['controller' => 'detalhes', 'action' => 'index'],
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Detalhe'),
+                <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Contexto'),
                         ['controller' => 'detalhes', 'action' => 'index'],
                         ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
             <?php endif;?>

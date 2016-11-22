@@ -10,19 +10,19 @@
             ['escape' => false, 'class' => 'btn btn-primary']) ?>
     </li>
     <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Servico'), 
-            ['controller' => 'Servicos', 'action' => 'add'], 
+            ['controller' => 'servicos', 'action' => 'add'], 
             ['escape' => false, 'class' => 'btn btn-primary']) ?>
     </li>
 <?= $this->end() ?>
 
 <div class="col-md-10 divisoria">
     <h1 class="page-header">
-        <?= __('Arquivos') ?>
+        <?= __('Serviço') ?>
         <small>Editar</small>
     </h1>
     <ol class="breadcrumb">
         <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
-        <li class="active">Editar dados da imagem<li>
+        <li class="active">Editar dados do Serviço<li>
     </ol>
     <?= $this->Form->create($servico) ?>
     <?php

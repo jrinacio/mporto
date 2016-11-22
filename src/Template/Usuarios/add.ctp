@@ -1,19 +1,20 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Arquivos'), ['controller' => 'Arquivos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Arquivo'), ['controller' => 'Arquivos', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Categorias'), ['controller' => 'Categorias', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Categoria'), ['controller' => 'Categorias', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Eventos'), ['controller' => 'Eventos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Evento'), ['controller' => 'Eventos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="usuarios form large-9 medium-8 columns content">
+<?= $this->start('vws'); ?>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-plus"></i>&nbsp;Novo Usuário</a></li>
+    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Usuários'), 
+            ['controller' => 'usuarios', 'action' => 'index'],
+            ['escape' => false, 'class' => 'btn btn-primary']) ?>
+    </li>
+<?= $this->end(); ?>
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+        <?= __('Arquivos') ?>
+        <small>Adicionar</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'Home']) ?></li>
+        <li class="active">Adicionar arquivo</li>
+    </ol>
     <?= $this->Form->create($usuario) ?>
-    <fieldset>
-        <legend><?= __('Add Usuario') ?></legend>
         <?php
             echo $this->Form->input('nome', ['label' => 'Nome']);
             echo $this->Form->input('email', ['label' => 'E-mail']);
@@ -32,7 +33,6 @@
                 'default' => 1
                 ]);
         ?>
-    </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>

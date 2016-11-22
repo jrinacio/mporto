@@ -1,5 +1,5 @@
 <?= $this->start('vws'); ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
+    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe Evento</a></li>
     <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Evento'), 
        ['controller' => 'eventos', 'action' => 'edit', $evento->id],
        ['escape' => false, 'class' => 'btn btn-primary']) ?> 
@@ -38,11 +38,13 @@
             </tr>
             <tr>
                 <th><?= __('Categoria') ?></th>
-                <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
+                <td><?= $evento->has('categoria') ? $this->Html->link($evento->categoria->id, 
+                        ['controller' => 'Categorias', 'action' => 'view', $evento->categoria->id]) : '' ?></td>
             </tr>
             <tr>
                 <th><?= __('Usuario') ?></th>
-                <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
+                <td><?= $evento->has('usuario') ? $this->Html->link($evento->usuario->email, 
+                        ['controller' => 'Usuarios', 'action' => 'view', $evento->usuario->id]) : '' ?></td>
             </tr>
             <tr>
                 <th><?= __('Id') ?></th>
@@ -73,7 +75,7 @@
         <div class="related">
         
         <?php if (!empty($evento->arquivos)): ?>
-            <h4><?= __('Related Arquivos') ?></h4>
+            <h4><?= __('Relação de Arquivos') ?></h4>
             <table cellpadding="0" cellspacing="0">
             <tr>
                 <th><?= __('Id') ?></th>
