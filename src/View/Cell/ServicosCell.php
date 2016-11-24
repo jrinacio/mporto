@@ -27,7 +27,7 @@ class ServicosCell extends Cell
         $this->loadModel('Servicos');
         $servicos = $this->Servicos->find()
                 ->select(['id', 'nome', 'descricao'])
-                ->where(['ativo' => 1]);
+                ->where(['ativo' => 1, 'exibir' => 1]);
         $this->set('servicos', $servicos);
     }
 }

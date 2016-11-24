@@ -42,7 +42,7 @@
         $atv = [0 => 'Não', 1 => 'Sim'];
         echo $this->Form->input('ativo', ['options' => $atv]);
         echo $this->Form->input('carousel', ['label' => 'Exibir no topo rotativo']);
-        echo $this->Form->input('acervo', ['label' => 'Exiber item do acervo na home']);
+        echo $this->Form->input('acervo', ['label' => 'Exibir item do acervo na home']);
     ?>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

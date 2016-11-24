@@ -29,6 +29,7 @@
             'options' => $optAtivos,
             'default' => 1
         ]);
+        echo $this->Form->input('exibir', ['label' => 'Exibir na Homepage']);
     ?>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

@@ -1,3 +1,4 @@
+<?= $this->Flash->render('auth'); ?>
 <h1>Login de Acesso</h1>
 
 <?= $this->Form->create() ?>

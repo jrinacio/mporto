@@ -37,6 +37,12 @@ class ServicosTable extends Table
             'foreignKey' => 'usuario_id',
             'joinType' => 'INNER'
         ]);
+        
+        $this->belongsTo('Empresas', [
+            'foreignKey' => 'empresa_id',
+            'joinType' => 'INNER'
+        ]);
+        
         $this->belongsTo('Categorias', [
             'foreignKey' => 'categoria_id'
         ]);

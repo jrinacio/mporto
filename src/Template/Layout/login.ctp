@@ -24,6 +24,7 @@
 </head>
 <body class="bg-darkTeal">
     <div class="login-form">
+        
         <?= $this->Flash->render('auth') ?>
         <?= $this->fetch('content') ?>
     </div>

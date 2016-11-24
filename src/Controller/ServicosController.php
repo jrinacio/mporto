@@ -114,12 +114,34 @@ class ServicosController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     
-    public function display()
+    public function sobre()
     {
-        $this->loadModel('Servicos');
-        $servicos = $this->Servicos->find()
-                ->select(['id', 'nome', 'descricao'])
-                ->where(['ativo' => 1]);
-        $this->set('servicos', $servicos);
+        
+        $this->viewBuilder()->layout('simples');
+        $query = $this->Servicos->find()
+                ->where(['Categorias.nome' => 'Site', 'Servicos.nome' => 'Sobre'])
+                ->contain(['Categorias', 'Arquivos', 'Empresas', 'Detalhes'])
+                ->first();
+                
+        
+        $this->set('pagina', $query);
+        $this->set('_serialize', 'pagina');
+//        
+//        $servico = $this->Servicos->get($id, [
+//            'contain' => ['Categorias', 'Arquivos']
+//        ]);
+
+//        $this->set('servico', $servico);
+//        $this->set('_serialize', ['servico']);
     }
+
+
+//    public function display()
+//    {
+//        $this->loadModel('Servicos');
+//        $servicos = $this->Servicos->find()
+//                ->select(['id', 'nome', 'descricao'])
+//                ->where(['ativo' => 1]);
+//        $this->set('servicos', $servicos);
+//    }
 }

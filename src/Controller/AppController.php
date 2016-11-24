@@ -79,10 +79,8 @@ class AppController extends Controller
     public function initialize()
     {
         parent::initialize();
-
-        $this->loadComponent('RequestHandler');
+        
         $this->loadComponent('Flash');
-        $this->loadComponent('Paginator');
         $this->loadComponent('Auth', [
             'authenticate' => [
                 'Form' => [
@@ -94,7 +92,7 @@ class AppController extends Controller
                     'finder' => 'auth'
                 ]
             ],
-            'authorize' => ['Controller'],
+            'authorize' => 'Controller',
             'loginAction' => [
                 'controller' => 'Usuarios',
                 'action' => 'login'
@@ -108,6 +106,10 @@ class AppController extends Controller
                 'action' => 'display'
             ]
         ]);
+        
+        $this->loadComponent('RequestHandler');
+        $this->loadComponent('Paginator');
+
     }
     
     /**
@@ -128,6 +130,7 @@ class AppController extends Controller
         }
         else
         {
+            
             return false;
         }
     }
@@ -141,8 +144,7 @@ class AppController extends Controller
     public function beforeFilter(Event $event) 
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'login', 'logout', 'home']);
-        $this->Auth->config('authError', 'Usuário não autorizado.');
+        $this->Auth->allow(['add', 'logout', 'home']);
         $usuario = $this->Auth->user();
         $this->set(compact($usuario));
     }

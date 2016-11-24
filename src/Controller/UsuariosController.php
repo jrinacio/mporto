@@ -127,15 +127,22 @@ class UsuariosController extends AppController
             if($usuario)
             {
                 $this->Auth->setUser($usuario);
+                $this->Flash->success(__('Usuário conectado.'), [
+                    'key' => 'auth'
+                ]);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('E-mail ou senha incorretos.'));
+            $this->Flash->error(__('Usuário ou senha estão incorretos.'), [
+                'key' => 'auth'
+            ]);
         }
     }
     
     public function logout()
     {
-        $this->Flash->success('Você saiu do sistema.');
+        $this->Flash->success(__('Você saiu do sistema.'), [
+            'key' => 'auth'
+        ]);
         return $this->redirect($this->Auth->logout());
     }
 

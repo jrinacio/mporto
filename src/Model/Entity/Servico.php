@@ -13,7 +13,9 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Usuario $usuario
  * @property int $categoria_id
  * @property \App\Model\Entity\Categoria $categoria
+ * @property \App\Model\Entity\Empresa $empresa
  * @property int $ativo
+ * @property tinyint $exibir
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property \App\Model\Entity\Arquivo[] $arquivos

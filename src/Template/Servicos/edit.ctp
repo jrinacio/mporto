@@ -31,6 +31,7 @@
         echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
         echo $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => true]);
         echo $this->Form->input('ativo');
+        echo $this->Form->input('exibir', ['label' => 'Exibir na Homepage']);
     ?>
     
     <?= $this->Form->button(__('Submit')) ?>
