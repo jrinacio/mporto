@@ -33,7 +33,8 @@ class DetalhesTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Empresas', [
-            'foreignKey' => 'empresa_id'
+            'foreignKey' => 'empresa_id',
+            'joinType' => 'INNER'
         ]);
         $this->belongsTo('Usuarios', [
             'foreignKey' => 'usuario_id'

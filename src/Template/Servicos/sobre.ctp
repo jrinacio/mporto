@@ -15,7 +15,7 @@
         ]) ?>
     </div>
     <div class="col-md-6">
-        <?= $html_entity_decode($pagina->)
+        
     </div>
 </div>
 

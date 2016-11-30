@@ -23,6 +23,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Detalhe[] $detalhes
  * @property \App\Model\Entity\Endereco[] $enderecos
  * @property \App\Model\Entity\Funcionario[] $funcionarios
+ * @property \App\Model\Entity\Servicos[] $servicos
  */
 class Empresa extends Entity
 {

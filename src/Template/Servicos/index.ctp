@@ -20,12 +20,11 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id', 'ID') ?></th>
                     <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
-                    <th><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
+                    <th class="col-md-3"><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
                     <th><?= $this->Paginator->sort('usuario_id', 'Usuário') ?></th>
-                    <th><?= $this->Paginator->sort('categoria_id', 'Categoria') ?></th>
+                    <th><?= $this->Paginator->sort('categoria_id', 'Categ. ID') ?></th>
+                    <th><?= $this->Paginator->sort('empresa_id', 'Emp. ID') ?></th>
                     <th><?= $this->Paginator->sort('ativo', 'Ativo') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Ações') ?></th>
                 </tr>
             </thead>
@@ -35,11 +34,13 @@
                         <td><?= $this->Number->format($servico->id) ?></td>
                         <td><?= h($servico->nome) ?></td>
                         <td><?= h($servico->descricao) ?></td>
-                        <td><?= $servico->has('usuario') ? $this->Html->link($servico->usuario->email, ['controller' => 'Usuarios', 'action' => 'view', $servico->usuario->id]) : '' ?></td>
-                        <td><?= $servico->has('categoria') ? $this->Html->link($servico->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $servico->categoria->id]) : '' ?></td>
+                        <td><?= $servico->has('usuario') ? $this->Html->link($servico->usuario->email, 
+                                ['controller' => 'Usuarios', 'action' => 'view', $servico->usuario->id]) : '' ?></td>
+                        <td><?= $servico->has('categoria') ? $this->Html->link($servico->categoria->id, 
+                                ['controller' => 'Categorias', 'action' => 'view', $servico->categoria->id]) : '' ?></td>
+                        <td><?= $servico->has('empresa') ? $this->Html->link($servico->empresa->id,
+                                ['controller' => 'Empresas', 'action' => 'view', $servico->empresa->id]) : '' ?></td>
                         <td><?= $this->Number->format($servico->ativo) ?></td>
-                        <td><?= h($servico->created) ?></td>
-                        <td><?= h($servico->modified) ?></td>
                         <td class="actions col-md-2">
                             <?= $this->Html->link(__('<i class="fa fa-search fa-lg"></i>'), 
                                     ['action' => 'view', $servico->id], 

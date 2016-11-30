@@ -54,7 +54,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?= $this->Flash->render() ?>
         </div>
         <div class="row">
-            <?= $this->element('leftbar') ?>
+            <?= $this->element('leftbar2') ?>
             <?= $this->fetch('content') ?>
         </div>
         <footer>

@@ -121,10 +121,10 @@ li a:hover {
    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; 
 }
 */
-.panel-body {
-    height: 150px;
-/*    font-family: Georgia, serif;*/
-}
+/*.panel-body {
+    height: auto;
+    font-family: Georgia, serif;
+}*/
 
 span.icon { 
   font-family: 'Glyphicons Halflings'; 
@@ -179,72 +179,8 @@ footer > .container-fluid {
     text-align: center;
 }
 
-/*
-.modal {
-    display: block;  oculto por default 
-    position: fixed;  parado no local 
-    z-index: 1;  exibir sobre todos 
-    padding-top: 100px;  local no box 
-    left: 0;
-    top: 0;
-    width: 100%;  tamanho horizontal original 
-    height: 100%;  tamanho vertical original 
-    overflow: auto;  habilitar o scrool caso necessário 
-}
+/* leftbar2 */
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+.icone {
+    margin-right: 10px;
 }
-
-.caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-.modal-content. .caption {
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)}
-    to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-    from {tranform:scale(0)}
-    to {transform:scale(1)}
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    transition: 0.3s;
-}
-
-.close:hover, .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
- 100% image Width on Smaller Screens 
-@media only screen and (max-width: 700px) {
-    .modal-content{
-        width: 100%;
-    }
-}*/

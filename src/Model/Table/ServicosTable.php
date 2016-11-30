@@ -46,6 +46,7 @@ class ServicosTable extends Table
         $this->belongsTo('Categorias', [
             'foreignKey' => 'categoria_id'
         ]);
+        
         $this->hasMany('Arquivos', [
             'foreignKey' => 'servico_id',
             'joinType' => 'INNER'
@@ -74,6 +75,10 @@ class ServicosTable extends Table
         $validator
             ->requirePresence('categoria_id', true)
             ->notEmpty('categoria_id');
+        
+        $validator
+            ->requirePresence('empresa_id', true)
+            ->notEmpty('empresa_id');
 
         $validator
             ->integer('ativo')
@@ -93,6 +98,7 @@ class ServicosTable extends Table
     {
         $rules->add($rules->existsIn(['usuario_id'], 'Usuarios'));
         $rules->add($rules->existsIn(['categoria_id'], 'Categorias'));
+        $rules->add($rules->existsIn('empresa_id', 'Empresas'));
         return $rules;
     }
 }

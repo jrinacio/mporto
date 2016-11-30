@@ -1,23 +1,53 @@
 <?php // debug($arquivo) ?>
 <?= $this->start('vws'); ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe</a></li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Arquivo'), 
-       ['controller' => 'arquivos', 'action' => 'edit', $arquivo->id],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
-    </li>
-    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Arquivo'), 
-       ['controller' => 'arquivos', 'action' => 'delete', $arquivo->id], 
-       ['confirm' => __('Are you sure you want to delete # {0}?', $arquivo->id),
-        'escape' => false, 'class' => 'btn btn-danger']) ?> 
-    </li>
-    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Arquivos'), 
-       ['controller' => 'arquivos', 'action' => 'index'],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
-    </li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo arquivo'), 
-        ['controller' => 'arquivos', 'action' => 'add'], 
-        ['escape' => false, 'class' => 'btn btn-primary']) ?>
-    </li>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-archive icone"></i>Arquivos</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a href="#"><i class="fa fa-search icone"></i>Detalhe</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Editar'), 
+                                ['controller' => 'arquivos', 'action' => 'edit', $arquivo->id],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Form->postLink(__('<i class="fa fa-trash-o icone"></i>Excluir'),
+                                ['controller' => 'arquivos', 'action' => 'delete', $arquivo->id],
+                                ['confirm' => __('Você tem certeza que deseja excluir o arquivo # {0}?', $arquivo->id),
+                                 'escape' => false]); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-list icone"></i>Listar'), 
+                                ['controller' => 'arquivos', 'action' => 'index'],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'), 
+                                ['controller' => 'arquivos', 'action' => 'add'], 
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+    </div>
 <?= $this->end('vws'); ?>
 
 <div class="col-md-10 divisoria">

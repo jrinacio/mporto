@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Usuario $usuario
  * @property int $categoria_id
  * @property \App\Model\Entity\Categoria $categoria
+ * @property int $empresa_id
  * @property \App\Model\Entity\Empresa $empresa
  * @property int $ativo
  * @property tinyint $exibir

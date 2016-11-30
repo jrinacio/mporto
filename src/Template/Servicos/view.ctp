@@ -49,8 +49,8 @@
             <td><?= $servico->has('categoria') ? $this->Html->link($servico->categoria->id, ['controller' => 'Categorias', 'action' => 'view', $servico->categoria->id]) : '' ?></td>
         </tr>
         <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($servico->id) ?></td>
+            <th><?= __('Empresa') ?></th>
+            <td><?= $servico->has('empresa') ? $this->Html->link($servico->empresa->id, ['controller' => 'Empresas', 'action' => 'view', $servico->empresa->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Ativo') ?></th>

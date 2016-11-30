@@ -19,7 +19,7 @@ class ServicosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Usuarios', 'Categorias']
+            'contain' => ['Usuarios', 'Categorias', 'Empresas']
         ];
         $servicos = $this->paginate($this->Servicos);
 
@@ -37,7 +37,7 @@ class ServicosController extends AppController
     public function view($id = null)
     {
         $servico = $this->Servicos->get($id, [
-            'contain' => ['Usuarios', 'Categorias', 'Arquivos']
+            'contain' => ['Usuarios', 'Categorias', 'Arquivos', 'Empresas']
         ]);
 
         $this->set('servico', $servico);
@@ -64,7 +64,8 @@ class ServicosController extends AppController
         }
         $usuarios = $this->Servicos->Usuarios->find('list', ['limit' => 200]);
         $categorias = $this->Servicos->Categorias->find('list', ['limit' => 200]);
-        $this->set(compact('servico', 'usuarios', 'categorias'));
+        $empresas = $this->Servicos->Empresas->find('list', ['limit' => 200]);
+        $this->set(compact('servico', 'usuarios', 'categorias', 'empresas'));
         $this->set('_serialize', ['servico']);
     }
 
@@ -91,7 +92,8 @@ class ServicosController extends AppController
         }
         $usuarios = $this->Servicos->Usuarios->find('list', ['limit' => 200]);
         $categorias = $this->Servicos->Categorias->find('list', ['limit' => 200]);
-        $this->set(compact('servico', 'usuarios', 'categorias'));
+        $empresas = $this->Servicos->Empresas->find('list', ['limit' => 200]);
+        $this->set(compact('servico', 'usuarios', 'categorias', 'empresas'));
         $this->set('_serialize', ['servico']);
     }
 
@@ -116,13 +118,42 @@ class ServicosController extends AppController
     
     public function sobre()
     {
-        
         $this->viewBuilder()->layout('simples');
+        
+        $this->loadModel('Detalhes');
+        
+        $subquery = $this->Servicos->Empresas->find();
+        
         $query = $this->Servicos->find()
-                ->where(['Categorias.nome' => 'Site', 'Servicos.nome' => 'Sobre'])
-                ->contain(['Categorias', 'Arquivos', 'Empresas', 'Detalhes'])
-                ->first();
-                
+                ->select([
+                    'Servicos.id',
+                    'Servicos.nome',
+                    'Empresas.id',
+                    'Detalhes.empresa_id',
+                    'Detalhes.descricao'
+                ])
+                ->join([
+                    'Detalhes' => [
+                        'table' => 'detalhes',
+                        'type' => 'LEFT',
+                        'conditions' => 'Empresas.id = Detalhes.empresa_id'
+                    ]
+                ])
+                ->where([
+                    'Detalhes.descricao' => $subquery
+                        ->where(['Detalhes.empresa_id = Empresa.id'])
+                ]);
+        
+//        $query = $this->Servicos->find()
+//                ->contain(['Categorias', 'Arquivos', 'Empresas', 
+//                    'Detalhes' => contain(['Empresas'])
+//                ])
+//                ->where([
+//                    'Categorias.nome' => 'Site', 
+//                    'Servicos.nome' => 'Sobre'])
+//                ->first();
+        
+//        $query->leftJoin(['Empresas.id = Detalhes.empresa_id']);       
         
         $this->set('pagina', $query);
         $this->set('_serialize', 'pagina');

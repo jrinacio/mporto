@@ -23,6 +23,10 @@
         echo $this->Form->input('categoria_id', [
             'options' => $categorias,
             'empty' => 'Selecione...']);
+        echo $this->Form->input('empresa_id', [
+            'options' => $empresas,
+            'empty' => 'Selecione...'
+        ]);
         $optAtivos = [0 => 'Não', 1 => 'Sim'];
         echo $this->Form->input('ativo', [
             'label' => 'Ativo',

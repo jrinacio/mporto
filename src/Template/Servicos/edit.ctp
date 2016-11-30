@@ -28,8 +28,18 @@
     <?php
         echo $this->Form->input('nome');
         echo $this->Form->input('descricao');
-        echo $this->Form->input('usuario_id', ['options' => $usuarios, 'empty' => true]);
-        echo $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => true]);
+        echo $this->Form->input('usuario_id', [
+            'label' => 'Usuário',
+            'options' => $usuarios, 
+            'empty' => true]);
+        echo $this->Form->input('categoria_id', [
+            'label' => 'Categoria',
+            'options' => $categorias, 
+            'empty' => true]);
+        echo $this->Form->input('empresa_id', [
+            'label' => 'Empresa', 
+            'options' => $empresas,
+            'empty' => true]);
         echo $this->Form->input('ativo');
         echo $this->Form->input('exibir', ['label' => 'Exibir na Homepage']);
     ?>

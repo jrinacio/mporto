@@ -17,6 +17,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\HasMany $Empresas
  * @property \Cake\ORM\Association\HasMany $Enderecos
  * @property \Cake\ORM\Association\HasMany $Funcionarios
+ * @property \Cake\ORM\Association\HasMany $Servicos
  */
 class EmpresasTable extends Table
 {
@@ -84,6 +85,10 @@ class EmpresasTable extends Table
             'foreignKey' => 'empresa_id'
         ]);
         $this->hasMany('Funcionarios', [
+            'foreignKey' => 'empresa_id'
+        ]);
+        $this->hasMany('Servicos', [
+            'className' => 'Servicos',
             'foreignKey' => 'empresa_id'
         ]);
     }
