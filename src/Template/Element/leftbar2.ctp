@@ -1,7 +1,6 @@
 
 <div class="col-sm-2 col-md-2">
     <div class="panel-group" id="accordion">
-        <?= $this->fetch('vws') ?>
         <?php if ($this->request['controller'] != 'Arquivos'): ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -32,6 +31,7 @@
                 </div>
             </div>
         <?php endif; ?>
+        <?= $this->fetch('arqu') ?>
         <?php if ($this->request['controller'] != 'Categorias'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -62,6 +62,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('cate') ?>
         <?php if ($this->request['controller'] != 'Detalhes'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -92,6 +93,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('cont') ?>
         <?php if ($this->request['controller'] != 'Empresas'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -122,6 +124,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('empr') ?>
         <?php if ($this->request['controller'] != 'Enderecos'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -152,6 +155,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('ende') ?>
         <?php if ($this->request['controller'] != 'Eventos'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">

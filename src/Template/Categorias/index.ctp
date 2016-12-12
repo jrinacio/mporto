@@ -1,4 +1,4 @@
-<?= $this->start('vws') ?>
+<?= $this->start('cate') ?>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -41,8 +41,8 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                    <th><?= $this->Paginator->sort('nome', 'Nome') ?></th>
-                    <th><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
+                    <th class="col-md-2"><?= $this->Paginator->sort('nome', 'Nome') ?></th>
+                    <th class="col-md-6"><?= $this->Paginator->sort('descricao', 'Descrição') ?></th>
                     <th><?= $this->Paginator->sort('ativo', 'Ativo') ?></th>
                     <th class="actions"><?= __('Ações') ?></th>
                 </tr>

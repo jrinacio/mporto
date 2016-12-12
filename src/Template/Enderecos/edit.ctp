@@ -1,14 +1,45 @@
-<?= $this->start('vws') ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-edit"></i>&nbsp;Editar endereço</a></li>
-    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir endereço'),
-            ['action' => 'delete', $endereco->id],
-            ['confirm' => __('Certeza que deseja excluir o endereço de código # {0}?', $endereco->id),
-             'escape' => false, 'class' => 'btn btn-danger'])?></li>
-    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar enderecos'), 
-            ['action' => 'index'], ['escape' => false, 'class' => 'btn btn-primary']) ?></li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo endereço'), 
-            ['action' => 'add'],
-            ['escape' => false, 'class' => 'btn btn-primary']) ?> </li>
+<?= $this->start('ende') ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-map-marker icone"></i>Endereços</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a href="#"><i class="fa fa-pencil icone"></i>Editar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Form->postLink(__('<i class="fa fa-trash-o icone"></i>Excluir'),
+                                ['controller' => 'enderecos', 'action' => 'delete', $endereco->id],
+                                ['confirm' => __('Você tem certeza que deseja excluir o endereço # {0}?', $endereco->id),
+                                 'escape' => false]); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-list icone"></i>Listar'), 
+                                ['controller' => 'enderecos', 'action' => 'index'],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'), 
+                                ['controller' => 'endereços', 'action' => 'add'], 
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+    </div>
 <?= $this->end() ?>
 
 <div class="col-md-10">

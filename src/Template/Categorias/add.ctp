@@ -1,4 +1,4 @@
-<?= $this->start('vws'); ?>
+<?= $this->start('cate'); ?>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -37,19 +37,16 @@
         </ol>
         <div>
             <?= $this->Form->create($categoria) ?>
-            <fieldset>
-                <legend><?= __('Add Categoria') ?></legend>
-                <?php
-                    echo $this->Form->input('nome', ['label' => 'Nome']);
-                    echo $this->Form->input('descricao', ['label' => 'Descrição']);
-                    $optAtivos = [0 => 'Não', 1 => 'Sim'];
-                    echo $this->Form->input('ativo', [
-                        'label' => 'Ativo',
-                        'options' => $optAtivos,
-                        'default' => 1
-                    ]);
-                ?>
-            </fieldset>
+            <?php
+                echo $this->Form->input('nome', ['label' => 'Nome']);
+                echo $this->Form->input('descricao', ['label' => 'Descrição']);
+                $optAtivos = [0 => 'Não', 1 => 'Sim'];
+                echo $this->Form->input('ativo', [
+                    'label' => 'Ativo',
+                    'options' => $optAtivos,
+                    'default' => 1
+                ]);
+            ?>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>

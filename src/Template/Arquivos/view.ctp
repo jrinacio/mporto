@@ -1,5 +1,5 @@
 <?php // debug($arquivo) ?>
-<?= $this->start('vws'); ?>
+<?= $this->start('arqu'); ?>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-<?= $this->end('vws'); ?>
+<?= $this->end(); ?>
 
 <div class="col-md-10 divisoria">
     <h1 class="page-header">
