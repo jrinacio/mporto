@@ -186,6 +186,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('even') ?>
         <?php if ($this->request['controller'] != 'Servicos'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -216,6 +217,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('serv') ?>
         <?php if ($this->request['controller'] != 'Usuarios'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
@@ -246,6 +248,7 @@
             </div>
         </div>
         <?php endif; ?>
+        <?= $this->fetch('user') ?>
     </div>
 </div>
         

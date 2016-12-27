@@ -1,23 +1,53 @@
-<?= $this->start('vws'); ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-search"></i>&nbsp;Detalhe Serviço</a></li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Editar Serviço'), 
-       ['controller' => 'servicos', 'action' => 'edit', $servico->id],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
-    </li>
-    <li><?= $this->Form->postLink(__('<i class="fa fa-trash-o"></i> Excluir Servico'), 
-       ['controller' => 'servicos', 'action' => 'delete', $servico->id], 
-       ['confirm' => __('Deseja excluir o servico # {0}?', $servico->id),
-        'escape' => false, 'class' => 'btn btn-danger']) ?> 
-    </li>
-    <li><?= $this->Html->link(__('<i class="fa fa-list"></i> Listar Servicos'), 
-       ['controller' => 'servicos', 'action' => 'index'],
-       ['escape' => false, 'class' => 'btn btn-primary']) ?> 
-    </li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo Servico'), 
-        ['controller' => 'servicos', 'action' => 'add'], 
-        ['escape' => false, 'class' => 'btn btn-primary']) ?>
-    </li>
-<?= $this->end('vws'); ?>
+<?= $this->start('serv'); ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-cogs icone"></i>Serviços</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a href="#"><i class="fa fa-search icone"></i>Detalhe</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Editar'), 
+                                ['controller' => 'servicos', 'action' => 'edit', $servico->id],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Form->postLink(__('<i class="fa fa-trash-o icone"></i>Excluir'),
+                                ['controller' => 'servicos', 'action' => 'delete', $servico->id],
+                                ['confirm' => __('Você tem certeza que deseja excluir o serviço # {0}?', $servico->id),
+                                 'escape' => false]); ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-list icone"></i>Listar'), 
+                                ['controller' => 'servicos', 'action' => 'index'],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'), 
+                                ['controller' => 'servicos', 'action' => 'add'], 
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+    </div>
+<?= $this->end(); ?>
 
 
 <div class="col-md-10">

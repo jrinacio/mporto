@@ -1,9 +1,30 @@
-<?= $this->start('vws') ?>
-    <li><a href="#" class="btn btn-primary active"><i class="fa fa-list"></i>&nbsp;Usuários</a></li>
-    <li><?= $this->Html->link(__('<i class="fa fa-plus"></i> Novo usuário'), 
-            ['controller' => 'usuarios', 'action' => 'add'], 
-            ['escape' => false, 'class' => 'btn btn-primary']) ?>
-    </li>
+<?= $this->start('user') ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-users icone"></i>Usuários</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a href="#"><i class="fa fa-list icone"></i>Usuários</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'), 
+                                ['controller' => 'usuarios', 'action' => 'add'],
+                                ['escape' => false]) ?>
+                        </td>
+                    </tr>
+               </table>
+            </div>
+        </div>
+    </div>
 <?= $this->end() ?>
 <div class="col-md-10 divisoria">
     <h1 class="page-header">
