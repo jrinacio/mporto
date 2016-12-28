@@ -118,45 +118,46 @@ class ServicosController extends AppController
     
     public function sobre()
     {
-        $this->viewBuilder()->layout('simples');
+        $this->viewBuilder()->layout('frontend');
         
         $this->loadModel('Detalhes');
         
-        $subquery = $this->Servicos->Empresas->find();
-        
-        $query = $this->Servicos->find()
-                ->select([
-                    'Servicos.id',
-                    'Servicos.nome',
-                    'Empresas.id',
-                    'Detalhes.empresa_id',
-                    'Detalhes.descricao'
-                ])
-                ->join([
-                    'Detalhes' => [
-                        'table' => 'detalhes',
-                        'type' => 'LEFT',
-                        'conditions' => 'Empresas.id = Detalhes.empresa_id'
-                    ]
-                ])
-                ->where([
-                    'Detalhes.descricao' => $subquery
-                        ->where(['Detalhes.empresa_id = Empresa.id'])
-                ]);
+        $detalhes = $this->Servicos->Empresas->Detalhes->find()->first();
         
 //        $query = $this->Servicos->find()
-//                ->contain(['Categorias', 'Arquivos', 'Empresas', 
-//                    'Detalhes' => contain(['Empresas'])
+//                ->select([
+//                    'Servicos.id',
+//                    'Servicos.nome',
+//                    'Empresas.id',
+//                    'Detalhes.empresa_id',
+//                    'Detalhes.descricao'
+//                ])
+//                ->join([
+//                    'Detalhes' => [
+//                        'table' => 'detalhes',
+//                        'type' => 'LEFT',
+//                        'conditions' => 'Empresas.id = Detalhes.empresa_id'
+//                    ]
 //                ])
 //                ->where([
-//                    'Categorias.nome' => 'Site', 
-//                    'Servicos.nome' => 'Sobre'])
-//                ->first();
+//                    'Detalhes.descricao' => $subquery
+//                        ->where(['Detalhes.empresa_id = Empresa.id'])
+//                ]);
+        
+        $query = $this->Servicos->find()
+                ->contain(['Categorias', 'Arquivos', 'Empresas'])
+                ->where([
+                    'Categorias.nome' => 'Site', 
+                    'Servicos.nome' => 'Sobre',
+                ])
+                ->first();
         
 //        $query->leftJoin(['Empresas.id = Detalhes.empresa_id']);       
         
-        $this->set('pagina', $query);
-        $this->set('_serialize', 'pagina');
+        $this->set('detalhes', $detalhes);
+        $this->set('_serialize', 'detalhes');
+        $this->set('pagsobre', $query);
+        $this->set('_serialize', 'pagsobre');
 //        
 //        $servico = $this->Servicos->get($id, [
 //            'contain' => ['Categorias', 'Arquivos']
