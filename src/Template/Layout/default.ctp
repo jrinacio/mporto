@@ -32,11 +32,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('bootstrap.css') ?>
     <?= $this->Html->css('modern-business.css') ?>
     <?= $this->Html->css('font-awesome/css/font-awesome.css') ?>
+    <?= $this->Html->css('jquery.dataTables.min.css') ?>
     <?= $this->Html->css('mporto.css') ?>
     
     <!-- javascript -->
-    <?= $this->Html->script('jquery-2.1.3.min') ?>
     <?= $this->Html->script('bootstrap') ?>
+    <?= $this->Html->script('jquery.dataTables.min') ?>
+    <?= $this->Html->script('dataTables.bootstrap.min') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
