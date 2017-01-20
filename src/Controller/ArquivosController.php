@@ -25,21 +25,21 @@ class ArquivosController extends AppController
    
 //        $this->set('arqs','<li class="active"><a href="#"><i class="fa fa-list"></i> Arquivos</a></li>');
 //        $this->fetch('vwArqs');
-        $config = [
-            'fileds' => [
-                'Arquivos.id', 
-                'Arquivos.evento_id',
-                'Arquivos.servico_id',
-                'Arquivo.nome',
-                'Arquivo.size',
-                'Arquivo.ativo'],
-            'limit' => 6,
-            'contain' => ['Usuarios', 'Eventos', 'Servicos']
-        ];
-        $query = $this->Arquivos->find();
-        $this->set('arquivos', $this->Paginator->paginate($query, $config));
-
-//        $this->set(compact('arquivos'));
+//        $config = [
+//            'fileds' => [
+//                'Arquivos.id', 
+//                'Arquivos.evento_id',
+//                'Arquivos.servico_id',
+//                'Arquivo.nome',
+//                'Arquivo.size',
+//                'Arquivo.ativo'],
+//            'limit' => 6,
+//            'contain' => ['Usuarios', 'Eventos', 'Servicos']
+//        ];
+//        $query = $this->Arquivos->find();
+//        $this->set('arquivos', $this->Paginator->paginate($query, $config));
+        $arquivos = $this->Arquivos->find();
+        $this->set(compact('arquivos'));
         $this->set('_serialize', ['arquivos']);
     }
 

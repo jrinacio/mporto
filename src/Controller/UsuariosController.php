@@ -39,7 +39,9 @@ class UsuariosController extends AppController
      */
     public function index()
     {
-        $usuarios = $this->paginate($this->Usuarios);
+//        $usuarios = $this->paginate($this->Usuarios);
+        
+        $usuarios = $this->Usuarios->find();
 
         $this->set(compact('usuarios'));
         $this->set('_serialize', ['usuarios']);

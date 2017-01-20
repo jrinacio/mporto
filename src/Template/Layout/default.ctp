@@ -36,9 +36,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('mporto.css') ?>
     
     <!-- javascript -->
+    <?= $this->Html->script('jquery-2.1.3.min') ?>
     <?= $this->Html->script('bootstrap') ?>
     <?= $this->Html->script('jquery.dataTables.min') ?>
     <?= $this->Html->script('dataTables.bootstrap.min') ?>
+    <?= $this->Html->script('mporto') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

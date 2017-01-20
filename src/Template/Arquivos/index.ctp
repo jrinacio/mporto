@@ -36,7 +36,7 @@
         <li class="active">Lista de imagens</li>
     </ol>
     <div class="table-responsive">
-        <table class="table table-hover table-condensed">
+        <table id="tbArquivos" class="table table-hover table-condensed">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id', 'ID') ?></th>
@@ -75,16 +75,33 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="row text-center">
-        <div class="paginator">
-            <ul class="pagination">
-                <!--$this->Paginator->prev('< ' . __('previous'))-->
-                <?= $this->Paginator->numbers() ?>
-                <!--$this->Paginator->next(__('next') . ' >')-->
-            </ul>
-            <p><?= $this->Paginator->counter() ?></p>
-        </div>
+         <?php $this->Html->scriptStart(['block' => true]); ?>
+            var options = {
+                "paging": true,
+                "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "language": {
+                    "lengthMenu":     "Exibir _MENU_ registros",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Página _PAGE_ de _PAGES_ páginas",
+                    "infoempty": "Sem registros.",
+                    "search": "Procurar",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            };
+            $(function () {
+                $('#tbArquivos').DataTable(options);
+            });
+        <?php $this->Html->scriptEnd(); ?>
     </div>
 </div>
 

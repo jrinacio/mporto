@@ -36,7 +36,7 @@
         <li class="active">Lista de usuários</li>
     </ol>
     <div class="table-responsive">
-        <table class="table table-hover table-condensed">
+        <table id="tbUsuarios" class="table table-hover table-condensed">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id', 'ID') ?></th>
@@ -71,13 +71,32 @@
                     <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+        <?php $this->Html->scriptStart(['block' => true]); ?>
+            var options = {
+                "paging": true,
+                "lengthMenu": [[15, 50, 100, -1], [15, 50, 100, "All"]],
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "language": {
+                    "lengthMenu":     "Exibir _MENU_ registros",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Página _PAGE_ de _PAGES_ páginas",
+                    "infoempty": "Sem registros.",
+                    "search": "Procurar",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            };
+            $(function () {
+                $('#tbUsuarios').DataTable(options);
+            });
+        <?php $this->Html->scriptEnd(); ?>
     </div>
 </div>
