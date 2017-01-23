@@ -43,7 +43,7 @@
 <?= $this->end() ?>
 <div class="col-md-10 divisoria">
     <h1 class="page-header">
-        <?= __('Arquivos') ?>
+        <?= __('Contexto') ?>
         <small>Editar</small>
     </h1>
     <ol class="breadcrumb">
@@ -53,6 +53,7 @@
     <?= $this->Form->create($detalhe) ?>
     <?php
         echo $this->Form->input('empresa_id', ['options' => $empresas, 'empty' => true]);
+        echo $this->Form->input('servico_id', ['options' => $servicos, 'empty' => true]);
         echo $this->Form->input('titulo');
         echo $this->TinyMCE->editor(['selector' => 'textarea']);
         echo $this->Form->input('descricao');

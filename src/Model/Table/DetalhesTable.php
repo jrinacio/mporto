@@ -36,6 +36,12 @@ class DetalhesTable extends Table
             'foreignKey' => 'empresa_id',
             'joinType' => 'INNER'
         ]);
+        
+        $this->belongsTo('Servicos', [
+            'foreignkey' => "servico_id",
+            'joinType' => 'INNER'
+        ]);
+        
         $this->belongsTo('Usuarios', [
             'foreignKey' => 'usuario_id'
         ]);

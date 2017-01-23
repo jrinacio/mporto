@@ -20,7 +20,7 @@ class DetalhesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Empresas', 'Usuarios']
+            'contain' => ['Empresas', 'Servicos', 'Usuarios']
         ];
         $detalhes = $this->paginate($this->Detalhes);
 
@@ -77,9 +77,10 @@ class DetalhesController extends AppController
                 $this->Flash->error(__('The detalhe could not be saved. Please, try again.'));
             }
         }
-        $empresas = $this->Detalhes->Empresas->find('list', ['limit' => 200]);
-        $usuarios = $this->Detalhes->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('detalhe', 'empresas', 'usuarios'));
+        $empresas = $this->Detalhes->Empresas->find('list');
+        $servicos = $this->Detalhes->Servicos->find('list');
+        $usuarios = $this->Detalhes->Usuarios->find('list');
+        $this->set(compact('detalhe', 'empresas', 'servicos', 'usuarios'));
         $this->set('_serialize', ['detalhe']);
     }
 
@@ -104,9 +105,10 @@ class DetalhesController extends AppController
                 $this->Flash->error(__('The detalhe could not be saved. Please, try again.'));
             }
         }
-        $empresas = $this->Detalhes->Empresas->find('list', ['limit' => 200]);
-        $usuarios = $this->Detalhes->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('detalhe', 'empresas', 'usuarios'));
+        $empresas = $this->Detalhes->Empresas->find('list');
+        $servicos = $this->Detalhes->Servicos->find('list');
+        $usuarios = $this->Detalhes->Usuarios->find('list');
+        $this->set(compact('detalhe', 'empresas', 'servicos', 'usuarios'));
         $this->set('_serialize', ['detalhe']);
     }
 

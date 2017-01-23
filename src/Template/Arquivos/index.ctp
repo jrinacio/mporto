@@ -35,7 +35,7 @@
         <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
         <li class="active">Lista de imagens</li>
     </ol>
-    <div class="table-responsive">
+    <div>
         <table id="tbArquivos" class="table table-hover table-condensed">
             <thead>
                 <tr>
@@ -78,6 +78,7 @@
          <?php $this->Html->scriptStart(['block' => true]); ?>
             var options = {
                 "paging": true,
+                "pagingType": "simple_numbers",
                 "lengthMenu": [[5, 25, 50, -1], [5, 25, 50, "All"]],
                 "lengthChange": true,
                 "searching": true,

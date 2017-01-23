@@ -4,21 +4,21 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Detalhe Entity.
+ * Funcionario Entity
  *
  * @property int $id
+ * @property int  $usuario_id
+ * @property string $nome
+ * @property string $email
+ * @property string $telefone
  * @property int $empresa_id
- * @property \App\Model\Entity\Empresa $empresa
- * @property \App\Model\Entity\Servico $servico
- * @property string $titulo
- * @property string $descricao
- * @property int $usuario_id
+ * @property string $ds_cargo
+ * @property int $ic_ativo
+ *
  * @property \App\Model\Entity\Usuario $usuario
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property int $ativo
+ * @property \App\Model\Entity\Empresa $empresa
  */
-class Detalhe extends Entity
+class Funcionario extends Entity
 {
 
     /**
@@ -32,6 +32,6 @@ class Detalhe extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => false
     ];
 }

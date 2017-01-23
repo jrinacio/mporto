@@ -120,60 +120,15 @@ class ServicosController extends AppController
     {
         $this->viewBuilder()->layout('frontend');
         
-        $this->loadModel('Detalhes');
-        
-        $detalhes = $this->Servicos->Empresas->Detalhes->find()->first();
-        
-//        $query = $this->Servicos->find()
-//                ->select([
-//                    'Servicos.id',
-//                    'Servicos.nome',
-//                    'Empresas.id',
-//                    'Detalhes.empresa_id',
-//                    'Detalhes.descricao'
-//                ])
-//                ->join([
-//                    'Detalhes' => [
-//                        'table' => 'detalhes',
-//                        'type' => 'LEFT',
-//                        'conditions' => 'Empresas.id = Detalhes.empresa_id'
-//                    ]
-//                ])
-//                ->where([
-//                    'Detalhes.descricao' => $subquery
-//                        ->where(['Detalhes.empresa_id = Empresa.id'])
-//                ]);
-        
         $query = $this->Servicos->find()
-                ->contain(['Categorias', 'Arquivos', 'Empresas'])
+                ->contain(['Empresas', 'Categorias', 'Detalhes', 'Arquivos'])
                 ->where([
                     'Categorias.nome' => 'Site', 
-                    'Servicos.nome' => 'Sobre',
+                    'Servicos.nome' => 'Página Sobre',
                 ])
-                ->first();
-        
-//        $query->leftJoin(['Empresas.id = Detalhes.empresa_id']);       
-        
-        $this->set('detalhes', $detalhes);
-        $this->set('_serialize', 'detalhes');
+                ->first();    
+
         $this->set('pagsobre', $query);
         $this->set('_serialize', 'pagsobre');
-//        
-//        $servico = $this->Servicos->get($id, [
-//            'contain' => ['Categorias', 'Arquivos']
-//        ]);
-
-//        $this->set('servico', $servico);
-//        $this->set('_serialize', ['servico']);
     }
-
-
-//    public function display()
-//    {
-//        $this->loadModel('Servicos');
-//        $servicos = $this->Servicos->find()
-//                ->select(['id', 'nome', 'descricao'])
-//                ->where(['ativo' => 1]);
-//        $this->set('servicos', $servicos);
-//    }
 }

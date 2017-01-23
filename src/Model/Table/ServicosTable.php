@@ -51,6 +51,11 @@ class ServicosTable extends Table
             'foreignKey' => 'servico_id',
             'joinType' => 'INNER'
         ]);
+        
+        $this->hasMany('Detalhes', [
+            'foreignKey' => 'servico_id',
+            'joinType' => 'INNER'
+        ]);
     }
 
     /**

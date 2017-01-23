@@ -43,6 +43,7 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id', 'ID') ?></th>
                     <th><?= $this->Paginator->sort('empresa_id', 'Empresa') ?></th>
+                    <th><?= $this->Paginator->sort('servico_id', 'Serviço') ?></th>
                     <th><?= $this->Paginator->sort('titulo', 'Título') ?></th>
                     <th><?= $this->Paginator->sort('ativo') ?></th>
                     <th class="actions"><?= __('Ações') ?></th>
@@ -54,6 +55,8 @@
                     <td><?= $this->Number->format($detalhe->id) ?></td>
                     <td><?= $detalhe->has('empresa') ? $this->Html->link($detalhe->empresa->nome, 
                             ['controller' => 'Empresas', 'action' => 'view', $detalhe->empresa->id]) : '' ?></td>
+                    <td><?= $detalhe->has('servico') ? $this->Html->link($detalhe->servico->nome, 
+                            ['controller' => 'Servicos', 'action' => 'view', $detalhe->servico->id]) : '' ?></td>
                     <td><?= h($detalhe->titulo) ?></td>
                     <td><?= $this->Number->format($detalhe->ativo) ?></td>
                     <td class="col-md-2">

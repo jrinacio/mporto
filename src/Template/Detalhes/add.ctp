@@ -41,6 +41,11 @@
     <?php
         echo $this->Form->input('empresa_id', [
             'options' => $empresas, 'empty' => true, 'label' => 'Empresa']);
+    ?>
+    
+    <?php
+        echo $this->Form->input('servico_id', [
+            'options' => $servicos, 'empty' => true, 'label' => 'Servico']);
         echo $this->Form->input('titulo', ['label' => 'Título']);
     ?>
 

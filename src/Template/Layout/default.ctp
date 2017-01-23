@@ -52,7 +52,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         echo $this->element('navbar');
     ?>
 
-    <div class="container container-top">
+    <div class="container-fluid container-top">
         <div class="row">
              <!--$this->fetch('title')--> 
             <?= $this->Flash->render() ?>
