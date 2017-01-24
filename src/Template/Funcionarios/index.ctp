@@ -1,29 +1,58 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Funcionario'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Empresas'), ['controller' => 'Empresas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Empresa'), ['controller' => 'Empresas', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="funcionarios index large-9 medium-8 columns content">
-    <h3><?= __('Funcionarios') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nome') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('telefone') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('empresa_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ds_cargo') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('ic_ativo') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($funcionarios as $funcionario): ?>
-            <tr>
+<?= $this->start('func') ?>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapseSeven" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-users icone"></i>Funcionários
+                </a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a href="#"><i class="fa fa-list icone"></i>Funcionários</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'),
+                                    ['controller' => 'funcionarios', 'action' => 'add'],
+                                    ['escape' => false]) ?>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+<?= $this->end() ?>
+<div class="col-md-10 divisoria">
+    <h1 class="page-header">
+        <?= __('Funcionarios') ?>
+        <small>Listagem</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
+        <li class="active">Lista de Funcionários</li>
+    </ol>
+    <div class="table-responsive">
+        <table id="tbFuncionarios">
+            <thead>
+                <tr>
+                    <th><?= __('ID') ?></th>
+                    <th><?= __('Nome') ?></th>
+                    <th><?= __('E-mail') ?></th>
+                    <th><?= __('Telefone') ?></th>
+                    <th><?= __('Empresa') ?></th>
+                    <th><?= __('Cargo') ?></th>
+                    <th><?= __('Ativo') ?></th>
+                    <th><?= __('Ações') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($funcionarios as $funcionario): ?>
+                    <tr>
                 <td><?= $this->Number->format($funcionario->id) ?></td>
                 <td><?= h($funcionario->nome) ?></td>
                 <td><?= h($funcionario->email) ?></td>
@@ -37,15 +66,35 @@
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $funcionario->id], ['confirm' => __('Are you sure you want to delete # {0}?', $funcionario->id)]) ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php $this->Html->scriptStart(['block' => true]); ?>
+            var options = {
+                "paging": true,
+                "lengthMenu": [[15, 50, 100, -1], [15, 50, 100, "All"]],
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "language": {
+                    "lengthMenu":     "Exibir _MENU_ registros",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Página _PAGE_ de _PAGES_ páginas",
+                    "infoempty": "Sem registros.",
+                    "search": "Procurar",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            };
+            $(function () {
+                $('#tbFuncionarios').DataTable(options);
+            });
+        <?php $this->Html->scriptEnd(); ?>
     </div>
 </div>

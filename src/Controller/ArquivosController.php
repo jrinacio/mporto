@@ -38,7 +38,7 @@ class ArquivosController extends AppController
 //        ];
 //        $query = $this->Arquivos->find();
 //        $this->set('arquivos', $this->Paginator->paginate($query, $config));
-        $arquivos = $this->Arquivos->find();
+        $arquivos = $this->Arquivos->find()->contain(['Eventos', 'Servicos']);
         $this->set(compact('arquivos'));
         $this->set('_serialize', ['arquivos']);
     }

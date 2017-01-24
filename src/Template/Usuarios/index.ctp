@@ -2,11 +2,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fa fa-users icone"></i>Usuários</a>
+                <a href="#collapseNine" data-toggle="collapse" data-parent="#accordion">
+                    <i class="fa fa-user-plus icone"></i>Usuários</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseNine" class="panel-collapse collapse in">
             <div class="panel-body">
                 <table class="table">
                     <tr>

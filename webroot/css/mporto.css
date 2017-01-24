@@ -23,6 +23,7 @@ and open the template in the editor.
 
 .divisoria {
     border-left: 1px solid #BEBEBE;
+    min-height: 750px;
 }
 
 .container-top {
@@ -183,4 +184,8 @@ footer > .container-fluid {
 
 .icone {
     margin-right: 20px;
+}
+
+.rowtam {
+    min-height: 700px;
 }

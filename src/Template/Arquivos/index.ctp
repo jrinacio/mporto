@@ -39,14 +39,14 @@
         <table id="tbArquivos" class="table table-hover table-condensed">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                    <th><?= __('ID') ?></th>
                     <th><?= __('Imagem') ?></th>
-                    <th><?= $this->Paginator->sort('evento_id', 'Evento ID') ?></th>
-                    <th><?= $this->Paginator->sort('servico_id', 'Serviço ID') ?></th>
-                    <th><?= $this->Paginator->sort('name', 'Nome') ?></th>
-                    <th><?= $this->Paginator->sort('size', 'Tamanho') ?></th>
-                    <th><?= $this->Paginator->sort('ativo', 'Ativo') ?></th>
-                    <th class="actions"><?= __('Ações') ?></th>
+                    <th><?= __('Evento ID') ?></th>
+                    <th><?= __('Serviço ID') ?></th>
+                    <th><?= __('Nome') ?></th>
+                    <th><?= __('Tamanho') ?></th>
+                    <th><?= __('Ativo') ?></th>
+                    <th><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -54,8 +54,10 @@
                     <tr>
                         <td><?= $this->Number->format($arquivo->id) ?></td>
                         <td><?= $this->Html->image('/imgs/arquivos/file/' . $arquivo->dir . '/square_' . $arquivo->name) ?></td>
-                        <td><?= $arquivo->has('evento') ? $this->Html->link($arquivo->evento->id, ['controller' => 'Eventos', 'action' => 'view', $arquivo->evento->id]) : '' ?></td>
-                        <td><?= $arquivo->has('servico') ? $this->Html->link($arquivo->servico->id, ['controller' => 'Servicos', 'action' => 'view', $arquivo->servico->id]) : '' ?></td>
+                        <td><?= $arquivo->has('evento') ? $this->Html->link($arquivo->evento->id, 
+                                ['controller' => 'Eventos', 'action' => 'view', $arquivo->evento->id]) : '' ?></td>
+                        <td><?= $arquivo->has('servico') ? $this->Html->link($arquivo->servico->nome, 
+                                ['controller' => 'Servicos', 'action' => 'view', $arquivo->servico->id]) : '' ?></td>
                         <td><?= h($arquivo->name) ?></td>
                         <td><?= $this->Number->format($arquivo->size) ?></td>
                         <td><?= $this->Number->format($arquivo->ativo) ?></td>

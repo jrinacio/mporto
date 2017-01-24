@@ -187,15 +187,46 @@
         </div>
         <?php endif; ?>
         <?= $this->fetch('even') ?>
-        <?php if ($this->request['controller'] != 'Servicos'): ?>
+        <?php if ($this->request['controller'] != 'Funcionarios'): ?>
             <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                      <a href="#collapseSeven" data-toggle="collapse" data-parent="#accordion">
-                            <i class="fa fa-cogs icone"></i>Serviços</a>
+                            <i class="fa fa-users icone"></i>Funcionários</a>
                 </h4>
             </div>
             <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <?= $this->html->link(__('<i class="fa fa-list icone"></i>Listar'),
+                                    ['controller' => 'funcionarios', 'action' => 'index'],
+                                    ['escape' => false]) ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <?= $this->Html->link(__('<i class="fa fa-plus icone"></i>Novo'), 
+                                    ['controller' => 'funcionarios', 'action' => 'add'], 
+                                    ['escape' => false]) ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?= $this->fetch('func') ?>
+        <?php if ($this->request['controller'] != 'Servicos'): ?>
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                     <a href="#collapseEight" data-toggle="collapse" data-parent="#accordion">
+                            <i class="fa fa-cogs icone"></i>Serviços</a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
                 <div class="panel-body">
                     <table class="table">
                         <tr>
@@ -222,11 +253,11 @@
             <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                     <a href="#collapseEight" data-toggle="collapse" data-parent="#accordion">
-                            <i class="fa fa-users icone"></i>Usuários</a>
+                     <a href="#collapseNine" data-toggle="collapse" data-parent="#accordion">
+                            <i class="fa fa-user-plus icone"></i>Usuários</a>
                 </h4>
             </div>
-            <div id="collapseEight" class="panel-collapse collapse">
+            <div id="collapseNine" class="panel-collapse collapse">
                 <div class="panel-body">
                     <table class="table">
                         <tr>
