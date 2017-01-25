@@ -38,7 +38,7 @@
     <?= $this->Form->create($funcionario, ['id' => 'upload', 'type' => 'file']) ?>
         <?php
             echo $this->Form->input('nome', ['label' => 'Nome']);
-            echo $this->Form->input('foto', [
+            echo $this->Form->input('file', [
                     'label' => 'Foto',
                 'type' => 'file',
                 'id' => 'file',

@@ -55,7 +55,7 @@ class FuncionariosController extends AppController
         if ($this->request->is('post')) {
             $funcionario = $this->Funcionarios->patchEntity($funcionario, $this->request->data);
             $funcionario->usuario_id = $this->Auth->user('id');
-//            $funcionario->foto = $_FILES['file']['name'];
+            $funcionario->foto = $_FILES['file']['name'];
 //            $funcionario->size = $_FILES['file']['size'];
 //            $funcionario->type = $_FILES['file']['type'];
             if ($this->Funcionarios->save($funcionario)) {

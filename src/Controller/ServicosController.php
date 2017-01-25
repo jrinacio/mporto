@@ -124,11 +124,18 @@ class ServicosController extends AppController
                 ->contain(['Empresas', 'Categorias', 'Detalhes', 'Arquivos'])
                 ->where([
                     'Categorias.nome' => 'Site', 
-                    'Servicos.nome' => 'Página Sobre',
+                    'Servicos.nome' => 'Sobre',
                 ])
                 ->first();    
 
-        $this->set('pagsobre', $query);
-        $this->set('_serialize', 'pagsobre');
+//        $this->set('pagsobre', $query);
+//        $this->set('_serialize', 'pagsobre');
+        $this->set('contextos', $query);
+        $this->set('_serialize', 'contextos');
+    }
+    
+    public function services_html()
+    {
+        $this->viewBuilder()->layout('error');
     }
 }
