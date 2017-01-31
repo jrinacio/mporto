@@ -62,5 +62,6 @@
         <?php endfor; ?>
     </div>
 </div>
+<?= $this->cell('Equipe') ?>
 
 
