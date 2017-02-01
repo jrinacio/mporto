@@ -18,10 +18,10 @@ class FuncionariosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Empresas']
-        ];
-        $funcionarios = $this->paginate($this->Funcionarios);
+//        $this->paginate = [
+//            'contain' => ['Empresas']
+//        ];
+        $funcionarios = $this->Funcionarios->find()->contain(['Empresas']);
 
         $this->set(compact('funcionarios'));
         $this->set('_serialize', ['funcionarios']);
@@ -56,8 +56,8 @@ class FuncionariosController extends AppController
             $funcionario = $this->Funcionarios->patchEntity($funcionario, $this->request->data);
             $funcionario->usuario_id = $this->Auth->user('id');
             $funcionario->foto = $_FILES['file']['name'];
-//            $funcionario->size = $_FILES['file']['size'];
-//            $funcionario->type = $_FILES['file']['type'];
+            $funcionario->size = $_FILES['file']['size'];
+            $funcionario->type = $_FILES['file']['type'];
             if ($this->Funcionarios->save($funcionario)) {
                 $this->Flash->success(__('The funcionario has been saved.'));
 

@@ -56,12 +56,12 @@
         <small>Detalhe</small>
     </h1>
     <ol class="breadcrumb">
-        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?>
+        <li><?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'home']) ?></li>
         <li class="active">Detalhe do arquivo</li>    
     </ol>
     <?= $this->Html->image('/imgs/arquivos/file/' . $arquivo->dir . '/portrait_' . $arquivo->name,[
         'class' => 'img-responsive img-hover',
-        'width' => '450',
+        'heighet' => '200',
         'scape' => false
     ]) ?>
     <div class="table-responsive">

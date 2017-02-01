@@ -9,6 +9,7 @@
         <div class="col-md-4 img-portfolio">
             <?= $this->Html->image('/imgs/arquivos/file/' . $arquivo->dir . '/' . $arquivo->name, [
                 'class' => 'img-responsive img-thumbnail',
+                'height' => '300',
                 'alt' => $arquivo->titulo,
                 'escape' => false
             ]); ?>
