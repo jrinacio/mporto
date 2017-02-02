@@ -63,5 +63,5 @@
     </div>
 </div>
 <?= $this->cell('Equipe') ?>
-
+<?= $this->cell('Funcionarios') ?>
 

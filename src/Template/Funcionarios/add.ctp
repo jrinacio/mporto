@@ -55,6 +55,7 @@
                 'empty' => 'Selecione a empresa...',
                 'label' => 'Empresa']);
             echo $this->Form->input('ds_cargo', ['label' => 'Cargo']);
+            echo $this->Form->textarea('ds_observação', ['label' => 'Observação']);
             echo $this->Form->input('ic_ativo', [
                 'options' => [1 => 'Sim', 0 => 'Não'],
                 'default' => 1,

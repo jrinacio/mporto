@@ -24,5 +24,10 @@ class FuncionariosCell extends Cell
      */
     public function display()
     {
+        $this->loadModel('Funcionarios');
+        $funcionarios = $this->Funcionarios->find()
+                ->contain(['Empresas'])
+                ->where(['ic_ativo' => 1, 'Empresas.nome' => 'Complexo Cultural']);
+        $this->set('funcionarios', $funcionarios);
     }
 }

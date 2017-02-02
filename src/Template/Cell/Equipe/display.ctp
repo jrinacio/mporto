@@ -17,6 +17,4 @@
             <p><?= $arquivo->descricao ?></p>
         </div>
     <?php endforeach; ?>
-
- 
 </div>
