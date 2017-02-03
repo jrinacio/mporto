@@ -130,4 +130,12 @@ class EmpresasController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function contato()
+    {
+//        $this->request->allowMethod(['post', 'contato']);
+        $empresa = $this->Empresas->get(17);
+        $this->set(compact('empresa'));
+        $this->set('_serialize', ['empresa']);
+    }
 }

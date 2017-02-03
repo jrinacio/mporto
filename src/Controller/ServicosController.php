@@ -19,7 +19,7 @@ class ServicosController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Usuarios', 'Categorias', 'Empresas']
+            'contain' => ['Usuarios', 'Categorias', 'Empresas', 'Enderecos']
         ];
         $servicos = $this->paginate($this->Servicos);
 

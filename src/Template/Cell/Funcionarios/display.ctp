@@ -1,6 +1,6 @@
 <div class="row">
     <?php foreach ($funcionarios as $funcionario): ?>
-    <div class="col-md-4 text-center">
+    <div class="col-md-3 text-center">
         <div class="thumbnail">
             <?= $this->Html->image('/funcImgs/funcionarios/file/' . $funcionario->dir . '/' . $funcionario->foto, [
                 'alt' => $funcionario->nome,
@@ -11,10 +11,12 @@
                     <?= $funcionario->nome ?><br>
                     <small><?= $funcionario->ds_cargo ?></small>
                 </h4>
-                <p></p>
-                <?= (__('<i class="fa fa-at fa-2"></i>' . $funcionario->email, [
-                    'escape' => false
-                ])) ?>
+                <button class=" btn btn-primary">
+                    <?= (__('<i class="fa fa-envelope-o fa-2"></i>', [
+                        'class' => 'btn-primary',
+                        'escape' => false
+                    ])) ?>
+                </button>
             </div>
         </div>
     </div>
