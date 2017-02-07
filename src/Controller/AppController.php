@@ -144,7 +144,7 @@ class AppController extends Controller
     public function beforeFilter(Event $event) 
     {
         parent::beforeFilter($event);
-        $this->Auth->allow(['add', 'logout', 'home', 'sobre']);
+        $this->Auth->allow(['add', 'logout', 'home', 'sobre', 'contato']);
         $usuario = $this->Auth->user();
         $this->set(compact($usuario));
     }

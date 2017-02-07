@@ -39,7 +39,10 @@
                         <a href="services.html">Serviços</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contato</a>
+                        <?= $this->Html->link('Contato', [
+                            'controller' => 'Empresas',
+                            'action' => 'contato'
+                        ]) ?>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>

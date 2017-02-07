@@ -60,6 +60,7 @@
             echo $this->Form->input('bairro');
             echo $this->Form->input('cidade');
             echo $this->Form->input('estado');
+            echo $this->Form->input('cep', ['label' => 'CEP']);
         ?>
 
     <?= $this->Form->button(__('Submit')) ?>

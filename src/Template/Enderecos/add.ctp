@@ -45,6 +45,7 @@
         echo $this->Form->input('bairro', ['label' => 'Bairro']);
         echo $this->Form->input('cidade', ['label' => 'Cidade']);
         echo $this->Form->input('estado', ['label' => 'Estado']);
+        echo $this->Form->input('cep', ['label' => 'CEP']);
     ?>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

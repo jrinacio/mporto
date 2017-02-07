@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property string $bairro
  * @property string $cidade
  * @property string $estado
+ * @property string $cep
  */
 class Endereco extends Entity
 {

@@ -64,6 +64,9 @@ class EnderecosTable extends Table
 
         $validator
             ->allowEmpty('estado');
+        
+        $validator
+            ->allowEmpty('cep');
 
         return $validator;
     }

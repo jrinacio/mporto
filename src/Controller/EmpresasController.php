@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
+//use Cake\Mailer\MailerAwareTrait;
 
 /**
  * Empresas Controller
@@ -134,7 +136,35 @@ class EmpresasController extends AppController
     public function contato()
     {
 //        $this->request->allowMethod(['post', 'contato']);
-        $empresa = $this->Empresas->get(17);
+        if($this->request->is('post'))
+        {
+            $msg = $this->request->data;
+            try
+            {
+                $email = new Email();
+                $email->transport('porto');
+                $email->sender('luiz.fonseca@portodesantos.com.br');
+                $email->from($msg['email']);
+                $email->to('luizmew@hotmail.com');
+                $email->replyTo($msg['email']);
+                $email->subject($msg['assunto']);
+                $email->message($msg['mensagem']);
+//                Debug($email);
+                $email->send();
+                $this->Flash->success('Mensagem enviada...');
+                $this->redirect(['action' => 'contato']);
+            } 
+            catch (Exception $ex) 
+            {
+                $this->Flash->error($ex);
+            }
+        }
+        $this->viewBuilder()->layout('frontend');
+//        $empresa = $this->Empresas->get(17);
+        $empresa = $this->Empresas->find()
+                ->contain(['Enderecos'])
+                ->where(['Empresas.nome' => 'Complexo Cultural'])
+                ->first();
         $this->set(compact('empresa'));
         $this->set('_serialize', ['empresa']);
     }
