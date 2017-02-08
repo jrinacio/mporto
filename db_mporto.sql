@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Fev-2017 às 18:17
+-- Generation Time: 08-Fev-2017 às 13:25
 -- Versão do servidor: 5.6.17-log
 -- PHP Version: 5.5.12
 
@@ -190,7 +190,7 @@ INSERT INTO `empresas` (`id`, `nome`, `categoria_id`, `link`, `email`, `telefone
 (14, 'PROAC - Incentivo à Cultura do Estado de São Paulo', 6, 'www.cultura.sp.gov.br', NULL, NULL, '36e4c62f-5ba3-4d90-a2b4-529a436bb737', 'Proac.jpg', 1, 1, NULL, '2016-06-24 15:21:02', '2016-06-24 15:21:02'),
 (15, 'Governo do Estado de São Paulo', 6, 'www.saopaulo.sp.gov.br', NULL, NULL, '7c1d9b11-7116-4903-8400-6a99554374c9', 'GOV_VERTICAL2.jpg', 1, 1, NULL, '2016-06-27 11:14:01', '2016-06-27 11:14:01'),
 (16, 'Governo Federal', 6, 'www.brasil.gov.br', NULL, NULL, 'ae28f601-ba9b-406c-b38b-4db87ff2748a', 'govFederal_374x200.jpg', 1, 1, NULL, '2016-06-27 17:39:19', '2016-06-27 17:39:19'),
-(17, 'Complexo Cultural', 6, '10.0.7.65:8080/mporto', 'luiz.fonseca@portodesantos.com.br', '55(13)3202-6565', 'e4ea0217-68c8-4167-926f-fb3cb2fee99a', 'Porto.jpg', 1, 1, 12, '2016-06-30 14:57:06', '2016-06-30 14:57:06');
+(17, 'Complexo Cultural', 6, '10.0.7.65:8080/mporto', 'complexocultural@portodesantos.com.br', '55(13)3202-6565', 'e4ea0217-68c8-4167-926f-fb3cb2fee99a', 'Porto.jpg', 1, 1, 12, '2016-06-30 14:57:06', '2017-02-06 11:33:27');
 
 -- --------------------------------------------------------
 
@@ -207,16 +207,20 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
   `bairro` varchar(50) DEFAULT NULL,
   `cidade` varchar(50) DEFAULT NULL,
   `estado` char(2) DEFAULT NULL,
+  `cep` char(8) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_empend_idx` (`empresa_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `enderecos`
 --
 
-INSERT INTO `enderecos` (`id`, `empresa_id`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `estado`) VALUES
-(1, 12, 'Rua Conselheiro Rodrigues Alves', 's/n', 'Gate 23', 'Macuco', 'Santos', 'SP');
+INSERT INTO `enderecos` (`id`, `empresa_id`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `created`, `modified`) VALUES
+(1, 12, 'Rua Conselheiro Rodrigues Alves', 's/n', 'Gate 23', 'Macuco', 'Santos', 'SP', NULL, NULL, NULL),
+(2, 17, 'Avenida Conselheiro Rodrigues Alves', 's/n', '', 'Macuco', 'Santos', 'SP', '11015900', NULL, NULL);
 
 -- --------------------------------------------------------
 
