@@ -114,6 +114,17 @@ class EmpresasTable extends Table
         $validator
             ->requirePresence('link', 'create')
             ->notEmpty('link');
+        
+        $validator
+            ->requirePresence('email')
+            ->add('email', 'validFormat', [
+                'rule' => 'email',
+                'message' => 'Informe um e-mail válido.'
+            ]);
+        
+        $validator
+            ->requirePresence('telefone', 'create')
+            ->notEmpty('telefone');
 
         $validator
             ->requirePresence('filename', 'create')

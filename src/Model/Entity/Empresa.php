@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $categoria_id
  * @property \App\Model\Entity\Categoria $categoria
  * @property string $link
+ * @property string $email
+ * @property string $telefone
  * @property string $dir
  * @property string $filename
  * @property int $ativo

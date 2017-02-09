@@ -40,6 +40,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->script('bootstrap') ?>
     <?= $this->Html->script('jquery.dataTables.min') ?>
     <?= $this->Html->script('dataTables.bootstrap.min') ?>
+    <?= $this->Html->script('jquery.validate.min') ?>
     <?= $this->Html->script('mporto') ?>
     
     <?= $this->fetch('meta') ?>

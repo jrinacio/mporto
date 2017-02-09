@@ -1,5 +1,4 @@
 <?php
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,59 +51,59 @@
 <div class="col-md-8">
     <h3>Envie uma mensagem </h3>
     <?= $this->Form->create() ?>
-    <div class="control-group form-group">
-        <div class="controls">
-            <?= $this->Form->input('nome', [
+    
+    <div class="col-xs-8">
+        <?= $this->Form->input('nome', [
                 'type' => 'text',
-                'class' => 'form-control',
                 'id' => 'nome',
-                'label' => 'Nome'
+                'required' => true,
+                'placeholder' => 'Informe seu nome...',
+                'label' => 'Nome Completo'
             ]) ?>
-        </div>
     </div>
-    <div class="control-group form-group">
-        <div class="controls">
-            <?= $this->Form->input('telefone', [
-                'type' => 'text',
-                'class' => 'form-control',
-                'id' => 'telefone',
-                'label' => 'Telefone'
-            ]) ?>
-        </div>
+    <div class="col-xs-4">
+        <?= $this->Form->input('telefone', [
+            'type' => 'text',
+            'id' => 'telefone',
+            'required' => true,
+            'placeholder' => 'Informe o telefone p/ contato...',
+            'label' => 'Telefone'
+        ]) ?>
     </div>
-    <div class="control-group form-group">
-        <div class="controls">
-            <?= $this->Form->input('email', [
-                'type' => 'text',
-                'class' => 'form-control',
-                'id' => 'email',
-                'label' => 'E-mail'
-            ]) ?>
-        </div>
+    <div class="col-xs-8">
+        <?= $this->Form->input('email', [
+            'type' => 'email',
+            'id' => 'email',
+            'required' => true,
+            'placeholder' => 'Informe um e-mail no formato válido...',
+            'label' => 'E-mail'
+        ]) ?>
     </div>
-    <div class="control-group form-group">
-        <div class="controls">
-            <?php $options = ['Elogio', 'Informação', 'Reclamação', 'Sugestão'] ?>
-            <?= $this->Form->input('assunto', [
-                'type' => 'select',
-                'options' => $options,
-                'empty' => 'Selecione o assunto do e-mail...',
-                'label' => 'Assunto',
-            ]) ?>
-        </div>
+    <div class="col-xs-4">
+        <?php $options = ['Elogio', 'Informação', 'Reclamação', 'Sugestão'] ?>
+        <?= $this->Form->input('assunto', [
+            'type' => 'select',
+            'required' => true,
+            'options' => $options,
+            'empty' => 'Qual o assunto do e-mail ?',
+            'label' => 'Assunto',
+        ]) ?>
     </div>
-    <div class="control-group form-group">
-        <div class="controls">
-            <?= $this->Form->input('mensagem', [
-                'type' => 'textarea',
-                'class' => 'form-control',
-                'id' => 'mensagem',
-                'label' => 'Mensagem'
-            ]) ?>
-        </div>
+    <div class="col-xs-12">
+        <?= $this->Form->input('mensagem', [
+            'type' => 'textarea',
+            'rows' => '4',
+            'required' => true,
+            'id' => 'mensagem',
+            'label' => 'Mensagem'
+        ]) ?>
     </div>
-    <?= $this->Form->button(__('Enviar')) ?>
-    <?= $this->Form->end() ?>
+    <div class="col-xs-12">
+        <?= $this->Form->button(__('Enviar')) ?>
+        <?= $this->Form->button(__('Limpar'), ['type' => 'reset']) ?>
+        <?= $this->Form->end() ?>
+    </div>
+    
 </div>
     
 

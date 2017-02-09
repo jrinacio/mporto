@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Mailer\Email;
 //use Cake\Mailer\MailerAwareTrait;
+use Cake\Core\Configure;
 
 /**
  * Empresas Controller
@@ -12,7 +13,7 @@ use Cake\Mailer\Email;
  */
 class EmpresasController extends AppController
 {
-
+    
     /**
      * Index method
      *
@@ -135,7 +136,7 @@ class EmpresasController extends AppController
     
     public function contato()
     {
-//        $this->request->allowMethod(['post', 'contato']);
+        //        $this->request->allowMethod(['post', 'contato']);
         if($this->request->is('post'))
         {
             $msg = $this->request->data;
