@@ -32,6 +32,8 @@ jQuery(document).ready(function($){
         last.addClass('rightest');
 
     });
+    
+
 });
 
 

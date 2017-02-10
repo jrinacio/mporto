@@ -98,15 +98,36 @@
             'label' => 'Mensagem'
         ]) ?>
     </div>
+    <div class="col-xs-2">
+        <?= $this->Html->image('/empresas/captcha', ['class' => 'captcha']) ?>
+    </div>
+    <div class="col-xs-10">    
+        <?= $this->Form->input('captcha', [
+            'label' => false,
+            'placeholder' => 'Digite o que você está vendo na imagem'
+        ]) ?>
+    </div>
+    <div class="col-xs-12">
+        <p>
+            <?= $this->Html->link('Gerar Captcha', '#', [
+            'class' => 'reload_captcha'
+            ]) ?>
+        </p>
+    </div>
     <div class="col-xs-12">
         <?= $this->Form->button(__('Enviar')) ?>
         <?= $this->Form->button(__('Limpar'), ['type' => 'reset']) ?>
         <?= $this->Form->end() ?>
-    </div>
-    
+    </div>  
 </div>
-    
-
+<?php $this->Html->scriptStart(['block' => true]) ?>
+    $(function(){
+        $(".reload_captcha").click(function(e){
+           e.preventDefault();
+           $(".captcha").attr("src", $(".captcha").attr("src"));
+        });
+    });
+<?php $this->Html->scriptEnd() ?>
 
 
 

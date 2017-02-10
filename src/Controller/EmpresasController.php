@@ -169,4 +169,22 @@ class EmpresasController extends AppController
         $this->set(compact('empresa'));
         $this->set('_serialize', ['empresa']);
     }
+    
+    public function captcha()
+    {
+        $this->render(false);
+        $string = substr(str_shuffle(str_repeat('012345678ABCDEFGHIJKLMNOPQRSTUVWXYZ', 5)), 0, 5);
+        $font = WWW_ROOT . 'fonts' . DS . 'FreeSerif.ttf';
+        
+        $img = imagecreate(120, 30);
+        $white = imagecolorallocate($img, 255, 255, 255);
+        $background = imagecolorallocate($img, 213, 31, 49);
+        imagefilledrectangle($img, 0, 0, 120, 30, $background);
+        imagettftext($img, 20, 0, 10, 23, $white, $font, $string);
+        imageline($img, 0, 0, 90, 25, $white);
+        imageline($img, 0, 30, 60, 0, $white);
+        imagepng($img);
+        $this->response->type('image/png');
+        imagedestroy($img);
+    }
 }
