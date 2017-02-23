@@ -81,8 +81,8 @@ class ArquivosController extends AppController
                 $this->Flash->error(__('O arquivo não foi salvo. Favor tentar novamente.'));
             }
         }
-        $eventos = $this->Arquivos->Eventos->find('list', ['limit' => 200]);
-        $servicos = $this->Arquivos->Servicos->find('list', ['limit' => 200]);
+        $eventos = $this->Arquivos->Eventos->find('list');
+        $servicos = $this->Arquivos->Servicos->find('list');
         $this->set(compact('arquivo', 'eventos', 'servicos'));
         $this->set('_serialize', ['arquivo']);
     }
