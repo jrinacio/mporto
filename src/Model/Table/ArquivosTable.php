@@ -32,29 +32,29 @@ class ArquivosTable extends Table
         $this->primaryKey('id');
         
         $this->addBehavior('Timestamp');
-        $this->addBehavior('Proffer.Proffer', [
-            'file' => [
-                'root' => WWW_ROOT . 'imgs',
-                'dir' => 'dir',
-                'thumbnailSizes' => [
-                    'square' => [
-                        'w' => 100,
-                        'h' => 100,
-                        'crop' => true,
-                        'jpeg_quality' => 100,
-                        'png_compression_level' => 9
-                    ],
-                    'portrait' => [
-                        'w' => 280,
-                        'h' => 215,
-                        'crop' => true,
-                        'jpeg_quality' => 100,
-                        'png_compression_level' => 9 
-                    ],
-                ],
-                'thumbnailMethod' => 'Imagick'
-            ]
-        ]);
+//        $this->addBehavior('Proffer.Proffer', [
+//            'file' => [
+//                'root' => WWW_ROOT . 'imgs',
+//                'dir' => 'dir',
+//                'thumbnailSizes' => [
+//                    'square' => [
+//                        'w' => 100,
+//                        'h' => 100,
+//                        'crop' => true,
+//                        'jpeg_quality' => 100,
+//                        'png_compression_level' => 9
+//                    ],
+//                    'portrait' => [
+//                        'w' => 280,
+//                        'h' => 215,
+//                        'crop' => true,
+//                        'jpeg_quality' => 100,
+//                        'png_compression_level' => 9 
+//                    ],
+//                ],
+//                'thumbnailMethod' => 'Imagick'
+//            ]
+//        ]);
 
         $this->belongsTo('Usuarios', [
             'foreignKey' => 'usuario_id',
@@ -76,7 +76,7 @@ class ArquivosTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator->provider('proffer', 'Proffer\Model\Validation\ProfferRules');
+//        $validator->provider('proffer', 'Proffer\Model\Validation\ProfferRules');
         
         $validator
             ->integer('id')
@@ -85,14 +85,14 @@ class ArquivosTable extends Table
         $validator
             ->requirePresence('name', 'create')
             ->notEmpty('name')
-            ->add('name', 'proffer', [
-                'rule' => ['dimensions', [
-                    'min' => ['w' => 100, 'h' => 100],
-                    'max' => ['w' => 1920, 'h' => 1080]
-                ]],
-                'message' => 'Imagem não possui as dimensões corretas.',
-                'provider' => 'proffer'
-            ])
+//            ->add('name', 'proffer', [
+//                'rule' => ['dimensions', [
+//                    'min' => ['w' => 100, 'h' => 100],
+//                    'max' => ['w' => 1920, 'h' => 1080]
+//                ]],
+//                'message' => 'Imagem não possui as dimensões corretas.',
+//                'provider' => 'proffer'
+//            ])
             ->add('name', 'file', [
                 'rule' => ['mimeType', ['image/jpeg', 'image/png', 'image/gif']],
                 'message' => 'Extensão não permitida.'

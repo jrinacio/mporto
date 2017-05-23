@@ -257,7 +257,6 @@ Inflector::rules('irregular', [
 
 Plugin::load('Migrations');
 Plugin::load('Bootstrap');
-Plugin::load('Proffer');
 Plugin::load('TinyMCE');
 
 Configure::write('TinyMCE.editorOptions', [
