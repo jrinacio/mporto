@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Utility\Text;
 
 /**
  * Arquivos Controller
@@ -10,6 +11,10 @@ use App\Controller\AppController;
  */
 class ArquivosController extends AppController
 {
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('Upload');
+    }
 
     /**
      * Index method
@@ -65,28 +70,70 @@ class ArquivosController extends AppController
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
+//    public function add()
+//    {
+//        $arquivo = $this->Arquivos->newEntity();
+//        if ($this->request->is('post')) {
+//            $arquivo = $this->Arquivos->patchEntity($arquivo, $this->request->data);
+//            $arquivo->usuario_id = $this->Auth->user('id');
+//            $arquivo ->name = $_FILES['file']['name'];
+//            $arquivo->size = $_FILES['file']['size'];
+//            $arquivo->type = $_FILES['file']['type'];
+//            if ($this->Arquivos->save($arquivo)) {
+//                $this->Flash->success(__('Arquivo salvo.'));
+//                return $this->redirect(['action' => 'index']);
+//            } else {
+//                $this->Flash->error(__('O arquivo não foi salvo. Favor tentar novamente.'));
+//            }
+//        }
+//        $eventos = $this->Arquivos->Eventos->find('list');
+//        $servicos = $this->Arquivos->Servicos->find('list');
+//        $this->set(compact('arquivo', 'eventos', 'servicos'));
+//        $this->set('_serialize', ['arquivo']);
+//    }
+    
     public function add()
     {
         $arquivo = $this->Arquivos->newEntity();
-        if ($this->request->is('post')) {
-            $arquivo = $this->Arquivos->patchEntity($arquivo, $this->request->data);
-            $arquivo->usuario_id = $this->Auth->user('id');
-            $arquivo ->name = $_FILES['file']['name'];
-            $arquivo->size = $_FILES['file']['size'];
-            $arquivo->type = $_FILES['file']['type'];
-            if ($this->Arquivos->save($arquivo)) {
-                $this->Flash->success(__('Arquivo salvo.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('O arquivo não foi salvo. Favor tentar novamente.'));
+        if($this->request->is('post'))
+        {
+            if(!empty($this->request->getData()))
+            {
+                $arquivo = $this->Arquivos->patchEntity($arquivo, $this->request->getData());
+//                $arquivo->usuario_id = $this->Auth->user('id');
+                $diretorio = $this->Upload->send($arquivo);
+                if(is_uploaded_file($arquivo['file']['tmp_name']))
+                {
+                    $filename  = Text::uuid() . '-' . $arquivo['file']['name'];
+                    if(move_uploaded_file($arquivo['file']['tmp_name'], $diretorio.DS.$filename))
+                    {
+                        $arquivo->name = $filename;
+                        $arquivo->usuario_id = $this->Auth->user('id');
+                        $arquivo->size = $arquivo['file']['size'];
+                        $arquivo->type = $arquivo['file']['type'];
+                        $arquivo->dir = $diretorio;
+                        if($this->Arquivos->save($arquivo))
+                        {
+                            $this->Flash->success(__('Arquivo salvo.'));
+                            $this->redirect(['action' => 'index']);
+                        }
+                        else
+                        {
+                            $this->Flash->error(__('Arquivo não salvo!'));
+                            $this->redirect(['action' => 'index']);
+                        }
+                    }
+                }
             }
         }
+        
         $eventos = $this->Arquivos->Eventos->find('list');
         $servicos = $this->Arquivos->Servicos->find('list');
         $this->set(compact('arquivo', 'eventos', 'servicos'));
         $this->set('_serialize', ['arquivo']);
     }
-    
+
+
     public function adicionar()
     {
         if($this->request->is('post'))
@@ -172,5 +219,35 @@ class ArquivosController extends AppController
         $query = $this->Arquivos->find()->where(['ativo' => 1]);
         $this->set('arquivos', $this->Paginator->paginate($query, $config));
         $this->set('_serialize', ['arquivos']);
+    }
+    
+    public function salvar($arquivo, $dir)
+    {
+        debug($arquivo);
+        debug($dir);
+        if(is_uploaded_file($arquivo['file']['tmp_name']))
+        {
+            $filename = Text::uuid() . '-' . $arq['file']['name'];
+            debug($filename);
+            if(move_uploaded_file($arq['file']['tmp_name'], $dir.DS.$filename))
+            {
+                
+//                $arquivo = $tbArquivos->newEntity();
+                $arquivo->name = $filename;
+                $arquivo->size = $arquivo['file']['size'];
+                $arquivo->type = $arquivo['file']['type'];
+                $arquivo->dir = $diretorio;
+                debug($arquivo);
+                die();
+                $this->tbArquivos->save($arquivo);
+//                {
+//                    return true;
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+            }        
+        }
     }
 }

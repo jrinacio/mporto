@@ -8,6 +8,7 @@ use Cake\Utility\Text;
 use Cake\ORM\TableRegistry;
 use Cake\Filesystem\Folder;
 use Cake\Filesystem\File;
+use Cake\Controller\Component\AuthComponent;
 
 /**
  * Upload component
@@ -23,36 +24,18 @@ class UploadComponent extends Component
     protected $_defaultConfig = [];
     
     public $max_files = 5;
-    
+
     public function send($data)
     {
-        if(!empty($data))
+        $tipo = $this->permitir($data['file']);
+        if($tipo <> null)
         {
-            foreach ($data as $files) 
-            {
-                if(count($files) > $this->max_files)
-                {
-                    throw new InternalErrorException("Número de arquivos excedeu o limite de {$this->max_files}", 1);
-                }
-                else
-                {
-                    foreach ($files as $file)
-                    {
-                        if($this->permitir($file))
-                        {
-                            $dir = $this->definir_dir($file['type']);
-                            if(is_uploaded_file($file['tmp_name']))
-                            {
-                                $this->salvar($file, $dir);
-                            }
-                        }
-                        else
-                        {
-                            throw new InternalErrorException("Tipo de arquivo não permitido.", 1);
-                        }
-                    }
-                }
-            }
+            $dir = $this->definir_dir($tipo);
+            return $dir;
+        }
+        else
+        {
+            throw new InternalErrorException("Tipo de arquivo não permitido.", 1);
         }
     }
     
@@ -61,9 +44,9 @@ class UploadComponent extends Component
         $dir = new Folder(WWW_ROOT);
         switch ($tipo)
         {
-            case 'application/msword':
-            case 'application/pdf':
-            case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+            case 'doc':
+            case 'docx':
+            case 'pdf':
                 if(file_exists($dir->path . DS . 'documentos'))
                 {
                    $diretorio = $dir->addPathElement($dir->path, 'documentos');
@@ -87,7 +70,6 @@ class UploadComponent extends Component
                 }
                 break;
         }
-//        debug($diretorio);
         return $diretorio;
     }
     
@@ -98,37 +80,40 @@ class UploadComponent extends Component
     {
         // extensões de arquivos permitidos para upload
         $tipos = array('doc', 'docx', 'gif', 'jpg', 'jpeg', 'pdf', 'png');
-        
         $extensao = pathinfo($file['name']);
-//        debug($extensao);
         $ext = strtolower($extensao['extension']);
-//        debug($ext);
         if(in_array($ext, $tipos))
         {
-//            echo 'ok';
-            return true;
+            return $ext;
         }
     }
     
-    public function salvar($file, $destination)
+    public function salvar($arq, $dir)
     {
-//        debug($file);
-//        debug($destination);
-        $filename = Text::uuid() . '-' . $file['name'];
-        $filedb = TableRegistry::get('arquivos');
-        $entity = $filedb->newEntity();
-        $entity->nm_arquivo = $filename;
-        $entity->ds_tipo = $file['type'];
-        $entity->ds_tamanho = $file['size'];
-        if(move_uploaded_file($file['tmp_name'], $destination.DS.$filename))
+//        debug($arq);
+//        debug($dir);
+//        die();
+        if(is_uploaded_file($arq['file']['tmp_name']))
         {
-            $filedb->save($entity);
-            if(strpos($destination, 'acervo'))
+            $filename = Text::uuid() . '-' . $arq['file']['name'];
+            if(move_uploaded_file($arq['file']['tmp_name'], $dir.DS.$filename))
             {
-//                debug($destination . DS . $filename);
-                $this->miniatura($filename, 200, 100, 50);
-            }
-            return true;
+                $tbArquivos = TableRegistry::get('arquivos');
+                $arquivo = $tbArquivos->newEntity();
+                $arquivo->name = $filename;
+                $arquivo->size = $arq['file']['size'];
+                $arquivo->dir = $diretorio;
+//                debug($arquivo);
+//                die();
+                if($this->tbArquivos->save($arquivo))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }        
         }
     }
 
@@ -191,7 +176,7 @@ class UploadComponent extends Component
                 break;
         }
         $escala = min($larguraMax/$largura, $alturaMax/$altura);
-//        debug($escala);
+        
         if($escala < 1)
         {
             $novaLargura = floor($escala * $largura);
@@ -199,7 +184,6 @@ class UploadComponent extends Component
             
             //cria uma imagem temporária
             $imgFinal = imagecreatetruecolor($novaLargura, $novaAltura);
-//            debug($imgFinal);
             
             //copia a redimensiona a imagem velha na nova
             imagecopyresampled($imgFinal, $imgOrigem, 0, 0, 0, 0, $novaLargura, 
